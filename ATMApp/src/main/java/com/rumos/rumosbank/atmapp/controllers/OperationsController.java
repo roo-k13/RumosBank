@@ -2,11 +2,14 @@ package com.rumos.rumosbank.atmapp.controllers;
 
 import com.rumos.rumosbank.atmapp.App;
 import com.rumos.rumosbank.domain.services.ATM;
+import com.rumos.rumosbank.domain.services.Bank;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+
+import javax.naming.OperationNotSupportedException;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -50,7 +53,7 @@ public class OperationsController {
     }
 
     @FXML
-    private void onOperationButtonClick(ActionEvent actionEvent) {
+    private void onOperationButtonClick(ActionEvent actionEvent) throws OperationNotSupportedException {
         Button buttonPressed = (Button)actionEvent.getSource();
         String amountString = buttonPressed.getText().replace("€", "");
         int amountValue = Integer.parseInt(amountString);
@@ -61,6 +64,7 @@ public class OperationsController {
             ATM.instance.makeDeposit(App.authenticatedAccount, BigDecimal.valueOf(amountValue));
         }
         setAccountBalance(account_balance_label);
+        Bank.instance.updateMovements(App.authenticatedAccount);
     }
 
     /* ------------------------------------------------------------ Populate Buttons ------------------------------------------------------------ */
