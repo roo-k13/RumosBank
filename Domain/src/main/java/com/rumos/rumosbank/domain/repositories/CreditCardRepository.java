@@ -1,0 +1,35 @@
+package com.rumos.rumosbank.domain.repositories;
+
+import com.rumos.rumosbank.domain.models.cards.CreditCard;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
+public class CreditCardRepository {
+    private final EntityManager entityManager;
+    private final EntityManagerFactory entityManagerFactory;
+
+    public CreditCardRepository() {
+        entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        entityManager = entityManagerFactory.createEntityManager();
+    }
+
+    public CreditCard get(String number) {
+        String query = "SELECT c FROM CreditCard c WHERE c.number = :number";
+        return entityManager.createQuery(query, CreditCard.class).setParameter("number", number).getSingleResult();
+    }
+
+    public void insert(CreditCard creditCard) {
+        entityManager.getTransaction().begin();
+        this.entityManager.persist(creditCard);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        entityManagerFactory.close();
+    }
+
+    public void update(CreditCard creditCard) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(creditCard);
+        entityManager.getTransaction().commit();
+    }
+}
