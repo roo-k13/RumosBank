@@ -4,6 +4,7 @@ import com.rumos.rumosbank.domain.models.movements.Deposit;
 import com.rumos.rumosbank.domain.models.movements.Movement;
 import com.rumos.rumosbank.domain.models.movements.Transfer;
 import com.rumos.rumosbank.domain.models.movements.Withdraw;
+
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -64,6 +65,13 @@ public class BankAccount {
         movements.addAll(receivedTransfers);
         movements.addAll(sentTransfers);
         return movements;
+    }
+
+    public void setMovements(List<Withdraw> withdraws, List<Deposit> deposits, List<Transfer> receivedTransfers, List<Transfer> sentTransfers) {
+        this.withdraws = withdraws;
+        this.deposits = deposits;
+        this.receivedTransfers = receivedTransfers;
+        this.sentTransfers = sentTransfers;
     }
 
     /* ------------------------------------------------------------ To String ------------------------------------------------------------ */
