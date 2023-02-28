@@ -1,9 +1,12 @@
 package com.rumos.rumosbank.domain.repositories;
 
 import com.rumos.rumosbank.domain.models.movements.Withdraw;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+
+import java.util.List;
 
 public class WithdrawRepository {
     private final EntityManager entityManager;
@@ -20,5 +23,13 @@ public class WithdrawRepository {
         entityManager.getTransaction().commit();
         entityManager.close();
         entityManagerFactory.close();
+    }
+
+    public List<Withdraw> get(long bankAccountId) {
+        String query = "SELECT w FROM Withdraw d WHERE w.accountId = :accountId";
+        return entityManager
+                .createQuery(query, Withdraw.class)
+                .setParameter("bankaccountId", bankAccountId)
+                .getResultList();
     }
 }
