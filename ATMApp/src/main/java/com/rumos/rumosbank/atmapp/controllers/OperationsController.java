@@ -42,14 +42,15 @@ public class OperationsController {
 
     @FXML
     private void initialize() {
+        setAccountBalance();
         if (Objects.equals(selectedOperation, "Withdraw")) { populateButtonsWithWithdrawAmounts(); }
         else if (Objects.equals(selectedOperation, "Deposit")) { populateButtonsWithDepositAmounts(); }
     }
 
-    protected static void setAccountBalance(Label label) {
+    protected void setAccountBalance() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         String balance = formatter.format(App.authenticatedAccount.getBalance());
-        label.setText("Balance: " + balance);
+        account_balance_label.setText("Balance: " + balance);
     }
 
     @FXML
@@ -63,7 +64,7 @@ public class OperationsController {
         else if (Objects.equals(selectedOperation, "Deposit")) {
             ATM.instance.makeDeposit(App.authenticatedAccount, BigDecimal.valueOf(amountValue));
         }
-        setAccountBalance(account_balance_label);
+        setAccountBalance();
         Bank.instance.updateMovements(App.authenticatedAccount);
     }
 
