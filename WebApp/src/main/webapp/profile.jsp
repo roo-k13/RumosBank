@@ -95,12 +95,12 @@
                                         <div class="col-lg-9 col-md-8">${authenticatedClient.firstName} ${authenticatedClient.lastName}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Job</div>
-                                        <div class="col-lg-9 col-md-8">Web Designer</div>
+                                        <div class="col-lg-3 col-md-4 label">Birthdate</div>
+                                        <div class="col-lg-9 col-md-8">${authenticatedClient.birthdate}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Country</div>
-                                        <div class="col-lg-9 col-md-8">USA</div>
+                                        <div class="col-lg-3 col-md-4 label">NIF</div>
+                                        <div class="col-lg-9 col-md-8">${authenticatedClient.nif}</div>
                                     </div>
 
                                     <div class="row">
@@ -126,14 +126,6 @@
                                     <!-- Profile Edit Form -->
                                     <form>
                                         <div class="row mb-3">
-                                            <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <img src="assets/images/profile-img.jpg" alt="Profile">
-                                                <div class="pt-2">
-                                                    <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                                                    <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-                                                </div>
-                                            </div>
                                         </div>
 
                                         <div class="row mb-3">
