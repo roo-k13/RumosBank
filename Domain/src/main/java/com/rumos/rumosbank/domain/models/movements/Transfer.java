@@ -10,12 +10,4 @@ public class Transfer extends Movement {
     private BankAccount sender;
     @ManyToOne
     private BankAccount receiver;
-
-    public long getSenderId() {
-        return sender.getId();
-    }
-
-    public long getReceiverId() {
-        return receiver.getId();
-    }
 }
