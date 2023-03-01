@@ -21,8 +21,8 @@ public class Client {
     private String firstName;
     @Column(name = "last_name", nullable = false)
     private String lastName;
-    @Column(nullable = false)
     private LocalDate birthdate;
+    private String nif;
     @Column(name = "email_address", nullable = false)
     private String emailAddress;
     @Column(nullable = false)
@@ -68,6 +68,12 @@ public class Client {
 
     public LocalDate getBirthdate() {
         return birthdate;
+    }
+
+    /* ------------------------------------------------------------ NIF ------------------------------------------------------------ */
+
+    public String getNif() {
+        return nif;
     }
 
     /* ------------------------------------------------------------ Email ------------------------------------------------------------ */
