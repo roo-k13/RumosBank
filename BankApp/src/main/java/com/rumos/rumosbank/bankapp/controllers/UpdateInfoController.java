@@ -3,6 +3,7 @@ package com.rumos.rumosbank.bankapp.controllers;
 import com.rumos.rumosbank.bankapp.App;
 import com.rumos.rumosbank.domain.models.Client;
 import com.rumos.rumosbank.domain.services.Bank;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -17,6 +18,8 @@ public class UpdateInfoController {
     @FXML
     private TextField birthdate_text_field;
     @FXML
+    private TextField nif_text_field;
+    @FXML
     private TextField email_text_field;
 
     @FXML
@@ -25,6 +28,7 @@ public class UpdateInfoController {
         first_name_text_field.setText(client.getFirstName());
         last_name_text_field.setText(client.getLastName());
         birthdate_text_field.setText(client.getBirthdate().toString());
+        nif_text_field.setText(client.getNif());
         email_text_field.setText(client.getEmailAddress());
     }
 
