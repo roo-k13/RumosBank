@@ -7,8 +7,6 @@ import com.rumos.rumosbank.domain.repositories.DepositRepository;
 import com.rumos.rumosbank.domain.repositories.TransferRepository;
 import com.rumos.rumosbank.domain.repositories.WithdrawRepository;
 
-import javax.naming.OperationNotSupportedException;
-
 public class Bank {
     public static final Bank instance;
     static { instance = new Bank(); }
@@ -36,7 +34,7 @@ public class Bank {
 
     /* ------------------------------------------------------------ Movements ------------------------------------------------------------ */
 
-    public void updateMovements(BankAccount bankAccount) throws OperationNotSupportedException {
+    public void updateMovements(BankAccount bankAccount) {
         long bankAccountId = bankAccount.getId();
         bankAccount.setMovements(new WithdrawRepository().get(bankAccountId),
                                  new DepositRepository().get(bankAccountId),
