@@ -1,8 +1,35 @@
+#vbox_side_bar {
+    -fx-background-color: #4154f1;
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: 125;
+}
+
+.vbox_side_bar_button {
+    -fx-background-color: #ffffff;
+    -fx-pref-width: 100;
+}
+
+#operations_vbox {
+    -fx-alignment: center;
+    -fx-spacing: 25;
+}
+
+#operations_grid_pane {
+    -fx-max-width: 250;
+    -fx-max-height: 250;
+}
+
+.operations_buttons {
+    -fx-pref-width: 85;
+    -fx-pref-height: 85;
+}
+
 .label {
     -fx-font-size: 20;
     -fx-text-alignment: center;
+    -fx-alignment: center;
     -fx-font-weight: bold;
-    -fx-pref-height: 50;
     -fx-pref-width: 200;
 }
 
@@ -21,7 +48,6 @@
 }
 
 .button {
-    -fx-font-weight: bold;
     -fx-font-size: 14;
     -fx-alignment: center;
 }
