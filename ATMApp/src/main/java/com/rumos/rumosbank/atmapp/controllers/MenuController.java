@@ -20,7 +20,7 @@ public class MenuController {
 
     private void setAccountBalance() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        String balance = formatter.format(App.authenticatedAccount.getBalance());
+        String balance = formatter.format(App.getAuthenticatedAccount().getBalance());
         account_balance_label.setText("Balance: " + balance);
     }
 
@@ -41,14 +41,6 @@ public class MenuController {
     @FXML
     private void onChangePinButtonClick(ActionEvent actionEvent) {
         try { App.changeScene(actionEvent, "/fxml/change_pin.fxml"); }
-        catch (IOException exception) { throw new RuntimeException(exception); }
-    }
-
-    @FXML
-    private void onLogoutButtonClick(ActionEvent actionEvent) {
-        App.authenticatedAccount = null;
-        App.authenticatedCard = null;
-        try { App.changeScene(actionEvent, "/fxml/login.fxml"); }
         catch (IOException exception) { throw new RuntimeException(exception); }
     }
 }
