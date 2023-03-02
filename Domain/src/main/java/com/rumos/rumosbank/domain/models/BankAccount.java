@@ -40,6 +40,7 @@ public class BankAccount {
 
     /* ------------------------------------------------------------ Number ------------------------------------------------------------ */
 
+    @SuppressWarnings("unused")
     public String getNumber() {
         return number;
     }
@@ -52,6 +53,7 @@ public class BankAccount {
 
     /* ------------------------------------------------------------ Name ------------------------------------------------------------ */
 
+    @SuppressWarnings("unused")
     public String getName() {
         return name;
     }
