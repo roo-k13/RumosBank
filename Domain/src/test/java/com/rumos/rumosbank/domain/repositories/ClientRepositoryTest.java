@@ -24,13 +24,14 @@ class ClientRepositoryTest {
 
     @Test
     void insert() {
-        Client koen = new Client();
-        koen.setFirstName("Koen");
-        koen.setLastName("Heene");
-        koen.setBirthdate(LocalDate.of(1990, 5, 3));
-        koen.setEmailAddress("koenheene3@rumos.pt");
-        koen.setPassword("12345");
-        new ClientRepository().insert(koen);
+        Client ronaldo = new Client();
+        ronaldo.setFirstName("Cristiano");
+        ronaldo.setLastName("Ronaldo");
+        ronaldo.setBirthdate(LocalDate.of(1985, 2, 5));
+        ronaldo.setNif("265478987");
+        ronaldo.setEmailAddress("cristianoronaldo@hotmail.pt");
+        ronaldo.setPassword("12345");
+        new ClientRepository().insert(ronaldo);
     }
 
     @Test
