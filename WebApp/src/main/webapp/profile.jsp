@@ -44,7 +44,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="account.jsp">
+                <a class="nav-link collapsed" href="accounts.jsp">
                     <i class="bi bi-question-circle"></i>
                     <span>Accounts</span>
                 </a>
