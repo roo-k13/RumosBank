@@ -33,12 +33,6 @@
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link " href="dashboard.jsp">
-                        <i class="bi bi-grid"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link collapsed" href="profile.jsp">
                         <i class="bi bi-person"></i>
                         <span>Profile</span>
@@ -63,7 +57,7 @@
                 <h1>Accounts</h1>
                 <nav>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="dashboard.jsp">Home</a></li>
+                        <li class="breadcrumb-item"><a href="accounts.jsp">Home</a></li>
                         <li class="breadcrumb-item active">Accounts</li>
                     </ol>
                 </nav>
@@ -81,8 +75,8 @@
                         <c:forEach var="bankAccount" items="${authenticatedClient.bankAccounts}" varStatus="status">
                             <tr>
                                 <th scope="row"><a href="#">${bankAccount.number}</a></th>
-                                <td><a href="accounts.jsp" class="text-primary fw-bold">Conta Corrente</a></td>
-                                <td>$64</td>
+                                <td><a href="accounts.jsp" class="text-primary fw-bold">${bankAccount.name}</a></td>
+                                <td>${bankAccount.balance}</td>
                             <tr>
                         </c:forEach>
                     </tbody>
