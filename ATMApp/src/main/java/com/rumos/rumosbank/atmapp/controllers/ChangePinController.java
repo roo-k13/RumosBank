@@ -27,9 +27,9 @@ public class ChangePinController {
     private void onSavePinButtonClick(ActionEvent event) {
         if (Objects.equals(insert_pin_text_field.getText(), confirm_pin_text_field.getText())) {
             try {
-                App.authenticatedCard.setPin(insert_pin_text_field.getText());
-                if (App.authenticatedCard instanceof DebitCard) { new DebitCardRepository().update((DebitCard) App.authenticatedCard); }
-                else if (App.authenticatedCard instanceof CreditCard) { new CreditCardRepository().update((CreditCard) App.authenticatedCard); }
+                App.getAuthenticatedCard().setPin(insert_pin_text_field.getText());
+                if (App.getAuthenticatedCard() instanceof DebitCard) { new DebitCardRepository().update((DebitCard) App.getAuthenticatedCard()); }
+                else if (App.getAuthenticatedCard() instanceof CreditCard) { new CreditCardRepository().update((CreditCard) App.getAuthenticatedCard()); }
                 try { App.changeScene(event, "/fxml/menu.fxml"); }
                 catch (IOException exception) { throw new RuntimeException(exception); }
             } catch (IllegalArgumentException exception) { feedback_text_field.setText(exception.getMessage());}
