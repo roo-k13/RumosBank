@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
             Client authenticatedClient = Bank.instance.authenticate(email, password);
             HttpSession session = request.getSession();
             session.setAttribute("authenticatedClient", authenticatedClient);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("dashboard.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("accounts.jsp");
             requestDispatcher.forward(request, response);
         } catch (NoResultException exception) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
