@@ -15,17 +15,15 @@ import java.util.regex.Pattern;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name")
     private String firstName;
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name")
     private String lastName;
     private LocalDate birthdate;
     private String nif;
-    @Column(name = "email_address", nullable = false)
+    @Column(name = "email_address")
     private String emailAddress;
-    @Column(nullable = false)
     private String password;
     @OneToMany
     @JoinColumn(name = "client_id")
@@ -76,6 +74,10 @@ public class Client {
         return nif;
     }
 
+    public void setNif(String nif) {
+        this.nif = nif;
+    }
+
     /* ------------------------------------------------------------ Email ------------------------------------------------------------ */
 
     public void setEmailAddress(String emailAddress) {
@@ -109,9 +111,5 @@ public class Client {
         return  "Name: "      + getFirstName() + " " + getLastName() + "\n" +
                 "Birthdate: " + getBirthdate() + "\n" +
                 "Email: "     + getEmailAddress();
-    }
-
-    public long getId() {
-        return id;
     }
 }
