@@ -1,15 +1,9 @@
-/*!
- * Quill Editor v1.3.7
- * https://quilljs.com/
- * Copyright (c) 2014, Jason Chen
- * Copyright (c) 2013, salesforce.com
- */
 .ql-container {
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 13px;
   height: 100%;
-  margin: 0px;
+  margin: 0;
   position: relative;
 }
 .ql-container.ql-disabled .ql-tooltip {
@@ -707,7 +701,7 @@
   right: 4px;
 }
 .ql-bubble .ql-icon-picker .ql-picker-options {
-  padding: 4px 0px;
+  padding: 4px 0;
 }
 .ql-bubble .ql-icon-picker .ql-picker-item {
   height: 24px;
@@ -723,7 +717,7 @@
   float: left;
   height: 16px;
   margin: 2px;
-  padding: 0px;
+  padding: 0;
   width: 16px;
 }
 .ql-bubble .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg {
@@ -846,7 +840,7 @@
   background-color: #000;
 }
 .ql-bubble .ql-toolbar .ql-formats {
-  margin: 8px 12px 8px 0px;
+  margin: 8px 12px 8px 0;
 }
 .ql-bubble .ql-toolbar .ql-formats:first-child {
   margin-left: 12px;
