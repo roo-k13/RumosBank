@@ -47,9 +47,16 @@ public class OperationsController {
         else if (Objects.equals(selectedOperation, "Deposit")) { populateButtonsWithDepositAmounts(); }
     }
 
+    /* ------------------------------------------------------------ Navigation Bar ------------------------------------------------------------ */
+
+    @FXML
+    private void onLogoutButtonClick(ActionEvent actionEvent) {
+        NavigationBarController.logout(actionEvent);
+    }
+
     protected void setAccountBalance() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        String balance = formatter.format(App.authenticatedAccount.getBalance());
+        String balance = formatter.format(App.getAuthenticatedAccount().getBalance());
         account_balance_label.setText("Balance: " + balance);
     }
 
@@ -59,13 +66,13 @@ public class OperationsController {
         String amountString = buttonPressed.getText().replace("€", "");
         int amountValue = Integer.parseInt(amountString);
         if (Objects.equals(selectedOperation, "Withdraw")) {
-            ATM.instance.makeWithdraw(App.authenticatedAccount, BigDecimal.valueOf(amountValue));
+            ATM.instance.makeWithdraw(App.getAuthenticatedAccount(), BigDecimal.valueOf(amountValue));
         }
         else if (Objects.equals(selectedOperation, "Deposit")) {
-            ATM.instance.makeDeposit(App.authenticatedAccount, BigDecimal.valueOf(amountValue));
+            ATM.instance.makeDeposit(App.getAuthenticatedAccount(), BigDecimal.valueOf(amountValue));
         }
         setAccountBalance();
-        Bank.instance.updateMovements(App.authenticatedAccount);
+        Bank.instance.updateMovements(App.getAuthenticatedAccount());
     }
 
     /* ------------------------------------------------------------ Populate Buttons ------------------------------------------------------------ */
