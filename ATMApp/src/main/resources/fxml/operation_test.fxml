@@ -19,7 +19,8 @@
    </left>
    <center>
        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="operations_vbox" stylesheets="@../css/operations.css" BorderPane.alignment="CENTER">
-           <Label fx:id="account_balance_label" text="Balance: $100.000,00" />
+           <Label fx:id="account_balance_label" prefHeight="30.0" text="Balance: $100.000,00" />
+         <Label prefHeight="17.0" prefWidth="300.0" styleClass="operation_information_label" text="Please select the amount that you wish to withdraw" />
            <GridPane prefHeight="250.0" prefWidth="250.0" styleClass="operations_grid_pane">
                <columnConstraints>
                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -31,15 +32,15 @@
                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
-               <Button mnemonicParsing="false" prefHeight="79.0" prefWidth="85.0" styleClass="operations_buttons" text="10€" />
-               <Button mnemonicParsing="false" styleClass="operations_buttons" text="25€" GridPane.columnIndex="1" />
-               <Button mnemonicParsing="false" styleClass="operations_buttons" text="50€" GridPane.columnIndex="2" />
-               <Button mnemonicParsing="false" styleClass="operations_buttons" text="100€" GridPane.rowIndex="1" />
-               <Button mnemonicParsing="false" styleClass="operations_buttons" text="250€" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-               <Button mnemonicParsing="false" styleClass="operations_buttons" text="500€" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-               <Button mnemonicParsing="false" styleClass="operations_buttons" text="1000€" GridPane.rowIndex="2" />
-               <Button mnemonicParsing="false" styleClass="operations_buttons" text="2500€" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-               <Button mnemonicParsing="false" styleClass="operations_buttons" text="5000€" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+               <Button fx:id="first_button" mnemonicParsing="false" onAction="#onOperationButtonClick" prefHeight="79.0" prefWidth="85.0" styleClass="operations_buttons" text="10€" />
+               <Button fx:id="second_button" mnemonicParsing="false" onAction="#onOperationButtonClick" styleClass="operations_buttons" text="25€" GridPane.columnIndex="1" />
+               <Button fx:id="third_button" mnemonicParsing="false" onAction="#onOperationButtonClick" styleClass="operations_buttons" text="50€" GridPane.columnIndex="2" />
+               <Button fx:id="fourth_button" mnemonicParsing="false" onAction="#onOperationButtonClick" styleClass="operations_buttons" text="100€" GridPane.rowIndex="1" />
+               <Button fx:id="fifth_button" mnemonicParsing="false" onAction="#onOperationButtonClick" styleClass="operations_buttons" text="250€" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               <Button fx:id="sixth_button" mnemonicParsing="false" onAction="#onOperationButtonClick" styleClass="operations_buttons" text="500€" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+               <Button fx:id="seventh_button" mnemonicParsing="false" onAction="#onOperationButtonClick" styleClass="operations_buttons" text="1000€" GridPane.rowIndex="2" />
+               <Button fx:id="eight_button" mnemonicParsing="false" onAction="#onOperationButtonClick" styleClass="operations_buttons" text="2500€" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               <Button fx:id="ninth_button" mnemonicParsing="false" onAction="#onOperationButtonClick" styleClass="operations_buttons" text="5000€" GridPane.columnIndex="2" GridPane.rowIndex="2" />
            </GridPane>
        </VBox>
    </center>
