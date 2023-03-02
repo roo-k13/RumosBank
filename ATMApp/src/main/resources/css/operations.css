@@ -1,4 +1,10 @@
 .operations_vbox {
     -fx-alignment: center;
-    -fx-spacing: 25;
+    -fx-spacing: 10;
+}
+
+.operation_information_label {
+    -fx-font-size: 12;
+    -fx-font-weight: normal;
+    -fx-pref-width: 300;
 }
