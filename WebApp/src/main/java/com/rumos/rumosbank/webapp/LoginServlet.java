@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
         try {
             Client authenticatedClient = Bank.instance.authenticate(email, password);
             HttpSession session = request.getSession();
-            session.setAttribute("authenticatedClient", authenticatedClient);
+            session.setAttribute("client", authenticatedClient);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("accounts.jsp");
             requestDispatcher.forward(request, response);
         } catch (NoResultException exception) {
