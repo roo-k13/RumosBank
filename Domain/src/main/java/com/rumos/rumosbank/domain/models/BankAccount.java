@@ -18,6 +18,7 @@ public class BankAccount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String number;
+    private String name;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id")
     private List<Deposit> deposits;
@@ -39,10 +40,20 @@ public class BankAccount {
 
     /* ------------------------------------------------------------ Number ------------------------------------------------------------ */
 
+    public String getNumber() {
+        return number;
+    }
+
     public void setNumber(String number) {
         if (!number.matches("[0-9]+")) throw new IllegalArgumentException("The account number must only contain digits");
         if (number.length() != 9) throw new IllegalArgumentException("The account number must be exactly 9 digits long");
         this.number = number;
+    }
+
+    /* ------------------------------------------------------------ Name ------------------------------------------------------------ */
+
+    public String getName() {
+        return name;
     }
 
     /* ------------------------------------------------------------ Balance ------------------------------------------------------------ */
