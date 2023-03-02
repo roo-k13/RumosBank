@@ -19,7 +19,7 @@ public class TransferRepository {
         String query = "SELECT t FROM Transfer t WHERE t.sender.id = :accountId";
         return entityManager
                 .createQuery(query, Transfer.class)
-                .setParameter("bankaccountId", bankAccountId)
+                .setParameter("accountId", bankAccountId)
                 .getResultList();
     }
 
@@ -27,7 +27,7 @@ public class TransferRepository {
         String query = "SELECT t FROM Transfer t WHERE t.receiver.id = :accountId";
         return entityManager
                 .createQuery(query, Transfer.class)
-                .setParameter("bankaccountId", bankAccountId)
+                .setParameter("accountId", bankAccountId)
                 .getResultList();
     }
 }
