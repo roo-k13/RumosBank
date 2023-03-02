@@ -21,16 +21,16 @@ public class LoginController {
     private void onLoginButtonClick(ActionEvent actionEvent) {
         String cardNumber = card_number_text_field.getText();
         String cardPin = card_pin_password_field.getText();
-        App.authenticatedCard = ATM.instance.authenticate(cardNumber, cardPin);
+        App.setAuthenticatedCard(ATM.instance.authenticate(cardNumber, cardPin));
 
         //TODO: FIX BUG WHERE I CANT LOGIN WITH CREDIT CARD
 
-        if (App.authenticatedCard != null) {
-            App.authenticatedAccount = App.authenticatedCard.getBankAccount();
+        if (App.getAuthenticatedCard() != null) {
+            App.setAuthenticatedAccount(App.getAuthenticatedCard().getBankAccount());
             try {
                 String path;
-                if (!App.authenticatedCard.hasPinBeenChanged()) { path = "/fxml/change_pin.fxml"; }
-                else { path = "/fxml/menu.fxml"; }
+                if (!App.getAuthenticatedCard().hasPinBeenChanged()) { path = "/fxml/change_pin.fxml"; }
+                else { path = "/fxml/operation_test.fxml"; }
                 App.changeScene(actionEvent, path);
             } catch (IOException exception) { throw new RuntimeException(exception); }
         }
