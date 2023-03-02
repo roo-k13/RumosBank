@@ -1,4 +1,4 @@
-#vbox_side_bar {
+.vbox_side_bar {
     -fx-background-color: #4154f1;
     -fx-alignment: center;
     -fx-spacing: 10;
@@ -10,12 +10,7 @@
     -fx-pref-width: 100;
 }
 
-#operations_vbox {
-    -fx-alignment: center;
-    -fx-spacing: 25;
-}
-
-#operations_grid_pane {
+.operations_grid_pane {
     -fx-max-width: 250;
     -fx-max-height: 250;
 }
