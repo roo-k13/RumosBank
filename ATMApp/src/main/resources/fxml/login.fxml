@@ -1,12 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="70.0" prefWidth="200" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.atmapp.controllers.LoginController">
-    <TextField fx:id="card_number_text_field" promptText="Card Number" />
-    <PasswordField fx:id="card_pin_password_field" promptText="Card Pin" />
-    <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onLoginButtonClick" prefWidth="200.0" text="Login" />
-</VBox>
+<StackPane
+        styleClass="root_stack_pane"
+        stylesheets="@../css/login.css"
+        xmlns="http://javafx.com/javafx/19"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="com.rumos.rumosbank.atmapp.controllers.LoginController">
+   <VBox prefWidth="200.0" styleClass="vbox">
+      <Label text="Rumos Bank">
+         <stylesheets>
+            <URL value="@../css/styles.css" />
+            <URL value="@../css/login.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="title_label" />
+            <String fx:value="label" />
+         </styleClass></Label>
+      <TextField
+              fx:id="card_number_text_field"
+              prefHeight="35.0"
+              prefWidth="225.0"
+              promptText="Card Number"
+              stylesheets="@../css/styles.css" />
+      <PasswordField
+              fx:id="card_pin_password_field"
+              promptText="Card Pin"
+              stylesheets="@../css/styles.css" />
+      <Button
+              mnemonicParsing="false"
+              onAction="#onLoginButtonClick"
+              text="Login" />
+   </VBox>
+</StackPane>
