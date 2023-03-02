@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="account.jsp">
+                    <a class="nav-link collapsed" href="accounts.jsp">
                         <i class="bi bi-question-circle"></i>
                         <span>Accounts</span>
                     </a>
@@ -81,7 +81,7 @@
                         <c:forEach var="bankAccount" items="${authenticatedClient.bankAccounts}" varStatus="status">
                             <tr>
                                 <th scope="row"><a href="#">${bankAccount.number}</a></th>
-                                <td><a href="account.jsp" class="text-primary fw-bold">Conta Corrente</a></td>
+                                <td><a href="accounts.jsp" class="text-primary fw-bold">Conta Corrente</a></td>
                                 <td>$64</td>
                             <tr>
                         </c:forEach>
