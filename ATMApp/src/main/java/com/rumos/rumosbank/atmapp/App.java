@@ -13,8 +13,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App extends Application {
-    public static BankAccount authenticatedAccount;
-    public static Card authenticatedCard;
+    private static BankAccount authenticatedAccount;
+    private static Card authenticatedCard;
 
     public static void main(String[] args) {
         launch();
@@ -27,6 +27,7 @@ public class App extends Application {
         stage.setTitle("Rumos ATM");
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
     }
 
     public static void changeScene(ActionEvent event, String path) throws IOException {
@@ -35,5 +36,26 @@ public class App extends Application {
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
+    }
+
+    /* ------------------------------------------------------------ Authenticated Account ------------------------------------------------------------ */
+
+    public static BankAccount getAuthenticatedAccount() {
+        return authenticatedAccount;
+    }
+
+    public static void setAuthenticatedAccount(BankAccount authenticatedAccount) {
+        App.authenticatedAccount = authenticatedAccount;
+    }
+
+    /* ------------------------------------------------------------ Authenticated Card ------------------------------------------------------------ */
+
+    public static Card getAuthenticatedCard() {
+        return authenticatedCard;
+    }
+
+    public static void setAuthenticatedCard(Card authenticatedCard) {
+        App.authenticatedCard = authenticatedCard;
     }
 }
