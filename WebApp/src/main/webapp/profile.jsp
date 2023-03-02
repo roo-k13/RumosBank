@@ -1,3 +1,4 @@
+<jsp:useBean id="client" scope="session" type="com.rumos.rumosbank.domain.models.Client"/>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +33,7 @@
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
-                <a class="nav-link " href="dashboard.jsp">
+                <a class="nav-link " href="accounts.jsp">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
@@ -62,7 +63,7 @@
             <h1>Profile</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="dashboard.jsp">Home</a></li>
+                    <li class="breadcrumb-item"><a href="accounts.jsp">Home</a></li>
                     <li class="breadcrumb-item">Users</li>
                     <li class="breadcrumb-item active">Profile</li>
                 </ol>
@@ -92,15 +93,15 @@
                                     <h5 class="card-title">Profile Details</h5>
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                                        <div class="col-lg-9 col-md-8">${authenticatedClient.firstName} ${authenticatedClient.lastName}</div>
+                                        <div class="col-lg-9 col-md-8">${client.firstName} ${client.lastName}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Birthdate</div>
-                                        <div class="col-lg-9 col-md-8">${authenticatedClient.birthdate}</div>
+                                        <div class="col-lg-9 col-md-8">${client.birthdate}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">NIF</div>
-                                        <div class="col-lg-9 col-md-8">${authenticatedClient.nif}</div>
+                                        <div class="col-lg-9 col-md-8">${client.nif}</div>
                                     </div>
 
                                     <div class="row">
@@ -116,7 +117,7 @@
                                     <!-- Profile Edit Form -->
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Email</div>
-                                        <div class="col-lg-9 col-md-8">${authenticatedClient.emailAddress}</div>
+                                        <div class="col-lg-9 col-md-8">${client.emailAddress}</div>
                                     </div>
 
                                 </div>
