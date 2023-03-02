@@ -9,16 +9,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import javax.naming.OperationNotSupportedException;
-
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Objects;
 
 public class OperationsController {
+
     @FXML
     protected static String selectedOperation;
-
     @FXML
     private Label account_balance_label;
     @FXML
@@ -42,6 +40,7 @@ public class OperationsController {
 
     @FXML
     private void initialize() {
+        selectedOperation = "Deposit";
         setAccountBalance();
         if (Objects.equals(selectedOperation, "Withdraw")) { populateButtonsWithWithdrawAmounts(); }
         else if (Objects.equals(selectedOperation, "Deposit")) { populateButtonsWithDepositAmounts(); }
@@ -61,7 +60,7 @@ public class OperationsController {
     }
 
     @FXML
-    private void onOperationButtonClick(ActionEvent actionEvent) throws OperationNotSupportedException {
+    private void onOperationButtonClick(ActionEvent actionEvent) {
         Button buttonPressed = (Button)actionEvent.getSource();
         String amountString = buttonPressed.getText().replace("€", "");
         int amountValue = Integer.parseInt(amountString);
