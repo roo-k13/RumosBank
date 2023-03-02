@@ -26,10 +26,10 @@ public class WithdrawRepository {
     }
 
     public List<Withdraw> get(long bankAccountId) {
-        String query = "SELECT w FROM Withdraw d WHERE w.accountId = :accountId";
+        String query = "SELECT w FROM Withdraw w WHERE w.bankAccount.id = :accountId";
         return entityManager
                 .createQuery(query, Withdraw.class)
-                .setParameter("bankaccountId", bankAccountId)
+                .setParameter("accountId", bankAccountId)
                 .getResultList();
     }
 }
