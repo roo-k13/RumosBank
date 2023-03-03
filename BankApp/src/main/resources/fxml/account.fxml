@@ -4,16 +4,75 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.AccountController">
-   <ChoiceBox fx:id="bank_accounts_choice_box" prefHeight="44.0" prefWidth="250.0" />
-   <TableView fx:id="movements_table_view" prefWidth="250.0">
-     <columns>
-         <TableColumn fx:id="movement_type" maxWidth="1.7976931348623157E308" prefWidth="100.0" resizable="false" text="Type" />
-         <TableColumn fx:id="movement_amount" prefWidth="69.0" text="Amount" />
-         <TableColumn fx:id="movement_date" prefWidth="75.0" text="Date" />
-     </columns>
-   </TableView>
-   <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onReturnButtonClick" prefHeight="30.0" prefWidth="250.0" text="Return" />
-</VBox>
+<BorderPane
+         stylesheets="@../css/main.css"
+         xmlns="http://javafx.com/javafx/19"
+         xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="com.rumos.rumosbank.bankapp.controllers.AccountController">
+   <left>
+       <VBox
+               styleClass="vbox"
+               stylesheets="@../css/navbar.css"
+               BorderPane.alignment="CENTER">
+           <Button
+                   mnemonicParsing="false"
+                   onAction="#onAccountsButtonClick"
+                   styleClass="vbox_side_bar_button"
+                   text="Accounts" />
+           <Button mnemonicParsing="false"
+                   onAction="#onEditProfileButtonClick"
+                   styleClass="vbox_side_bar_button"
+                   text="Profile" />
+           <Button
+                   mnemonicParsing="false"
+                   onAction="#onChangePasswordButtonClick"
+                   styleClass="vbox_side_bar_button"
+                   text="Password" />
+           <Button
+                   mnemonicParsing="false"
+                   onAction="#onLogoutButtonClick"
+                   styleClass="vbox_side_bar_button"
+                   text="Logout" />
+       </VBox>
+   </left>
+   <center>
+       <AnchorPane
+               stylesheets="@../css/accounts.css"
+
+               BorderPane.alignment="CENTER">
+           <VBox
+                   layoutX="130.0"
+                   layoutY="65.0">
+               <TableView
+                       fx:id="movements_table_view">
+                   <columns>
+                       <TableColumn
+                               fx:id="movement_type"
+                               text="Type"/>
+                       <TableColumn
+                               fx:id="movement_amount"
+                               text="Amount"/>
+                       <TableColumn
+                               fx:id="movement_date"
+                               text="Date"/>
+                   </columns>
+               </TableView>
+           </VBox>
+           <ChoiceBox
+                   fx:id="bank_accounts_choice_box"
+                   layoutX="113.0" layoutY="14.0"/>
+           <TextField
+                   fx:id="transfer_amount_text_field"
+                   layoutX="190.0" layoutY="323.0"/>
+           <TextField
+                   fx:id="transfer_receiver_text_field"
+                   layoutX="14.0"
+                   layoutY="323.0"/>
+       </AnchorPane>
+   </center>
+</BorderPane>
