@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefWidth="300.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.LoginController">
-   <Label fx:id="feedback_message_label" />
-    <TextField fx:id="email_text_field" alignment="CENTER" prefHeight="20.0" prefWidth="200.0" promptText="Email" />
-    <PasswordField fx:id="password_text_field" alignment="CENTER" promptText="Password" />
-    <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="20.0" prefWidth="200.0" text="Login" />
-   <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="20.0" prefWidth="200.0" text="Register" />
-</VBox>
+<StackPane styleClass="root_stack_pane" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.LoginController">
+   <VBox styleClass="vbox">
+      <Label text="Rumos Bank">
+         <stylesheets>
+            <URL value="@../css/main.css" />
+            <URL value="@../css/login.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="title_label" />
+            <String fx:value="label" />
+         </styleClass></Label>
+      <TextField
+              fx:id="email_text_field"
+              promptText="Email"
+              stylesheets="@../css/main.css" />
+      <PasswordField
+              fx:id="password_text_field"
+              promptText="Password"
+              stylesheets="@../css/main.css" />
+      <Button mnemonicParsing="false"
+              onAction="#onLoginButtonClick"
+              text="Login" />
+      <Button mnemonicParsing="false"
+              onAction="#onRegisterButtonClick"
+              text="Register" />
+   </VBox>
+</StackPane>
