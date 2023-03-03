@@ -1,0 +1,9 @@
+#bank_accounts_choice_box {
+    -fx-pref-width: 250;
+    -fx-pref-height: 12;
+}
+
+#bank_accounts_choice_box .label {
+    -fx-font-size: 14;
+    -fx-font-weight: normal;
+}
