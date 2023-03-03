@@ -7,13 +7,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane
-         stylesheets="@../css/main.css"
-         xmlns="http://javafx.com/javafx/19"
-         xmlns:fx="http://javafx.com/fxml/1"
-         fx:controller="com.rumos.rumosbank.bankapp.controllers.AccountController">
+        styleClass="border-pane"
+        stylesheets="@../css/main.css"
+        xmlns="http://javafx.com/javafx/19"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="com.rumos.rumosbank.bankapp.controllers.AccountController">
    <left>
        <VBox
                styleClass="vbox"
@@ -24,7 +26,8 @@
                    onAction="#onAccountsButtonClick"
                    styleClass="vbox_side_bar_button"
                    text="Accounts" />
-           <Button mnemonicParsing="false"
+           <Button
+                   mnemonicParsing="false"
                    onAction="#onEditProfileButtonClick"
                    styleClass="vbox_side_bar_button"
                    text="Profile" />
@@ -41,38 +44,34 @@
        </VBox>
    </left>
    <center>
-       <AnchorPane
-               stylesheets="@../css/accounts.css"
-
-               BorderPane.alignment="CENTER">
-           <VBox
-                   layoutX="130.0"
-                   layoutY="65.0">
-               <TableView
-                       fx:id="movements_table_view">
-                   <columns>
-                       <TableColumn
-                               fx:id="movement_type"
-                               text="Type"/>
-                       <TableColumn
-                               fx:id="movement_amount"
-                               text="Amount"/>
-                       <TableColumn
-                               fx:id="movement_date"
-                               text="Date"/>
-                   </columns>
-               </TableView>
-           </VBox>
+       <AnchorPane stylesheets="@../css/accounts.css" BorderPane.alignment="CENTER">
+            <TableView fx:id="movements_table_view" layoutX="38.0" layoutY="53.0">
+                <columns>
+                    <TableColumn
+                            fx:id="movement_type"
+                            text="Type" />
+                    <TableColumn
+                            fx:id="movement_amount"
+                            text="Amount" />
+                    <TableColumn
+                            fx:id="movement_date"
+                            text="Date" />
+                </columns>
+            </TableView>
+           <HBox layoutX="150.0" layoutY="268.0" prefHeight="33.0" prefWidth="188.0">
+               <TextField
+                       fx:id="transfer_amount_text_field"/>
+               <TextField
+                       fx:id="transfer_receiver_text_field"/>
+               <Button
+                       mnemonicParsing="false"
+                       onAction="#onTransferButtonClick"
+                       text="Send"/>
+           </HBox>
            <ChoiceBox
                    fx:id="bank_accounts_choice_box"
-                   layoutX="113.0" layoutY="14.0"/>
-           <TextField
-                   fx:id="transfer_amount_text_field"
-                   layoutX="190.0" layoutY="323.0"/>
-           <TextField
-                   fx:id="transfer_receiver_text_field"
-                   layoutX="14.0"
-                   layoutY="323.0"/>
+                   layoutX="113.0"
+                   layoutY="14.0" />
        </AnchorPane>
    </center>
 </BorderPane>
