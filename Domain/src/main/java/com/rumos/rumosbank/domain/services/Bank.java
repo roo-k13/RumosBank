@@ -2,10 +2,10 @@ package com.rumos.rumosbank.domain.services;
 
 import com.rumos.rumosbank.domain.models.BankAccount;
 import com.rumos.rumosbank.domain.models.Client;
-import com.rumos.rumosbank.domain.repositories.ClientRepository;
-import com.rumos.rumosbank.domain.repositories.DepositRepository;
-import com.rumos.rumosbank.domain.repositories.TransferRepository;
-import com.rumos.rumosbank.domain.repositories.WithdrawRepository;
+import com.rumos.rumosbank.domain.models.movements.Transfer;
+import com.rumos.rumosbank.domain.repositories.*;
+
+import java.math.BigDecimal;
 
 public class Bank {
     public static final Bank instance;
@@ -16,10 +16,7 @@ public class Bank {
 
     public Client authenticate(String email, String password) {
         Client client = new ClientRepository().get(email);
-        if (client != null && client.isPasswordCorrect(password)) {
-            return client;
-        }
-        return null;
+        return client != null && client.isPasswordCorrect(password) ? client : null;
     }
 
     /* ------------------------------------------------------------ Clients ------------------------------------------------------------ */
@@ -40,5 +37,13 @@ public class Bank {
                                  new DepositRepository().get(bankAccountId),
                                  new TransferRepository().getSent(bankAccountId),
                                  new TransferRepository().getReceived(bankAccountId));
+    }
+
+    public void makeTransfer(BankAccount sender, String receiverBankAccountNumber, BigDecimal amount) {
+        Transfer transfer = new Transfer();
+        transfer.setAmount(amount);
+        transfer.setSender(sender);
+        transfer.setReceiver(new BankAccountRepository().get(receiverBankAccountNumber));
+        new TransferRepository().insert(transfer);
     }
 }
