@@ -103,15 +103,17 @@
                                         <div class="col-lg-3 col-md-4 label">NIF</div>
                                         <div class="col-lg-9 col-md-8">${client.nif}</div>
                                     </div>
-
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Address</div>
-                                        <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+                                        <div class="col-lg-3 col-md-4 label">Email</div>
+                                        <div class="col-lg-9 col-md-8">${client.emailAddress}</div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Phone</div>
-                                        <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                                        <div class="col-lg-9 col-md-8">${client.phone}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">Mobile Phone</div>
+                                        <div class="col-lg-9 col-md-8">${client.mobilePhone}</div>
                                     </div>
 
                                     <!-- Profile Edit Form -->
