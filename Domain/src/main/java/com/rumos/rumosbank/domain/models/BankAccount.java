@@ -91,6 +91,6 @@ public class BankAccount {
 
     @Override
     public String toString() {
-        return "Account Nº: " + number;
+        return name + " Nº: " + number;
     }
 }
