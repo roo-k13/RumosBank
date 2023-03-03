@@ -97,6 +97,6 @@ public class AccountController {
     private void onTransferButtonClick() {
         BigDecimal amount = new BigDecimal(transfer_amount_text_field.getText());
         String receiverAccountNumber = transfer_receiver_text_field.getText();
-        Bank.instance.transfer(selectedAccount, receiverAccountNumber, amount);
+        Bank.instance.makeTransfer(selectedAccount, receiverAccountNumber, amount);
     }
 }
