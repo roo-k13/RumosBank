@@ -104,6 +104,13 @@ public class Client {
         return bankAccounts;
     }
 
+    public BankAccount getBankAccount(String number) {
+        return bankAccounts.stream()
+                .filter(bankAccount ->
+                        bankAccount.getNumber().equals(number)).
+                findFirst().orElseThrow();
+    }
+
     /* ------------------------------------------------------------ ToString ------------------------------------------------------------ */
 
     @Override
