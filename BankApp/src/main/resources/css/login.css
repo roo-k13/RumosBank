@@ -6,14 +6,16 @@
 
 .vbox {
     -fx-max-width: 300;
-    -fx-max-height: 150;
+    -fx-max-height: 200;
+    -fx-alignment: center;
 }
 
 .title_label {
     -fx-text-fill: #4154f1;
     -fx-pref-height: 65;
+    -fx-alignment: center;
 }
 
 .button {
-    -fx-pref-width: 200;
+    -fx-pref-width: 300;
 }
