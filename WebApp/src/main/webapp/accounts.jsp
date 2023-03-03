@@ -1,3 +1,4 @@
+<jsp:useBean id="client" scope="session" type="com.rumos.rumosbank.domain.models.Client"/>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -72,10 +73,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="bankAccount" items="${authenticatedClient.bankAccounts}" varStatus="status">
+                        <c:forEach var="bankAccount" items="${client.bankAccounts}" varStatus="status">
                             <tr>
-                                <th scope="row"><a href="#">${bankAccount.number}</a></th>
-                                <td><a href="accounts.jsp" class="text-primary fw-bold">${bankAccount.name}</a></td>
+                                <th scope="row"><a href="account?number=${bankAccount.number}">${bankAccount.number}</a></th>
+                                <td>${bankAccount.name}</td>
                                 <td>${bankAccount.balance}</td>
                             <tr>
                         </c:forEach>
