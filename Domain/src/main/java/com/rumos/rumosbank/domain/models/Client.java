@@ -1,6 +1,7 @@
 package com.rumos.rumosbank.domain.models;
 
 import jakarta.persistence.*;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDate;
@@ -22,6 +23,9 @@ public class Client {
     private String lastName;
     private LocalDate birthdate;
     private String nif;
+    private String phone;
+    private String mobilePhone;
+    private String profession;
     @Column(name = "email_address")
     private String emailAddress;
     private String password;
@@ -75,7 +79,38 @@ public class Client {
     }
 
     public void setNif(String nif) {
+        if (nif.length() != 9) throw new IllegalArgumentException("NIF value must be exactly 9 digits");
         this.nif = nif;
+    }
+
+    /* ------------------------------------------------------------ Phone ------------------------------------------------------------ */
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    /* ------------------------------------------------------------ Mobile Phone ------------------------------------------------------------ */
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+
+    /* ------------------------------------------------------------ Profession ------------------------------------------------------------ */
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
     /* ------------------------------------------------------------ Email ------------------------------------------------------------ */
