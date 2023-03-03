@@ -30,7 +30,7 @@ public class LoginController {
             try {
                 String path;
                 if (!App.getAuthenticatedCard().hasPinBeenChanged()) { path = "/fxml/change_pin.fxml"; }
-                else { path = "/fxml/operation_test.fxml"; }
+                else { path = "/fxml/operations.fxml"; }
                 App.changeScene(actionEvent, path);
             } catch (IOException exception) { throw new RuntimeException(exception); }
         }
