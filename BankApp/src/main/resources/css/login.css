@@ -1,0 +1,19 @@
+.root_stack_pane {
+    -fx-pref-width: 600;
+    -fx-pref-height: 400;
+    -fx-alignment: center;
+}
+
+.vbox {
+    -fx-max-width: 300;
+    -fx-max-height: 150;
+}
+
+.title_label {
+    -fx-text-fill: #4154f1;
+    -fx-pref-height: 65;
+}
+
+.button {
+    -fx-pref-width: 200;
+}
