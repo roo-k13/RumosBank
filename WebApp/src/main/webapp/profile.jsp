@@ -127,7 +127,7 @@
                                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                                     <!-- Profile Edit Form -->
-                                    <form>
+                                    <form action="profile" method="post">
                                         <div class="row mb-3">
                                         </div>
 
