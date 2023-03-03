@@ -2,6 +2,7 @@ package com.rumos.rumosbank.webapp;
 
 import com.rumos.rumosbank.domain.models.Client;
 import com.rumos.rumosbank.domain.services.Bank;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -22,9 +23,11 @@ public class ProfileServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         Client client = (Client) session.getAttribute("client");
         Bank.instance.updateClient(client);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("profile.jsp");
+        dispatcher.forward(request, response);
     }
 }
