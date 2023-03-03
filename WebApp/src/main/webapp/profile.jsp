@@ -115,30 +115,23 @@
                                         <div class="col-lg-3 col-md-4 label">Mobile Phone</div>
                                         <div class="col-lg-9 col-md-8">${client.mobilePhone}</div>
                                     </div>
-
-                                    <!-- Profile Edit Form -->
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Email</div>
-                                        <div class="col-lg-9 col-md-8">${client.emailAddress}</div>
-                                    </div>
-
                                 </div>
-
                                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-
-                                    <!-- Profile Edit Form -->
                                     <form action="profile" method="post">
                                         <div class="row mb-3">
                                         </div>
-
                                         <div class="row mb-3">
-                                            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                                            <label for="firstName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
                                             <div class="col-md-8 col-lg-9">
-                                                <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                                                <input name="firstName" type="text" class="form-control" id="firstName" value=${client.firstName}>
                                             </div>
                                         </div>
-
-
+                                        <div class="row mb-3">
+                                            <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="lastName" type="text" class="form-control" id="lastName" value=${client.lastName}>
+                                            </div>
+                                        </div>
                                         <div class="row mb-3">
                                             <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
                                             <div class="col-md-8 col-lg-9">
