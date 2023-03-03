@@ -3,6 +3,8 @@ package com.rumos.rumosbank.bankapp.controllers;
 import com.rumos.rumosbank.bankapp.App;
 import com.rumos.rumosbank.domain.models.BankAccount;
 import com.rumos.rumosbank.domain.models.movements.Movement;
+import com.rumos.rumosbank.domain.services.Bank;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,17 +12,41 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class AccountController {
+    private BankAccount selectedAccount;
 
     @FXML
     private void initialize() {
         initializeAccountsChoiceBox();
         initializeMovementsTable();
+    }
+
+    /* ------------------------------------------------------------ Navigation Bar ------------------------------------------------------------ */
+
+    @FXML
+    private void onLogoutButtonClick(ActionEvent actionEvent) {
+        NavigationBarController.logout(actionEvent);
+    }
+
+    @FXML
+    private void onAccountsButtonClick(ActionEvent actionEvent) {
+        NavigationBarController.accounts(actionEvent);
+    }
+
+    @FXML
+    private void onEditProfileButtonClick(ActionEvent actionEvent) {
+        NavigationBarController.profile(actionEvent);
+    }
+
+    @FXML
+    private void onChangePasswordButtonClick(ActionEvent actionEvent) {
+        NavigationBarController.password(actionEvent);
     }
 
     /* ------------------------------------------------------------ Accounts Choice Box ------------------------------------------------------------ */
@@ -54,15 +80,23 @@ public class AccountController {
     }
 
     @FXML
-    private void onSelectingBankAccount(@SuppressWarnings("unused") ActionEvent actionEvent) {
-        BankAccount bankAccount = bank_accounts_choice_box.getValue();
-        ObservableList<Movement> movements = FXCollections.observableArrayList(bankAccount.getMovements());
+    private void onSelectingBankAccount(ActionEvent actionEvent) {
+        selectedAccount = bank_accounts_choice_box.getValue();
+        ObservableList<Movement> movements = FXCollections.observableArrayList(selectedAccount.getMovements());
         movements_table_view.setItems(movements);
     }
 
+    /* ------------------------------------------------------------ Transfers ------------------------------------------------------------ */
+
     @FXML
-    private void onReturnButtonClick(ActionEvent actionEvent) {
-        try { App.changeScene(actionEvent, "/fxml/menu.fxml"); }
-        catch (IOException exception) { throw new RuntimeException(exception); }
+    private TextField transfer_amount_text_field;
+    @FXML
+    private TextField transfer_receiver_text_field;
+
+    @FXML
+    private void onTransferButtonClick() {
+        BigDecimal amount = new BigDecimal(transfer_amount_text_field.getText());
+        String receiverAccountNumber = transfer_receiver_text_field.getText();
+        Bank.instance.transfer(selectedAccount, receiverAccountNumber, amount);
     }
 }
