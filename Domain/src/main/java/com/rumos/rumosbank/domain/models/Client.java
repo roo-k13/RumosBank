@@ -24,6 +24,7 @@ public class Client {
     private LocalDate birthdate;
     private String nif;
     private String phone;
+    @Column(name = "mobile_phone")
     private String mobilePhone;
     private String profession;
     @Column(name = "email_address")
