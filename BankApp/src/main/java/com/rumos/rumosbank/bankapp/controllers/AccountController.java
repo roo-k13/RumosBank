@@ -18,7 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class AccountController {
+public class AccountController extends NavigationBarController {
     private BankAccount selectedAccount;
 
     @FXML
@@ -27,29 +27,7 @@ public class AccountController {
         initializeMovementsTable();
     }
 
-    /* ------------------------------------------------------------ Navigation Bar ------------------------------------------------------------ */
-
-    @FXML
-    private void onLogoutButtonClick(ActionEvent actionEvent) {
-        NavigationBarController.logout(actionEvent);
-    }
-
-    @FXML
-    private void onAccountsButtonClick(ActionEvent actionEvent) {
-        NavigationBarController.accounts(actionEvent);
-    }
-
-    @FXML
-    private void onEditProfileButtonClick(ActionEvent actionEvent) {
-        NavigationBarController.profile(actionEvent);
-    }
-
-    @FXML
-    private void onChangePasswordButtonClick(ActionEvent actionEvent) {
-        NavigationBarController.password(actionEvent);
-    }
-
-    /* ------------------------------------------------------------ Accounts Choice Box ------------------------------------------------------------ */
+    /* ---------------------------------------------------------- Accounts Choice Box --------------------------------------------------------- */
 
     @FXML
     private ChoiceBox<BankAccount> bank_accounts_choice_box;
@@ -61,7 +39,7 @@ public class AccountController {
         bank_accounts_choice_box.setItems(FXCollections.observableList(bankAccounts));
     }
 
-    /* ------------------------------------------------------------ Movements Table ------------------------------------------------------------ */
+    /* --------------------------------------------------------- Movements Table --------------------------------------------------------- */
 
     @FXML
     private TableView<Movement> movements_table_view;
@@ -82,6 +60,10 @@ public class AccountController {
     @FXML
     private void onSelectingBankAccount(ActionEvent actionEvent) {
         selectedAccount = bank_accounts_choice_box.getValue();
+        updateMovements();
+    }
+
+    private void updateMovements() {
         ObservableList<Movement> movements = FXCollections.observableArrayList(selectedAccount.getMovements());
         movements_table_view.setItems(movements);
     }
@@ -94,9 +76,11 @@ public class AccountController {
     private TextField transfer_receiver_text_field;
 
     @FXML
-    private void onTransferButtonClick() {
+    private void onMakeTransferButtonClick() {
         BigDecimal amount = new BigDecimal(transfer_amount_text_field.getText());
         String receiverAccountNumber = transfer_receiver_text_field.getText();
         Bank.instance.makeTransfer(selectedAccount, receiverAccountNumber, amount);
+        Bank.instance.updateMovements(selectedAccount);
+        updateMovements();
     }
 }
