@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class UpdateInfoController {
+public class UpdateInfoController extends NavigationBarController {
     private Client client;
 
     @FXML
@@ -35,28 +35,6 @@ public class UpdateInfoController {
         client = App.getAuthenticatedClient();
         initializeFields();
 
-    }
-
-    /* ----------------------------------------------------- Navigation Bar ----------------------------------------------------- */
-
-    @FXML
-    private void onAccountsButtonClick(ActionEvent actionEvent) {
-        NavigationBarController.accounts(actionEvent);
-    }
-
-    @FXML
-    private void onEditProfileButtonClick(ActionEvent actionEvent) {
-        NavigationBarController.profile(actionEvent);
-    }
-
-    @FXML
-    private void onChangePasswordButtonClick(ActionEvent actionEvent) {
-        NavigationBarController.password(actionEvent);
-    }
-
-    @FXML
-    private void onLogoutButtonClick(ActionEvent actionEvent) {
-        NavigationBarController.logout(actionEvent);
     }
 
     /* ---------------------------------------------------------- Form ---------------------------------------------------------- */
