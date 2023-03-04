@@ -3,6 +3,7 @@ package com.rumos.rumosbank.bankapp.controllers;
 import com.rumos.rumosbank.bankapp.App;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
 import java.io.IOException;
 
@@ -23,6 +24,7 @@ public class NavigationBarController {
         catch (IOException exception) { throw new RuntimeException(exception); }
     }
 
+    @FXML
     protected static void logout(ActionEvent actionEvent) {
         try {
             App.setAuthenticatedClient(null);
