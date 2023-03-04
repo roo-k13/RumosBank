@@ -1,0 +1,11 @@
+.vbox {
+    -fx-alignment: center;
+}
+
+.text-field {
+    -fx-max-width: 200;
+}
+
+.save_changes_button {
+    -fx-max-width: 200;
+}
