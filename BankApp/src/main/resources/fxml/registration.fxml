@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane styleClass="border-pane" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.RegistrationController">
+   <center>
+      <AnchorPane>
+         <children>
+            <VBox prefWidth="400.0" stylesheets="@../css/main.css">
+                <TextField fx:id="first_name_text_field" promptText="First Name" />
+                <TextField fx:id="last_name_text_field" promptText="Last Name" />
+                <DatePicker fx:id="birthdate_date_picker" prefHeight="25.0" prefWidth="200.0" promptText="Birthdate" />
+               <TextField fx:id="nif_text_field" promptText="NIF" />
+               <TextField fx:id="phone_text_field" promptText="Phone" />
+               <TextField fx:id="mobile_phone_text_field" promptText="Mobile Phone" />
+               <TextField fx:id="profession_text_field" promptText="Profession" />
+                <TextField fx:id="email_text_field" promptText="Email" />
+                <TextField fx:id="insert_password_text_field" promptText="Password" />
+                <TextField fx:id="confirm_password_text_field" promptText="Confirm password" />
+                <Button mnemonicParsing="false" onAction="#onRegisterButtonClick" prefWidth="200.0" text="Register" />
+            </VBox>
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="vbox" stylesheets="@../css/navbar.css" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="Accounts" />
+            <Button mnemonicParsing="false" text="Profile" />
+            <Button mnemonicParsing="false" text="Password" />
+            <Button mnemonicParsing="false" text="Logout" />
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
