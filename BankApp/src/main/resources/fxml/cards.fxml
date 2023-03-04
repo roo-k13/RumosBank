@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane styleClass="border-pane" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.AccountController">
+<BorderPane styleClass="border-pane" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.CardsController">
    <left>
        <VBox styleClass="vbox" stylesheets="@../css/navbar.css" BorderPane.alignment="CENTER">
            <Button mnemonicParsing="false" onAction="#onAccountsButtonClick" styleClass="vbox_side_bar_button" text="Accounts" />
@@ -20,17 +20,14 @@
    </left>
    <center>
        <AnchorPane stylesheets="@../css/accounts.css" BorderPane.alignment="CENTER">
-            <TableView fx:id="movements_table_view" layoutX="38.0" layoutY="53.0">
+            <TableView fx:id="accounts_table_view" layoutX="38.0" layoutY="53.0">
                 <columns>
-                    <TableColumn fx:id="movement_type" text="Type" />
-                    <TableColumn fx:id="movement_amount" text="Amount" />
-                    <TableColumn fx:id="movement_date" text="Date" />
+                    <TableColumn fx:id="card_type" text="Type" />
+                    <TableColumn fx:id="card_date" text="Amount" />
                 </columns>
             </TableView>
            <HBox layoutX="150.0" layoutY="268.0" prefHeight="33.0" prefWidth="188.0">
-            <children>
-               <Button mnemonicParsing="false" onAction="#onCreateNewDebitCardButtonClick" text="Create Debit Card" />
-            </children>
+               <Button mnemonicParsing="false" onAction="#onCreateNewDebitCardButtonClick" text="Create Debit Card"/>
            </HBox>
            <ChoiceBox fx:id="bank_accounts_choice_box" layoutX="113.0" layoutY="14.0" />
        </AnchorPane>
