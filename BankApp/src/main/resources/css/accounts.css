@@ -7,3 +7,7 @@
     -fx-font-size: 14;
     -fx-font-weight: normal;
 }
+
+.transfer-vbox {
+    -fx-pref-width: 400;
+}
