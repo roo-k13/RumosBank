@@ -19,11 +19,11 @@ public class LoginController {
     private String password;
 
     @FXML
-    private Label feedback_message_label;
-    @FXML
     private TextField email_text_field;
     @FXML
     private PasswordField password_text_field;
+    @FXML
+    private Label feedback_message_label;
 
     @FXML
     private void initialize() { feedback_message_label.setVisible(false); }
@@ -41,9 +41,9 @@ public class LoginController {
             getDetails();
             Client client = Bank.instance.authenticate(email, password);
             App.setAuthenticatedClient(client);
-            App.changeScene(event, "/fxml/menu.fxml");
+            App.changeScene(event, "/fxml/index.fxml");
         } catch (NoResultException exception) { feedback_message_label.setText("The details you entered are not valid");
-        } catch (IOException exception) { throw new RuntimeException(exception);
+        } catch (IOException exception) { exception.printStackTrace();
         } catch (IllegalArgumentException exception) {feedback_message_label.setText(exception.getMessage()); }
     }
 
