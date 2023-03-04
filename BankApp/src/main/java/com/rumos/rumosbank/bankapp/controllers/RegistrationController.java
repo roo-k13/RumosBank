@@ -18,6 +18,14 @@ public class RegistrationController {
     @FXML
     private TextField email_text_field;
     @FXML
+    public TextField nif_text_field;
+    @FXML
+    public TextField phone_text_field;
+    @FXML
+    public TextField mobile_phone_text_field;
+    @FXML
+    public TextField profession_text_field;
+    @FXML
     private TextField insert_password_text_field;
     @FXML
     private TextField confirm_password_text_field;
@@ -32,6 +40,7 @@ public class RegistrationController {
                 first_name_text_field, last_name_text_field, email_text_field,
                 insert_password_text_field, confirm_password_text_field
         };
+        feedback_message_label.setVisible(false);
     }
 
     private boolean isAnyTextFieldEmpty() {
