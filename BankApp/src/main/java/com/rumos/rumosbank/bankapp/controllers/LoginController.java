@@ -3,6 +3,7 @@ package com.rumos.rumosbank.bankapp.controllers;
 import com.rumos.rumosbank.bankapp.App;
 import com.rumos.rumosbank.domain.models.Client;
 import com.rumos.rumosbank.domain.services.Bank;
+
 import jakarta.persistence.NoResultException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +24,9 @@ public class LoginController {
     private TextField email_text_field;
     @FXML
     private PasswordField password_text_field;
+
+    @FXML
+    private void initialize() { feedback_message_label.setVisible(false); }
 
     private void getDetails() {
             if (email_text_field.getText().isEmpty()) { throw new IllegalArgumentException("Please fill in the email field"); }
