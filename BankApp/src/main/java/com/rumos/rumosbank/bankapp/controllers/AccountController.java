@@ -27,7 +27,7 @@ public class AccountController extends NavigationBarController {
         initializeMovementsTable();
     }
 
-    /* ---------------------------------------------------------- Accounts Choice Box --------------------------------------------------------- */
+    /* --------------------------------------------------------- Accounts Choice Box ------------------------------------------------------- */
 
     @FXML
     private ChoiceBox<BankAccount> bank_accounts_choice_box;
@@ -51,16 +51,15 @@ public class AccountController extends NavigationBarController {
     private TableColumn<Movement, String> movement_date;
 
     @FXML
-    private void initializeMovementsTable() {
-        movement_type.setCellValueFactory(new PropertyValueFactory<>("type"));
-        movement_amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        movement_date.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
-    }
-
-    @FXML
     private void onSelectingBankAccount(ActionEvent actionEvent) {
         selectedAccount = bank_accounts_choice_box.getValue();
         updateMovements();
+    }
+
+    private void initializeMovementsTable() {
+        movement_type.setCellValueFactory(new PropertyValueFactory<>("type"));
+        movement_amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        movement_date.setCellValueFactory(new PropertyValueFactory<>("date"));
     }
 
     private void updateMovements() {
