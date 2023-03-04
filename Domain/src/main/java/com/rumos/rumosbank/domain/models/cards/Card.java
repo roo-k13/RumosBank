@@ -17,7 +17,17 @@ public abstract class Card {
     @JoinColumn(name = "bankaccount_id", referencedColumnName = "id")
     private BankAccount bankAccount;
 
+    /* ------------------------------------------------------------ Number ------------------------------------------------------------ */
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
     /* ------------------------------------------------------------ Pin ------------------------------------------------------------ */
+
+    public void setHasPinBeenChanged(boolean hasPinBeenChanged) {
+        this.hasPinBeenChanged = hasPinBeenChanged;
+    }
 
     public boolean hasPinBeenChanged() {
         return hasPinBeenChanged;
@@ -38,5 +48,9 @@ public abstract class Card {
 
     public BankAccount getBankAccount() {
         return bankAccount;
+    }
+
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
     }
 }
