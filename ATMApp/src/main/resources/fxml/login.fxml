@@ -15,7 +15,7 @@
         xmlns="http://javafx.com/javafx/19"
         xmlns:fx="http://javafx.com/fxml/1"
         fx:controller="com.rumos.rumosbank.atmapp.controllers.LoginController">
-   <VBox prefWidth="200.0" styleClass="vbox">
+   <VBox styleClass="vbox">
       <Label text="Rumos Bank">
          <stylesheets>
             <URL value="@../css/styles.css" />
@@ -27,8 +27,6 @@
          </styleClass></Label>
       <TextField
               fx:id="card_number_text_field"
-              prefHeight="35.0"
-              prefWidth="225.0"
               promptText="Card Number"
               stylesheets="@../css/styles.css" />
       <PasswordField
