@@ -9,7 +9,12 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane styleClass="root_stack_pane" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.LoginController">
+<StackPane
+        styleClass="root_stack_pane"
+        stylesheets="@../css/login.css"
+        xmlns="http://javafx.com/javafx/19"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="com.rumos.rumosbank.bankapp.controllers.LoginController">
    <VBox styleClass="vbox">
       <Label text="Rumos Bank">
          <stylesheets>
@@ -28,11 +33,16 @@
               fx:id="password_text_field"
               promptText="Password"
               stylesheets="@../css/main.css" />
-      <Button mnemonicParsing="false"
+      <Button
+              mnemonicParsing="false"
               onAction="#onLoginButtonClick"
               text="Login" />
-      <Button mnemonicParsing="false"
+      <Button
+              mnemonicParsing="false"
               onAction="#onRegisterButtonClick"
               text="Register" />
+      <Label
+              fx:id="feedback_message_label"
+              text="This is the feedback message label" />
    </VBox>
 </StackPane>
