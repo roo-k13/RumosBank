@@ -49,7 +49,7 @@ public class LoginController {
 
     @FXML
     public void onRegisterButtonClick(ActionEvent event) {
-        try { App.changeScene(event, "/fxml/register.fxml"); }
+        try { App.changeScene(event, "/fxml/registration.fxml"); }
         catch (IOException exception) { throw new RuntimeException(exception); }
     }
 }
