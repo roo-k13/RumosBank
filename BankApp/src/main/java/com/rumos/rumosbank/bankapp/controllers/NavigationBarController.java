@@ -7,25 +7,28 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class NavigationBarController {
+public abstract class NavigationBarController {
 
-    protected static void accounts(ActionEvent actionEvent) {
+    @FXML
+    protected void onAccountsButtonClick(ActionEvent actionEvent) {
         try { App.changeScene(actionEvent, "/fxml/accounts.fxml"); }
         catch (IOException exception) { throw new RuntimeException(exception); }
     }
 
-    protected static void profile(ActionEvent actionEvent) {
+    @FXML
+    protected void onEditProfileButtonClick(ActionEvent actionEvent) {
         try { App.changeScene(actionEvent, "/fxml/update_profile.fxml"); }
         catch (IOException exception) { throw new RuntimeException(exception); }
     }
 
-    protected static void password(ActionEvent actionEvent) {
+    @FXML
+    protected void onChangePasswordButtonClick(ActionEvent actionEvent) {
         try { App.changeScene(actionEvent, "/fxml/login.fxml"); }
         catch (IOException exception) { throw new RuntimeException(exception); }
     }
 
     @FXML
-    protected static void logout(ActionEvent actionEvent) {
+    protected void onLogoutButtonClick(ActionEvent actionEvent) {
         try {
             App.setAuthenticatedClient(null);
             App.changeScene(actionEvent, "/fxml/login.fxml");
