@@ -1,18 +1,8 @@
 package com.rumos.rumosbank.domain.repositories;
 
 import com.rumos.rumosbank.domain.models.cards.CreditCard;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 
-public class CreditCardRepository {
-    private final EntityManager entityManager;
-    private final EntityManagerFactory entityManagerFactory;
-
-    public CreditCardRepository() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("default");
-        entityManager = entityManagerFactory.createEntityManager();
-    }
+public class CreditCardRepository extends Repository {
 
     public CreditCard get(String number) {
         String query = "SELECT c FROM CreditCard c WHERE c.number = :number";
