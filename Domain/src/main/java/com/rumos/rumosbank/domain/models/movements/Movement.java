@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 @MappedSuperclass
 public abstract class Movement {
@@ -32,22 +34,23 @@ public abstract class Movement {
         this.amount = amount;
     }
 
+    public void setAmount(int amount) {
+        if (amount <= 0)
+            throw new IllegalArgumentException("The amount of the movement can't be lower or equal to zero");
+        this.amount = new BigDecimal(amount);
+    }
+
 
     public BigDecimal getAmount() {
         return amount;
     }
 
-    /* ------------------------------------------------------------ Timestamp ------------------------------------------------------------ */
+    /* ------------------------------------------------------------ Date ------------------------------------------------------------ */
 
-    @SuppressWarnings("unused")
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
+    public String getLongDate() { return timestamp.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)); }
 
-    /* ------------------------------------------------------------ To String ------------------------------------------------------------ */
+    /* ------------------------------------------------------------ ToString ------------------------------------------------------------ */
 
     @Override
-    public String toString() {
-        return getClass().getSimpleName() + ": " + amount + " - " + timestamp;
-    }
+    public String toString() { return getClass().getSimpleName() + ": " + amount + "€ - " + getLongDate(); }
 }
