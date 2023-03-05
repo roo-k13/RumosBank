@@ -25,4 +25,10 @@ public class CardsController extends NavigationBarController{
         BankAccount bankAccount = new BankAccount();
         Bank.instance.createNewDebitCard(bankAccount);
     }
+
+    @FXML
+    private void onCreateNewCreditCardButtonClick() {
+        BankAccount bankAccount = new BankAccount();
+        Bank.instance.createNewCreditCard(bankAccount);
+    }
 }
