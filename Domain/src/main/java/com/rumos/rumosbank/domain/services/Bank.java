@@ -54,4 +54,7 @@ public class Bank {
         debitCard.setBankAccount(bankAccount);
         new DebitCardRepository().insert(debitCard);
     }
+
+    public void createNewCreditCard(BankAccount bankAccount) {
+    }
 }
