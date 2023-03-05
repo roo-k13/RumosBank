@@ -2,6 +2,7 @@ package com.rumos.rumosbank.domain.services;
 
 import com.rumos.rumosbank.domain.models.BankAccount;
 import com.rumos.rumosbank.domain.models.Client;
+import com.rumos.rumosbank.domain.models.cards.CreditCard;
 import com.rumos.rumosbank.domain.models.cards.DebitCard;
 import com.rumos.rumosbank.domain.models.movements.Transfer;
 import com.rumos.rumosbank.domain.repositories.*;
@@ -56,5 +57,10 @@ public class Bank {
     }
 
     public void createNewCreditCard(BankAccount bankAccount) {
+        CreditCard creditCard = new CreditCard();
+        creditCard.setNumber(new Generators().generateRandomNumber(9));
+        creditCard.setHasPinBeenChanged(false);
+        creditCard.setBankAccount(bankAccount);
+        new CreditCardRepository().insert(creditCard);
     }
 }
