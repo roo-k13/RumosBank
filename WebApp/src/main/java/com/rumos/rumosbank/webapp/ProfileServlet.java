@@ -15,6 +15,12 @@ import java.io.IOException;
 
 @WebServlet(name = "profile", value = "/profile")
 public class ProfileServlet extends HttpServlet {
+    private final Client client;
+
+    private ProfileServlet(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        client = (Client) session.getAttribute("client");
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,10 +30,5 @@ public class ProfileServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Client client = (Client) session.getAttribute("client");
-        Bank.instance.updateClient(client);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("profile.jsp");
-        dispatcher.forward(request, response);
     }
 }
