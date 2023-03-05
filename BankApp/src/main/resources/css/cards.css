@@ -1,0 +1,8 @@
+.label {
+    -fx-alignment: center;
+    -fx-font-size: 12;
+}
+
+.vbox {
+    -fx-alignment: center;
+}
