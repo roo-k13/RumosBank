@@ -1,13 +1,24 @@
 #bank_accounts_choice_box {
-    -fx-pref-width: 250;
     -fx-pref-height: 12;
-}
-
-#bank_accounts_choice_box .label {
-    -fx-font-size: 14;
-    -fx-font-weight: normal;
+    -fx-pref-width: 300;
 }
 
 .transfer-vbox {
     -fx-pref-width: 400;
+    -fx-alignment: center;
+}
+
+.label {
+    -fx-font-size: 12;
+    -fx-alignment: center;
+}
+
+.text-field {
+    -fx-font-size: 12;
+    -fx-pref-height: 30;
+}
+
+.button {
+    -fx-pref-width: 100;
+    -fx-pref-height: 30;
 }
