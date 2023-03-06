@@ -6,6 +6,7 @@ import com.rumos.rumosbank.domain.services.Bank;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -29,11 +30,14 @@ public class UpdateInfoController extends NavigationBarController {
     private TextField profession_text_field;
     @FXML
     private TextField email_text_field;
+    @FXML
+    private Label feedback_message_label;
 
     @FXML
     private void initialize() {
         client = App.getAuthenticatedClient();
         initializeFields();
+        feedback_message_label.setVisible(false);
 
     }
 
@@ -59,6 +63,8 @@ public class UpdateInfoController extends NavigationBarController {
         client.setProfession(profession_text_field.getText());
         client.setEmailAddress(email_text_field.getText());
         Bank.instance.updateClient(client);
+        feedback_message_label.setVisible(true);
+        feedback_message_label.setText("Your profile has been successfully updated");
         try { App.changeScene(actionEvent, "/fxml/login.fxml"); }
         catch (IOException exception) { throw new RuntimeException(exception); }
     }
