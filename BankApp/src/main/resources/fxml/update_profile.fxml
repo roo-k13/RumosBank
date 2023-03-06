@@ -25,8 +25,8 @@
            <TextField fx:id="mobile_phone_text_field" promptText="Mobile Phone" />
            <TextField fx:id="profession_text_field" promptText="Profession" />
            <TextField fx:id="email_text_field" promptText="Email" />
-           <Button mnemonicParsing="false" styleClass="save_changes_button" text="Save Changes" />
-           <Label fx:id="feedback_message_label" text="This is the feedback message label" />
+           <Button mnemonicParsing="false" onAction="#onSaveChangesButtonClick" styleClass="save_changes_button" text="Save Changes" />
+           <Label fx:id="feedback_message_label" text="This is the feedback message label" visible="false" />
        </VBox>
    </center>
 </BorderPane>
