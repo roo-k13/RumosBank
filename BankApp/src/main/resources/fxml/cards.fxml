@@ -3,11 +3,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane styleClass="border-pane" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.CardsController">
@@ -23,27 +21,15 @@
        <AnchorPane stylesheets="@../css/cards.css" BorderPane.alignment="CENTER">
          <VBox layoutX="38.0" layoutY="27.0" styleClass="vbox">
             <children>
-               <Label text="Cards" />
-                  <TableView fx:id="accounts_table_view" styleClass="vbox">
-                      <columns>
-                          <TableColumn fx:id="card_type" text="Type" />
-                          <TableColumn fx:id="card_date" text="Account" />
-                      </columns>
-                  </TableView>
+                 <ChoiceBox fx:id="bank_accounts_choice_box" prefHeight="20.0" prefWidth="263.0" />
+               <Label prefHeight="21.0" text="Debit Cards" />
+               <ListView prefHeight="50.0" prefWidth="400.0" />
+                  <Button mnemonicParsing="false" onAction="#onCreateNewDebitCardButtonClick" prefHeight="30.0" prefWidth="400.0" text="Add new" />
+               <Label prefHeight="21.0" text="Credit Cards" />
+               <ListView prefHeight="50.0" prefWidth="400.0" />
+               <Button mnemonicParsing="false" onAction="#onCreateNewDebitCardButtonClick" prefHeight="30.0" prefWidth="400.0" text="Add new" />
             </children>
          </VBox>
-           <HBox layoutX="150.0" layoutY="268.0" prefHeight="33.0" prefWidth="188.0" />
-         <HBox layoutX="38.0" layoutY="286.0" prefHeight="40.0" prefWidth="407.0">
-            <children>
-                 <ChoiceBox fx:id="bank_accounts_choice_box" prefHeight="61.0" prefWidth="263.0" />
-               <VBox prefHeight="60.0" prefWidth="144.0">
-                  <children>
-                        <Button mnemonicParsing="false" onAction="#onCreateNewDebitCardButtonClick" prefHeight="20.0" prefWidth="144.0" text="Create Debit Card" />
-                     <Button mnemonicParsing="false" onAction="#onCreateNewCreditCardButtonClick" prefHeight="20.0" prefWidth="144.0" text="Create Credit Card" />
-                  </children>
-               </VBox>
-            </children>
-         </HBox>
        </AnchorPane>
    </center>
 </BorderPane>
