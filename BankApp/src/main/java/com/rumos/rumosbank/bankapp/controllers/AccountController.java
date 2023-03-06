@@ -59,7 +59,7 @@ public class AccountController extends NavigationBarController {
     private void initializeMovementsTable() {
         movement_type.setCellValueFactory(new PropertyValueFactory<>("type"));
         movement_amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        movement_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        movement_date.setCellValueFactory(new PropertyValueFactory<>("longDate"));
     }
 
     private void updateMovements() {
