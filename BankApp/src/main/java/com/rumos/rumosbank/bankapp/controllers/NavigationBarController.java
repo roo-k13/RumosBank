@@ -16,6 +16,12 @@ public abstract class NavigationBarController {
     }
 
     @FXML
+    protected void onCardsButtonClick(ActionEvent actionEvent) {
+        try { App.changeScene(actionEvent, "/fxml/cards.fxml"); }
+        catch (IOException exception) { throw new RuntimeException(exception); }
+    }
+
+    @FXML
     protected void onEditProfileButtonClick(ActionEvent actionEvent) {
         try { App.changeScene(actionEvent, "/fxml/update_profile.fxml"); }
         catch (IOException exception) { throw new RuntimeException(exception); }
