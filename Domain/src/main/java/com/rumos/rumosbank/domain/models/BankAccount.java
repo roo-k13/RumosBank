@@ -1,5 +1,7 @@
 package com.rumos.rumosbank.domain.models;
 
+import com.rumos.rumosbank.domain.models.cards.CreditCard;
+import com.rumos.rumosbank.domain.models.cards.DebitCard;
 import com.rumos.rumosbank.domain.models.movements.Deposit;
 import com.rumos.rumosbank.domain.models.movements.Movement;
 import com.rumos.rumosbank.domain.models.movements.Transfer;
@@ -31,6 +33,12 @@ public class BankAccount {
     @OneToMany
     @JoinColumn(name = "sender_id")
     private List<Transfer> sentTransfers;
+    @OneToMany
+    @JoinColumn(name = "account_id")
+    private List<DebitCard> debitCards;
+    @OneToMany
+    @JoinColumn(name = "account_id")
+    private List<CreditCard> creditCards;
 
     /* ------------------------------------------------------------ Id ------------------------------------------------------------ */
 
@@ -86,6 +94,12 @@ public class BankAccount {
         this.receivedTransfers = receivedTransfers;
         this.sentTransfers = sentTransfers;
     }
+
+    /* ------------------------------------------------------------ Cards ------------------------------------------------------------ */
+
+    public List<DebitCard> getDebitCards() { return debitCards; }
+
+    public List<CreditCard> getCreditCards() { return creditCards; }
 
     /* ------------------------------------------------------------ To String ------------------------------------------------------------ */
 
