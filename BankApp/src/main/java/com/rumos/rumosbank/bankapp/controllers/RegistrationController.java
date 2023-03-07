@@ -10,6 +10,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class RegistrationController extends NavigationBarController {
+    private TextField[] textFields;
+    private PasswordField[] passwordFields;
 
     @FXML
     private TextField first_name_text_field;
@@ -34,33 +36,42 @@ public class RegistrationController extends NavigationBarController {
     @FXML
     private Label feedback_message_label;
 
-    private TextField[] textFields;
-    private PasswordField[] passwordFields;
-
     @FXML
     private void initialize() {
-        textFields = new TextField[] {
-                first_name_text_field, last_name_text_field, email_text_field, nif_text_field, phone_text_field,
-                mobile_phone_text_field, profession_text_field,
-        };
-        passwordFields = new PasswordField[] { insert_password_password_field, confirm_password_password_field};
+        initializeTextFields();
+        initializePasswordFields();
         feedback_message_label.setVisible(false);
+    }
+
+    private void initializeTextFields() {
+        textFields = new TextField[] { first_name_text_field, last_name_text_field, email_text_field,
+                nif_text_field, phone_text_field, mobile_phone_text_field, profession_text_field };
+    }
+
+    private void initializePasswordFields() {
+        passwordFields = new PasswordField[] { insert_password_password_field, confirm_password_password_field };
     }
 
     private boolean isAnyTextFieldEmpty() {
         for (TextField textField : textFields) {
-            if (textField.getText().isEmpty()) { return true; }
-        }
+            if (textField.getText().isEmpty()) return true; }
+        return false;
+    }
+
+    private boolean isAnyPasswordFieldEmpty() {
+        for (PasswordField passwordField : passwordFields) {
+            if (passwordField.getText().isEmpty()) return true; }
         return false;
     }
 
     @FXML
     protected void onRegisterButtonClick() {
-        if (isAnyTextFieldEmpty()) {
+        if (isAnyTextFieldEmpty() || isAnyPasswordFieldEmpty()) {
             feedback_message_label.setText("Please fill all the fields before confirming your registration");
+            return;
         }
 
-        else {
+        try {
             Client client = new Client();
             client.setFirstName(first_name_text_field.getText());
             client.setLastName(last_name_text_field.getText());
@@ -72,6 +83,9 @@ public class RegistrationController extends NavigationBarController {
             client.setProfession(profession_text_field.getText());
             client.setPassword(insert_password_password_field.getText());
             new Bank().registerNewClient(client);
+        } catch (Exception exception) {
+            feedback_message_label.setVisible(true);
+            feedback_message_label.setText(exception.getMessage());
         }
     }
 }
