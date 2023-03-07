@@ -13,4 +13,5 @@
     -fx-text-fill: black;
     -fx-font-size: 12;
     -fx-max-width: unlimited;
+    -fx-pref-height: 20;
 }
