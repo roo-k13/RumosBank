@@ -1,0 +1,23 @@
+.text-field {
+    -fx-font-size: 12;
+}
+
+.date-picker {
+    -fx-pref-width: 400;
+}
+
+.button {
+    -fx-pref-width: 400;
+}
+
+.label {
+    -fx-font-size: 12;
+    -fx-alignment: center;
+    -fx-pref-width: 400;
+    -fx-font-weight: normal;
+}
+
+.vbox {
+    -fx-alignment: center;
+    -fx-max-width: 400;
+}
