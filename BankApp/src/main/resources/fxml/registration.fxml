@@ -74,13 +74,19 @@
             <TextField
                    fx:id="email_text_field"
                    promptText="Email" />
-            <PasswordField promptText="Enter password" />
-            <PasswordField promptText="Confirm password" />
+            <PasswordField
+                    fx:id="insert_password_password_field"
+                    promptText="Enter password" />
+            <PasswordField
+                    fx:id="confirm_password_password_field"
+                    promptText="Confirm password" />
             <Button
                     mnemonicParsing="false"
                     onAction="#onRegisterButtonClick"
                     text="Register" />
-         <Label text="This is the feedback message label" />
+         <Label
+                 fx:id="feedback_message_label"
+                 text="This is the feedback message label" />
          <stylesheets>
             <URL value="@../css/main.css" />
             <URL value="@../css/registration.css" />
