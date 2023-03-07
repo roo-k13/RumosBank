@@ -16,9 +16,9 @@
        <VBox styleClass="vbox" stylesheets="@../css/navbar.css" BorderPane.alignment="CENTER">
            <Button mnemonicParsing="false" onAction="#onAccountsButtonClick" styleClass="vbox_side_bar_button" text="Accounts" />
            <Button mnemonicParsing="false" onAction="#onCardsButtonClick" styleClass="vbox_side_bar_button" text="Cards" />
+           <Button mnemonicParsing="false" onAction="#onEditProfileButtonClick" styleClass="vbox_side_bar_button" text="Profile" />
            <Button mnemonicParsing="false" onAction="#onChangePasswordButtonClick" styleClass="vbox_side_bar_button" text="Password" />
            <Button mnemonicParsing="false" onAction="#onLogoutButtonClick" styleClass="vbox_side_bar_button" text="Logout" />
-         <Button mnemonicParsing="false" onAction="#onAccountsButtonClick" styleClass="vbox_side_bar_button" text="Accounts" />
        </VBox>
    </left>
    <center>
