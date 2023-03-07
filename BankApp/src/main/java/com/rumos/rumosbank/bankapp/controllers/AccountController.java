@@ -9,10 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.math.BigDecimal;
@@ -25,6 +22,7 @@ public class AccountController extends NavigationBarController {
     private void initialize() {
         initializeAccountsChoiceBox();
         initializeMovementsTable();
+        feedback_message_label.setVisible(false);
     }
 
     /* --------------------------------------------------------- Accounts Choice Box ------------------------------------------------------- */
@@ -70,16 +68,20 @@ public class AccountController extends NavigationBarController {
     /* ------------------------------------------------------------ Transfers ------------------------------------------------------------ */
 
     @FXML
+    private TextField transfer_account_number_text_field;
+    @FXML
     private TextField transfer_amount_text_field;
     @FXML
-    private TextField transfer_receiver_text_field;
+    private Label feedback_message_label;
 
     @FXML
     private void onMakeTransferButtonClick() {
         BigDecimal amount = new BigDecimal(transfer_amount_text_field.getText());
-        String receiverAccountNumber = transfer_receiver_text_field.getText();
-        Bank.instance.makeTransfer(selectedAccount, receiverAccountNumber, amount);
-        Bank.instance.updateMovements(selectedAccount);
-        updateMovements();
+        String receiverAccountNumber = transfer_account_number_text_field.getText();
+        try {
+            Bank.instance.makeTransfer(selectedAccount, receiverAccountNumber, amount);
+            Bank.instance.updateMovements(selectedAccount);
+            updateMovements();
+        } catch (Exception exception) { feedback_message_label.setText(exception.getMessage()); }
     }
 }
