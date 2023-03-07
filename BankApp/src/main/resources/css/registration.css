@@ -21,3 +21,7 @@
     -fx-alignment: center;
     -fx-max-width: 400;
 }
+
+#feedback_message_label {
+    -fx-pref-width: 400;
+}
