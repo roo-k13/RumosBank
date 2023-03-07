@@ -25,14 +25,35 @@ public class ChangePinController {
 
     @FXML
     private void onSavePinButtonClick(ActionEvent event) {
-        if (Objects.equals(insert_pin_text_field.getText(), confirm_pin_text_field.getText())) {
-            try {
-                App.getAuthenticatedCard().setPin(insert_pin_text_field.getText());
-                if (App.getAuthenticatedCard() instanceof DebitCard) { new DebitCardRepository().update((DebitCard) App.getAuthenticatedCard()); }
-                else if (App.getAuthenticatedCard() instanceof CreditCard) { new CreditCardRepository().update((CreditCard) App.getAuthenticatedCard()); }
-                try { App.changeScene(event, "/fxml/menu.fxml"); }
-                catch (IOException exception) { throw new RuntimeException(exception); }
-            } catch (IllegalArgumentException exception) { feedback_text_field.setText(exception.getMessage());}
+        if (areFieldsEmpty()) {
+            feedback_text_field.setText("Please fill both fields!");
+            return;
+        } else if (!doFieldsMatch()) {
+            feedback_text_field.setText("The passwords do not match");
+            return;
         }
+
+        try {
+            App.getAuthenticatedCard().setPin(insert_pin_text_field.getText());
+            if (App.getAuthenticatedCard() instanceof DebitCard) {
+                new DebitCardRepository().update((DebitCard) App.getAuthenticatedCard());
+            } else if (App.getAuthenticatedCard() instanceof CreditCard) {
+                new CreditCardRepository().update((CreditCard) App.getAuthenticatedCard());
+            }
+            try {
+                App.changeScene(event, "/fxml/menu.fxml");
+            } catch (IOException exception) {
+                throw new RuntimeException(exception);
+            }
+        } catch (IllegalArgumentException exception) { feedback_text_field.setText(exception.getMessage());
+    }
+}
+
+    private boolean areFieldsEmpty() {
+        return insert_pin_text_field.getText().isEmpty() || confirm_pin_text_field.getText().isEmpty();
+    }
+
+    private boolean doFieldsMatch() {
+        return Objects.equals(insert_pin_text_field.getText(), confirm_pin_text_field.getText());
     }
 }
