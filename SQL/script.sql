@@ -3,6 +3,7 @@ create table bankaccounts
     id        bigint auto_increment
         primary key,
     number    char(9) charset utf8mb3 not null,
+    name      char(16)                not null,
     client_id bigint                  not null
 );
 
@@ -13,8 +14,12 @@ create table clients
     first_name    varchar(32)                 not null,
     last_name     varchar(32) charset utf8mb3 not null,
     birthdate     date                        not null,
+    nif           char(9)                     not null,
     email_address varchar(64)                 not null,
     password      varchar(32) charset utf8mb3 not null,
+    mobile_phone  char(9)                     not null,
+    phone         char(9)                     null,
+    profession    varchar(32) charset utf8mb3 null,
     constraint email_address
         unique (email_address)
 );
