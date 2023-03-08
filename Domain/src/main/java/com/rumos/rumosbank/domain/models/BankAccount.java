@@ -10,8 +10,10 @@ import com.rumos.rumosbank.domain.models.movements.Withdraw;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Collection;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Entity
 @Table(name = "bankaccounts")
@@ -21,10 +23,10 @@ public class BankAccount {
     private Long id;
     private String number;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     @JoinColumn(name = "account_id")
     private List<Deposit> deposits;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     @JoinColumn(name = "account_id")
     private List<Withdraw> withdraws;
     @OneToMany
@@ -39,34 +41,27 @@ public class BankAccount {
     @OneToMany
     @JoinColumn(name = "account_id")
     private List<CreditCard> creditCards;
-
-    /* ------------------------------------------------------------ Id ------------------------------------------------------------ */
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     public long getId() {
         return id;
     }
 
-    /* ------------------------------------------------------------ Number ------------------------------------------------------------ */
-
-    @SuppressWarnings("unused")
     public String getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
-        if (!number.matches("[0-9]+")) throw new IllegalArgumentException("The account number must only contain digits");
-        if (number.length() != 9) throw new IllegalArgumentException("The account number must be exactly 9 digits long");
-        this.number = number;
-    }
-
-    /* ------------------------------------------------------------ Name ------------------------------------------------------------ */
-
-    @SuppressWarnings("unused")
     public String getName() {
         return name;
     }
 
-    /* ------------------------------------------------------------ Balance ------------------------------------------------------------ */
+    public List<Movement> getMovements() {
+        return Stream.of(deposits, withdraws, receivedTransfers, sentTransfers)
+                .flatMap(Collection::stream).collect(Collectors.toList());
+
+    }
 
     public BigDecimal getBalance() {
         BigDecimal balance = BigDecimal.valueOf(0);
@@ -77,31 +72,25 @@ public class BankAccount {
         return balance;
     }
 
-    /* ------------------------------------------------------------ Movements ------------------------------------------------------------ */
+    public List<DebitCard> getDebitCards() {
+        return debitCards;
+    }
 
-    public ArrayList<Movement> getMovements() {
-        ArrayList<Movement> movements = new ArrayList<>();
-        movements.addAll(deposits);
-        movements.addAll(withdraws);
-        movements.addAll(receivedTransfers);
-        movements.addAll(sentTransfers);
-        return movements;
+    public List<CreditCard> getCreditCards() {
+        return creditCards;
+    }
+
+    public void setNumber(String number) {
+        if (!number.matches("[0-9]+")) throw new IllegalArgumentException("The account number must only contain digits");
+        if (number.length() != 9) throw new IllegalArgumentException("The account number must be exactly 9 digits long");
+        this.number = number;
     }
 
     public void setMovements(List<Withdraw> withdraws, List<Deposit> deposits, List<Transfer> receivedTransfers, List<Transfer> sentTransfers) {
-        this.withdraws = withdraws;
-        this.deposits = deposits;
+        this.withdraws = withdraws;this.deposits = deposits;
         this.receivedTransfers = receivedTransfers;
         this.sentTransfers = sentTransfers;
     }
-
-    /* ------------------------------------------------------------ Cards ------------------------------------------------------------ */
-
-    public List<DebitCard> getDebitCards() { return debitCards; }
-
-    public List<CreditCard> getCreditCards() { return creditCards; }
-
-    /* ------------------------------------------------------------ To String ------------------------------------------------------------ */
 
     @Override
     public String toString() {
