@@ -86,6 +86,10 @@ public class BankAccount {
         this.number = number;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setMovements(List<Withdraw> withdraws, List<Deposit> deposits, List<Transfer> receivedTransfers, List<Transfer> sentTransfers) {
         this.withdraws = withdraws;this.deposits = deposits;
         this.receivedTransfers = receivedTransfers;
