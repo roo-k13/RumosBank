@@ -20,11 +20,12 @@ public class Bank {
     private void registerBankAccount(Client client) {
         BankAccount bankAccount = new BankAccount();
         bankAccount.setNumber(new Generators().generateRandomNumber(9));
+        bankAccount.setName("Conta Corrente");
         bankAccount.setClient(client);
-        registerCard(bankAccount);
+        registerDebitCard(bankAccount);
     }
 
-    private void registerCard(BankAccount bankAccount) {
+    public void registerDebitCard(BankAccount bankAccount) {
         DebitCard debitCard = new DebitCard();
         debitCard.setNumber(new Generators().generateRandomNumber(9));
         debitCard.setPin(new Generators().generateRandomNumber(4));
@@ -70,6 +71,4 @@ public class Bank {
         transfer.setReceiver(new BankAccountRepository().get(receiverBankAccountNumber));
         new TransferRepository().insert(transfer);
     }
-
-
 }
