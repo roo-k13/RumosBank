@@ -92,6 +92,10 @@ public class BankAccount {
         this.sentTransfers = sentTransfers;
     }
 
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     @Override
     public String toString() {
         return name + " Nº: " + number;
