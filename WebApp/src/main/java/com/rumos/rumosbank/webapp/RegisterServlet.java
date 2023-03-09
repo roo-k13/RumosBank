@@ -20,6 +20,6 @@ public class RegisterServlet extends HttpServlet {
         client.setBirthdate(LocalDate.parse(request.getParameter("birthdate")));
         client.setEmailAddress(request.getParameter("email"));
         client.setPassword(request.getParameter("password"));
-        Bank.instance.registerNewClient(client);
+        Bank.instance.registerClient(client);
     }
 }
