@@ -82,7 +82,7 @@ public class RegistrationController extends NavigationBarController {
             client.setMobilePhone(mobile_phone_text_field.getText());
             client.setProfession(profession_text_field.getText());
             client.setPassword(insert_password_password_field.getText());
-            new Bank().registerNewClient(client);
+            new Bank().registerClient(client);
         } catch (Exception exception) {
             feedback_message_label.setVisible(true);
             feedback_message_label.setText(exception.getMessage());
