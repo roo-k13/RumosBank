@@ -12,23 +12,48 @@ import java.math.BigDecimal;
 
 public class Bank {
     public static final Bank instance;
-    static { instance = new Bank(); }
 
+    static {
+        instance = new Bank();
+    }
 
-    /* --------------------------------------------------------- Authentication -------------------------------------------------------- */
+    private void registerBankAccount(Client client) {
+        BankAccount bankAccount = new BankAccount();
+        bankAccount.setNumber(new Generators().generateRandomNumber(9));
+        bankAccount.setClient(client);
+        registerCard(bankAccount);
+    }
+
+    private void registerCard(BankAccount bankAccount) {
+        DebitCard debitCard = new DebitCard();
+        debitCard.setNumber(new Generators().generateRandomNumber(9));
+        debitCard.setPin(new Generators().generateRandomNumber(4));
+        debitCard.setHasPinBeenChanged(false);
+        debitCard.setBankAccount(bankAccount);
+        new DebitCardRepository().insert(debitCard);
+    }
+
+    public void registerCreditCard(BankAccount bankAccount) {
+        CreditCard creditCard = new CreditCard();
+        creditCard.setNumber(new Generators().generateRandomNumber(9));
+        creditCard.setHasPinBeenChanged(false);
+        creditCard.setBankAccount(bankAccount);
+        new CreditCardRepository().insert(creditCard);
+    }
 
     public Client authenticate(String email, String password) {
         Client client = new ClientRepository().get(email);
         return client != null && client.isPasswordCorrect(password) ? client : null;
     }
 
-    /* ------------------------------------------------------------ Clients ------------------------------------------------------------ */
+    public void registerClient(Client client) {
+        new ClientRepository().insert(client);
+        registerBankAccount(client);
+    }
 
-    public void registerNewClient(Client client) { new ClientRepository().insert(client); }
-
-    public void updateClient(Client client) { new ClientRepository().update(client); }
-
-    /* ----------------------------------------------------------- Movements ----------------------------------------------------------- */
+    public void updateClient(Client client) {
+        new ClientRepository().update(client);
+    }
 
     public void updateMovements(BankAccount bankAccount) {
         long bankAccountId = bankAccount.getId();
@@ -46,21 +71,5 @@ public class Bank {
         new TransferRepository().insert(transfer);
     }
 
-    /* ------------------------------------------------------------ Cards ------------------------------------------------------------- */
 
-    public void createNewDebitCard(BankAccount bankAccount) {
-        DebitCard debitCard = new DebitCard();
-        debitCard.setNumber(new Generators().generateRandomNumber(9));
-        debitCard.setHasPinBeenChanged(false);
-        debitCard.setBankAccount(bankAccount);
-        new DebitCardRepository().insert(debitCard);
-    }
-
-    public void createNewCreditCard(BankAccount bankAccount) {
-        CreditCard creditCard = new CreditCard();
-        creditCard.setNumber(new Generators().generateRandomNumber(9));
-        creditCard.setHasPinBeenChanged(false);
-        creditCard.setBankAccount(bankAccount);
-        new CreditCardRepository().insert(creditCard);
-    }
 }
