@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Entity
-@Table(name = "bankaccounts")
+@Table(name = "accounts")
 public class BankAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
