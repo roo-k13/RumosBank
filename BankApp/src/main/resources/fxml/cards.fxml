@@ -8,34 +8,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane styleClass="border-pane" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.CardsController">
+<BorderPane styleClass="border-pane" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.CardsController">
    <left>
        <VBox styleClass="vbox" stylesheets="@../css/navbar.css" BorderPane.alignment="CENTER">
-           <Button
-                   mnemonicParsing="false"
-                   onAction="#onAccountsButtonClick"
-                   styleClass="vbox_side_bar_button"
-                   text="Accounts" />
-           <Button
-                   mnemonicParsing="false"
-                   onAction="#onCardsButtonClick"
-                   styleClass="vbox_side_bar_button"
-                   text="Cards" />
-           <Button
-                   mnemonicParsing="false"
-                   onAction="#onEditProfileButtonClick"
-                   styleClass="vbox_side_bar_button"
-                   text="Profile" />
-           <Button
-                   mnemonicParsing="false"
-                   onAction="#onChangePasswordButtonClick"
-                   styleClass="vbox_side_bar_button"
-                   text="Password" />
-           <Button
-                   mnemonicParsing="false"
-                   onAction="#onLogoutButtonClick"
-                   styleClass="vbox_side_bar_button"
-                   text="Logout" />
+           <Button mnemonicParsing="false" onAction="#onAccountsButtonClick" styleClass="vbox_side_bar_button" text="Accounts" />
+           <Button mnemonicParsing="false" onAction="#onCardsButtonClick" styleClass="vbox_side_bar_button" text="Cards" />
+           <Button mnemonicParsing="false" onAction="#onEditProfileButtonClick" styleClass="vbox_side_bar_button" text="Profile" />
+           <Button mnemonicParsing="false" onAction="#onChangePasswordButtonClick" styleClass="vbox_side_bar_button" text="Password" />
+           <Button mnemonicParsing="false" onAction="#onLogoutButtonClick" styleClass="vbox_side_bar_button" text="Logout" />
        </VBox>
    </left>
    <center>
@@ -47,7 +27,7 @@
                <Button mnemonicParsing="false" onAction="#onCreateNewDebitCardButtonClick" prefHeight="30.0" prefWidth="400.0" text="Add new" />
                <Label prefHeight="21.0" text="Credit Cards" />
                <ListView fx:id="credit_cards_list_view" prefHeight="50.0" prefWidth="400.0" />
-               <Button mnemonicParsing="false" onAction="#onCreateNewDebitCardButtonClick" prefHeight="30.0" prefWidth="400.0" text="Add new" />
+               <Button mnemonicParsing="false" onAction="#onCreateNewCreditCardButtonClick" prefHeight="30.0" prefWidth="400.0" text="Add new" />
            </VBox>
        </AnchorPane>
    </center>
