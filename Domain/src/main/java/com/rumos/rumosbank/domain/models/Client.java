@@ -78,13 +78,13 @@ public class Client {
     public void setFirstName(String name) throws IllegalArgumentException {
         if (isNameInvalid(name))
             throw new IllegalArgumentException("The following first name is not valid: " + name);
-        this.firstName = StringUtils.capitalize(lastName);
+        this.firstName = StringUtils.capitalize(name);
     }
 
     public void setLastName(String name) {
         if (isNameInvalid(name))
             throw new IllegalArgumentException("The following last name is not valid: " + lastName);
-        this.lastName = StringUtils.capitalize(lastName);
+        this.lastName = StringUtils.capitalize(name);
     }
 
     public void setBirthdate(LocalDate birthdate) {
