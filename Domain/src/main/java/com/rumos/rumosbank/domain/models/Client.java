@@ -8,8 +8,6 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Entity
 @Table(name = "clients")
@@ -34,24 +32,6 @@ public class Client {
     @JoinColumn(name = "client_id")
     private List<BankAccount> bankAccounts;
 
-    /* ------------------------------------------------------------ Names ------------------------------------------------------------ */
-
-    private boolean isNameInvalid(String name) {
-        Pattern pattern = Pattern.compile("(?=.{1,40}$)[a-zA-Z]+(?:[-'\\s][a-zA-Z]+)*$");
-        Matcher matcher = pattern.matcher(name);
-        return !matcher.matches();
-    }
-
-    public void setFirstName(String firstName) {
-        if (isNameInvalid(firstName)) throw new IllegalArgumentException("The following first name is not valid: " + firstName);
-        this.firstName = StringUtils.capitalize(firstName);
-    }
-
-    public void setLastName(String lastName) {
-        if (isNameInvalid(lastName)) throw new IllegalArgumentException("The following last name is not valid: " + lastName);
-        this.lastName = StringUtils.capitalize(lastName);
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -60,7 +40,52 @@ public class Client {
         return lastName;
     }
 
-    /* ------------------------------------------------------------ Birthdate ------------------------------------------------------------ */
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public String getNif() {
+        return nif;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public List<BankAccount> getBankAccounts() {
+        return bankAccounts;
+    }
+
+    public BankAccount getBankAccount(String number) {
+        return bankAccounts.stream()
+                .filter(account -> account.getNumber().equals(number))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Account not found: " + number));
+    }
+
+    public void setFirstName(String name) throws IllegalArgumentException {
+        if (isNameInvalid(name))
+            throw new IllegalArgumentException("The following first name is not valid: " + name);
+        this.firstName = StringUtils.capitalize(lastName);
+    }
+
+    public void setLastName(String name) {
+        if (isNameInvalid(name))
+            throw new IllegalArgumentException("The following last name is not valid: " + lastName);
+        this.lastName = StringUtils.capitalize(lastName);
+    }
 
     public void setBirthdate(LocalDate birthdate) {
         if (ChronoUnit.YEARS.between(birthdate, LocalDate.now()) < 18) {
@@ -69,85 +94,38 @@ public class Client {
         this.birthdate = birthdate;
     }
 
-    public LocalDate getBirthdate() {
-        return birthdate;
-    }
-
-    /* ------------------------------------------------------------ NIF ------------------------------------------------------------ */
-
-    public String getNif() {
-        return nif;
-    }
-
     public void setNif(String nif) {
         if (nif.length() != 9) throw new IllegalArgumentException("NIF value must be exactly 9 digits");
         this.nif = nif;
-    }
-
-    /* ------------------------------------------------------------ Phone ------------------------------------------------------------ */
-
-    public String getPhone() {
-        return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    /* ------------------------------------------------------------ Mobile Phone ------------------------------------------------------------ */
-
-    public String getMobilePhone() {
-        return mobilePhone;
-    }
-
     public void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
-    }
-
-    /* ------------------------------------------------------------ Profession ------------------------------------------------------------ */
-
-    public String getProfession() {
-        return profession;
     }
 
     public void setProfession(String profession) {
         this.profession = profession;
     }
 
-    /* ------------------------------------------------------------ Email ------------------------------------------------------------ */
-
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    /* ------------------------------------------------------------ Password ------------------------------------------------------------ */
-
-    public boolean isPasswordCorrect(String password) {
-        return Objects.equals(this.password, password);
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    /* ------------------------------------------------------------ Bank Accounts ------------------------------------------------------------ */
-
-    public List<BankAccount> getBankAccounts() {
-        return bankAccounts;
+    private boolean isNameInvalid(String name) {
+        return !name.matches("^[a-zA-ZÀ-ÿ]+([ '-][a-zA-ZÀ-ÿ]+)*$");
     }
 
-    public BankAccount getBankAccount(String number) {
-        return bankAccounts.stream()
-                .filter(bankAccount ->
-                        bankAccount.getNumber().equals(number)).
-                findFirst().orElseThrow();
+    public boolean isPasswordCorrect(String password) {
+        return Objects.equals(this.password, password);
     }
-
-    /* ------------------------------------------------------------ ToString ------------------------------------------------------------ */
 
     @Override
     public String toString() {
