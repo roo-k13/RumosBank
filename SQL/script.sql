@@ -26,22 +26,22 @@ create table clients
 
 create table creditcards
 (
-    id                int auto_increment
+    id                  bigint auto_increment
         primary key,
-    number            char(9)    not null,
-    pin               char(4)    not null,
-    bankaccount_id    mediumtext null,
-    hasPinBeenChanged tinyint(1) not null
+    number              char(9)    not null,
+    pin                 char(4)    not null,
+    default_pin_changed tinyint(1) not null,
+    account_id          mediumtext not null
 );
 
 create table debitcards
 (
-    id                int auto_increment
+    id                  bigint auto_increment
         primary key,
-    number            char(9)    not null,
-    pin               char(4)    not null,
-    bankaccount_id    mediumtext null,
-    hasPinBeenChanged tinyint(1) not null
+    number              char(9)    not null,
+    pin                 char(4)    not null,
+    default_pin_changed tinyint(1) not null,
+    account_id          mediumtext not null
 );
 
 create table deposits
