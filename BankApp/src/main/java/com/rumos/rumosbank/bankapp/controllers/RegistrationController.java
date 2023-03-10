@@ -66,6 +66,26 @@ public class RegistrationController extends NavigationBarController {
         return false;
     }
 
+    private void trimTextFields() {
+        for (TextField textField : textFields) {
+            textField.setText(textField.getText().trim());
+        }
+    }
+
+    private Client buildClient()  {
+        Client client = new Client();
+        client.setFirstName(first_name_text_field.getText());
+        client.setLastName(last_name_text_field.getText());
+        client.setBirthdate(birthdate_date_picker.getValue());
+        client.setNif(nif_text_field.getText());
+        client.setEmailAddress(email_text_field.getText());
+        client.setPhone(phone_text_field.getText());
+        client.setMobilePhone(mobile_phone_text_field.getText());
+        client.setProfession(profession_text_field.getText());
+        client.setPassword(insert_password_password_field.getText());
+        return client;
+    }
+
     @FXML
     protected void onRegisterButtonClick(ActionEvent actionEvent) {
         if (isAnyTextFieldEmpty() || isAnyPasswordFieldEmpty()) {
@@ -73,18 +93,10 @@ public class RegistrationController extends NavigationBarController {
             return;
         }
 
+        trimTextFields();
+
         try {
-            Client client = new Client();
-            client.setFirstName(first_name_text_field.getText());
-            client.setLastName(last_name_text_field.getText());
-            client.setBirthdate(birthdate_date_picker.getValue());
-            client.setNif(nif_text_field.getText());
-            client.setEmailAddress(email_text_field.getText());
-            client.setPhone(phone_text_field.getText());
-            client.setMobilePhone(mobile_phone_text_field.getText());
-            client.setProfession(profession_text_field.getText());
-            client.setPassword(insert_password_password_field.getText());
-            new Bank().registerClient(client);
+            new Bank().registerClient(buildClient());
         } catch (Exception exception) {
             feedback_message_label.setVisible(true);
             feedback_message_label.setText(exception.getMessage());
