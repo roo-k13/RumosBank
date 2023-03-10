@@ -88,6 +88,7 @@ public class RegistrationController extends NavigationBarController {
         } catch (Exception exception) {
             feedback_message_label.setVisible(true);
             feedback_message_label.setText(exception.getMessage());
+            return;
         }
 
         try { App.changeScene(actionEvent, "/fxml/login.fxml"); }
