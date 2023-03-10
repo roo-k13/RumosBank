@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.IndexController">
-   <left>
-       <VBox styleClass="vbox" stylesheets="@../css/navbar.css" BorderPane.alignment="CENTER">
-           <Button mnemonicParsing="false" onAction="#onAccountsButtonClick" styleClass="vbox_side_bar_button" text="Accounts" />
-           <Button mnemonicParsing="false" onAction="#onCardsButtonClick" styleClass="vbox_side_bar_button" text="Cards" />
-           <Button mnemonicParsing="false" onAction="#onEditProfileButtonClick" styleClass="vbox_side_bar_button" text="Profile" />
-           <Button mnemonicParsing="false" onAction="#onChangePasswordButtonClick" styleClass="vbox_side_bar_button" text="Password" />
-           <Button mnemonicParsing="false" onAction="#onLogoutButtonClick" styleClass="vbox_side_bar_button" text="Logout" />
-       </VBox>
-   </left>
-   <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="index-text" text="Rumos Bank" />
-         </children>
-      </StackPane>
-   </center>
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.IndexController"
+            prefWidth="600.0" prefHeight="400.0" minHeight="-Infinity" minWidth="-Infinity" maxHeight="-Infinity" maxWidth="-Infinity"
+            stylesheets="@../css/main.css">
+    <left>
+        <VBox styleClass="vbox" stylesheets="@../css/navbar.css" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#onAccountsButtonClick" styleClass="vbox_side_bar_button" text="Accounts" />
+            <Button mnemonicParsing="false" onAction="#onCardsButtonClick" styleClass="vbox_side_bar_button" text="Cards" />
+            <Button mnemonicParsing="false" onAction="#onEditProfileButtonClick" styleClass="vbox_side_bar_button" text="Profile" />
+            <Button mnemonicParsing="false" onAction="#onChangePasswordButtonClick" styleClass="vbox_side_bar_button" text="Password" />
+            <Button mnemonicParsing="false" onAction="#onLogoutButtonClick" styleClass="vbox_side_bar_button" text="Logout" />
+        </VBox>
+    </left>
+    <center>
+        <StackPane prefWidth="200.0" prefHeight="150.0" BorderPane.alignment="CENTER">
+            <Text styleClass="index-text" strokeWidth="0.0" strokeType="OUTSIDE" text="Rumos Bank"/>
+        </StackPane>
+    </center>
 </BorderPane>
