@@ -22,6 +22,7 @@ public class Bank {
         bankAccount.setNumber(new Generators().generateRandomNumber(9));
         bankAccount.setName("Conta Corrente");
         bankAccount.setClient(client);
+        new BankAccountRepository().insert(bankAccount);
         registerDebitCard(bankAccount);
     }
 
