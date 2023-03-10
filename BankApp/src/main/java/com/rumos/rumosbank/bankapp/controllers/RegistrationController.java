@@ -1,8 +1,10 @@
 package com.rumos.rumosbank.bankapp.controllers;
 
+import com.rumos.rumosbank.bankapp.App;
 import com.rumos.rumosbank.domain.models.Client;
 import com.rumos.rumosbank.domain.services.Bank;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -65,7 +67,7 @@ public class RegistrationController extends NavigationBarController {
     }
 
     @FXML
-    protected void onRegisterButtonClick() {
+    protected void onRegisterButtonClick(ActionEvent actionEvent) {
         if (isAnyTextFieldEmpty() || isAnyPasswordFieldEmpty()) {
             feedback_message_label.setText("Please fill all the fields before confirming your registration");
             return;
@@ -87,5 +89,8 @@ public class RegistrationController extends NavigationBarController {
             feedback_message_label.setVisible(true);
             feedback_message_label.setText(exception.getMessage());
         }
+
+        try { App.changeScene(actionEvent, "/fxml/login.fxml"); }
+        catch (Exception exception) { exception.printStackTrace(); }
     }
 }
