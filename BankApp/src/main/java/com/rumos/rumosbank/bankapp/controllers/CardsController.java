@@ -18,18 +18,21 @@ import java.util.List;
 public class CardsController extends NavigationBarController {
     private BankAccount selectedAccount;
 
-    @FXML private void initialize() {
+    @FXML
+    private ChoiceBox<BankAccount> bank_accounts_choice_box;
+    @FXML
+    private ListView<DebitCard> debit_cards_list_view;
+    @FXML
+    private ListView<CreditCard> credit_cards_list_view;
+
+    @FXML
+    private void initialize() {
         initializeAccountsChoiceBox();
     }
 
-    /* --------------------------------------------------------- Accounts Choice Box ------------------------------------------------------- */
-
-    @FXML
-    private ChoiceBox<BankAccount> bank_accounts_choice_box;
-
     @FXML
     private void initializeAccountsChoiceBox() {
-        bank_accounts_choice_box.setOnAction((this::onSelectingBankAccount));
+        bank_accounts_choice_box.setOnAction(this::onSelectingBankAccount);
         List<BankAccount> bankAccounts = App.getAuthenticatedClient().getBankAccounts();
         bank_accounts_choice_box.setItems(FXCollections.observableList(bankAccounts));
     }
@@ -44,30 +47,20 @@ public class CardsController extends NavigationBarController {
         updateCreditCards();
     }
 
-    /* --------------------------------------------------------- Debit Cards------------------------------------------------------- */
-
-    @FXML
-    private ListView<DebitCard> debit_cards_list_view;
-
     private void updateDebitCards() {
         ObservableList<DebitCard> debitCards = FXCollections.observableArrayList(selectedAccount.getDebitCards());
         debit_cards_list_view.setItems(debitCards);
+    }
+
+    private void updateCreditCards() {
+        ObservableList<CreditCard> creditCards = FXCollections.observableArrayList(selectedAccount.getCreditCards());
+        credit_cards_list_view.setItems(creditCards);
     }
 
     @FXML
     private void onCreateNewDebitCardButtonClick() {
         BankAccount bankAccount = new BankAccount();
         Bank.instance.registerDebitCard(bankAccount);
-    }
-
-    /* --------------------------------------------------------- Credit Cards------------------------------------------------------- */
-
-    @FXML
-    private ListView<CreditCard> credit_cards_list_view;
-
-    private void updateCreditCards() {
-        ObservableList<CreditCard> creditCards = FXCollections.observableArrayList(selectedAccount.getCreditCards());
-        credit_cards_list_view.setItems(creditCards);
     }
 
     @FXML
