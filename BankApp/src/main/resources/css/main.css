@@ -32,3 +32,8 @@
 .choice-box {
     -fx-font-size: 14;
 }
+
+.index-text {
+    -fx-font-size: 32;
+    -fx-font-weight: bold;
+}
