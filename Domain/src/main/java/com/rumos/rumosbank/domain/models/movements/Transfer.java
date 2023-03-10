@@ -12,7 +12,10 @@ public class Transfer extends Movement {
     @ManyToOne
     private BankAccount receiver;
 
-    public void setSender(BankAccount sender) { this.sender = sender; }
+    public void setSender(BankAccount sender) {
+        this.sender = sender;
+    }
 
-    public void setReceiver(BankAccount receiver) { this.receiver = receiver; }
+    public void setReceiver(BankAccount receiver) {
+        this.receiver = receiver; }
 }
