@@ -6,18 +6,18 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.atmapp.controllers.OperationsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.atmapp.controllers.NavigationBarController">
    <left>
        <VBox styleClass="vbox_side_bar" BorderPane.alignment="CENTER">
-           <Button mnemonicParsing="false" styleClass="vbox_side_bar_button" text="Withdraw" />
-           <Button mnemonicParsing="false" styleClass="vbox_side_bar_button" text="Deposit" />
-           <Button mnemonicParsing="false" styleClass="vbox_side_bar_button" text="Change Pin" />
+           <Button mnemonicParsing="false" onAction="#onWithdrawButtonClick" styleClass="vbox_side_bar_button" text="Withdraw" />
+           <Button mnemonicParsing="false" onAction="#onDepositButtonClick" styleClass="vbox_side_bar_button" text="Deposit" />
+           <Button mnemonicParsing="false" onAction="#onChangePinButtonClick" styleClass="vbox_side_bar_button" text="Change Pin" />
            <Button mnemonicParsing="false" onAction="#onLogoutButtonClick" styleClass="vbox_side_bar_button" text="Logout" />
        </VBox>
    </left>
    <center>
        <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-           <Label text="Rumos Bank"/>
+           <Label text="Rumos ATM" />
        </StackPane>
    </center>
 </BorderPane>
