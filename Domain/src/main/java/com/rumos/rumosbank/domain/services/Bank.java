@@ -32,7 +32,7 @@ public class Bank {
         card.setNumber(new Generators().generateRandomNumber(9));
         card.setPin(new Generators().generateRandomNumber(4));
         card.setExpirationDate(LocalDate.now().plusYears(5));
-        card.setHasPinBeenChanged(false);
+        card.setPinBeenChanged(false);
         card.setBankAccount(bankAccount);
     }
 
