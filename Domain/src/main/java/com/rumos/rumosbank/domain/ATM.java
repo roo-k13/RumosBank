@@ -9,9 +9,10 @@ import com.rumos.rumosbank.domain.repositories.DebitCardRepository;
 import com.rumos.rumosbank.domain.repositories.DepositRepository;
 import com.rumos.rumosbank.domain.repositories.WithdrawRepository;
 
-import jakarta.persistence.NoResultException;
-
 import java.math.BigDecimal;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public class ATM {
     public static final ATM instance;
@@ -28,14 +29,15 @@ public class ATM {
     }
 
     public Card authenticate(String cardNumber, String cardPin) {
-        Card card;
-        card = new DebitCardRepository().get(cardNumber);
-            if (card.isPinCorrect(cardPin)) return card;
-        try {
-            card = new CreditCardRepository().get(cardNumber);
-            if (card.isPinCorrect(cardPin)) return card;
-        }  catch (NoResultException exception) { System.out.println(exception.getMessage()); }
-        return null;
+        Optional<Card> card = Stream.of(
+                        new DebitCardRepository().getByNumber(cardNumber),
+                        new CreditCardRepository().getByNumber(cardNumber)
+                )
+                .filter(Objects::nonNull)
+                .filter(c -> c.isPinCorrect(cardPin))
+                .findFirst();
+
+        return card.orElse(null);
     }
 
     public void makeWithdraw(BankAccount bankAccount, BigDecimal amount) throws IllegalArgumentException {
