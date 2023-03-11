@@ -42,7 +42,11 @@ public class ATM {
         return withdrawAmounts;
     }
 
-    public void makeWithdraw(BankAccount bankAccount, BigDecimal amount) {
+    public void makeWithdraw(BankAccount bankAccount, BigDecimal amount) throws IllegalArgumentException {
+        if (amount.compareTo(bankAccount.getBalance()) > 0) {
+            throw new IllegalArgumentException("The withdraw amount can't be bigger than the account balance");
+        }
+
         Withdraw withdraw = new Withdraw();
         withdraw.setBankAccount(bankAccount);
         withdraw.setAmount(amount);
