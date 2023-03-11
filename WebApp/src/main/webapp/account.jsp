@@ -1,4 +1,5 @@
 <jsp:useBean id="account" scope="session" type="com.rumos.rumosbank.domain.models.BankAccount"/>
+<jsp:useBean id="client" scope="session" type="com.rumos.rumosbank.domain.models.Client"/>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -74,15 +75,39 @@
                     </thead>
                     <tbody>
                     <c:forEach var="movement" items="${account.movements}" varStatus="status">
+                    <c:if test="${status.index lt 10}">
                     <tr>
                         <th scope="row"><a href="account?number=${movement.longDate}">${movement.type}</a></th>
                         <td>${movement.amount}</td>
                         <td>${movement.longDate}</td>
                     <tr>
+                        </c:if>
                         </c:forEach>
                     </tbody>
                 </table>
             </div>
+            <div style="width: 300px; height: 180px; background-color: #fff; border-radius: 10px; box-shadow: 0px 2px 10px rgba(0,0,0,0.2); display: flex; flex-direction: column;">
+                <div style="background-color: #0b74c8; height: 50px; display: flex; justify-content: center; align-items: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                    <h5 style="font-size: 1.25rem; font-weight: bold; color: #fff;">Debit Card</h5>
+                </div>
+                <div style="padding: 20px; flex: 1;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <div>
+                            <h6 style="font-size: 0.875rem; color: #999;">Card Number</h6>
+                            <h6 style="font-size: 1rem; font-weight: bold; color: #222;">${account.debitCards[0].number}</h6>
+                        </div>
+                        <div>
+                            <h6 style="font-size: 0.875rem; color: #999;">Expiration Date</h6>
+                            <h6 style="font-size: 1rem; font-weight: bold; color: #222;">01/23</h6>
+                        </div>
+                    </div>
+                    <div>
+                        <h6 style="font-size: 0.875rem; color: #999;">Name</h6>
+                        <h6 style="font-size: 1rem; font-weight: bold; color: #222;">${client.name}</h6>
+                    </div>
+                </div>
+            </div>
+
         </main>
         <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
