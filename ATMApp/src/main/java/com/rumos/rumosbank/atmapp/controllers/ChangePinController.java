@@ -25,31 +25,40 @@ public class ChangePinController {
     @FXML
     private Label feedback_message_label;
 
-    private boolean areFieldsEmpty() {
-        return insert_pin_text_field.getText().isEmpty() || confirm_pin_text_field.getText().isEmpty();
+    @FXML
+    private void onSavePinButtonClick(ActionEvent actionEvent) {
+        if (areFieldsValid()) {
+            updatePin(actionEvent);
+        }
     }
 
-    private boolean doFieldsMatch() {
-        return insert_pin_text_field.getText().equals(confirm_pin_text_field.getText());
+    private boolean areFieldsValid() {
+        String insertPin = insert_pin_text_field.getText();
+        String confirmPin = confirm_pin_text_field.getText();
+
+        if (isAnyFieldEmpty(insertPin, confirmPin)) {
+            showFeedback("Please fill both fields!");
+            return false;
+        }
+
+        if (!areFieldsMatching(insertPin, confirmPin)) {
+            showFeedback("The passwords do not match");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isAnyFieldEmpty(String insertPin, String confirmPin) {
+        return insertPin.isEmpty() || confirmPin.isEmpty();
+    }
+
+    private boolean areFieldsMatching(String insertPin, String confirmPin) {
+        return insertPin.equals(confirmPin);
     }
 
     private void showFeedback(String message) {
         feedback_message_label.setText(message);
-    }
-
-    @FXML
-    private void onSavePinButtonClick(ActionEvent actionEvent) {
-        if (areFieldsEmpty()) {
-            showFeedback("Please fill both fields!");
-            return;
-        }
-
-        if (!doFieldsMatch()) {
-            showFeedback("The passwords do not match");
-            return;
-        }
-
-        updatePin(actionEvent);
     }
 
     private void updatePin(ActionEvent actionEvent) {
