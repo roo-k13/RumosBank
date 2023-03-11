@@ -9,6 +9,6 @@ public class CreditCard extends Card {
 
     @Override
     public String toString() {
-        return "Debit Card Nº: " + this.number;
+        return "Debit Card Nº: " + getNumber();
     }
 }
