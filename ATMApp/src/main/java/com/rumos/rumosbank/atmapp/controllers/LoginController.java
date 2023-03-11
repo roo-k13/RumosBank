@@ -29,7 +29,7 @@ public class LoginController {
             App.setAuthenticatedAccount(App.getAuthenticatedCard().getBankAccount());
             try {
                 String path;
-                if (!App.getAuthenticatedCard().getHasPinBeenChanged()) { path = "/fxml/change_pin.fxml"; }
+                if (!App.getAuthenticatedCard().hasPinBeenChanged()) { path = "/fxml/change_pin.fxml"; }
                 else { path = "/fxml/index.fxml"; }
                 App.changeScene(actionEvent, path);
             } catch (IOException exception) { throw new RuntimeException(exception); }
