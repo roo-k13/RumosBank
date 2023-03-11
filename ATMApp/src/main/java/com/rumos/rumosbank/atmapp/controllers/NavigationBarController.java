@@ -11,14 +11,14 @@ public class NavigationBarController {
     @FXML
     private void onWithdrawButtonClick(ActionEvent actionEvent) {
         OperationsController.selectedOperation = "Withdraw";
-        try { App.changeScene(actionEvent, "/fxml/operation.fxml"); }
+        try { App.changeScene(actionEvent, "/fxml/operations.fxml"); }
         catch (IOException exception) { throw new RuntimeException(exception); }
     }
 
     @FXML
     private void onDepositButtonClick(ActionEvent actionEvent) {
         OperationsController.selectedOperation = "Deposit";
-        try { App.changeScene(actionEvent, "/fxml/operation.fxml"); }
+        try { App.changeScene(actionEvent, "/fxml/operations.fxml"); }
         catch (IOException exception) { throw new RuntimeException(exception); }
     }
 
