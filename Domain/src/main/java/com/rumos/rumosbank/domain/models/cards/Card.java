@@ -14,6 +14,7 @@ public abstract class Card {
     private Long id;
     private String number;
     private String pin;
+    @Column(name = "expiration_date")
     private LocalDate expirationDate;
     @Column(name = "default_pin_changed")
     private boolean hasPinBeenChanged;
