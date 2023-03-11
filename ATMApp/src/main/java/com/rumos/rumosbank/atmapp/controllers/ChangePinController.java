@@ -73,7 +73,7 @@ public class ChangePinController {
 
     private void navigateToMenu(ActionEvent actionEvent) {
         try {
-            App.changeScene(actionEvent, "/fxml/menu.fxml");
+            App.changeScene(actionEvent, "/fxml/index.fxml");
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
