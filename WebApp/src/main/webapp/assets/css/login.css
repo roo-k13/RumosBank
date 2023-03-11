@@ -1,10 +1,14 @@
-/* set background color and font */
 body {
     background-color: #F4F4F4;
     font-family: 'Open Sans', sans-serif;
 }
 
-/* style the login form */
+.login-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .card {
     background-color: #FFFFFF;
     border: none;
@@ -52,12 +56,10 @@ body {
     background-color: #0A47B5;
 }
 
-/* center the logo */
 .logo {
     text-align: center;
 }
 
-/* adjust spacing */
 .py-4 {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -67,7 +69,6 @@ body {
     font-size: 12px;
 }
 
-/* add a link to create an account */
 .create-account {
     color: #0C59D4;
     font-weight: bold;
