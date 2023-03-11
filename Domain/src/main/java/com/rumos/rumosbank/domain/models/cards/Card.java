@@ -4,6 +4,7 @@ import com.rumos.rumosbank.domain.models.BankAccount;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 @MappedSuperclass
@@ -11,8 +12,9 @@ public abstract class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    protected String number;
+    private String number;
     private String pin;
+    private LocalDate expirationDate;
     @Column(name = "default_pin_changed")
     private boolean hasPinBeenChanged;
     @ManyToOne
@@ -21,6 +23,10 @@ public abstract class Card {
 
     public String getNumber() {
         return number;
+    }
+
+    public LocalDate getExpirationDate() {
+        return expirationDate;
     }
 
     public boolean getHasPinBeenChanged() {
@@ -41,15 +47,19 @@ public abstract class Card {
         hasPinBeenChanged = true;
     }
 
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
     public void setHasPinBeenChanged(boolean hasPinBeenChanged) {
         this.hasPinBeenChanged = hasPinBeenChanged;
     }
 
-    public boolean isPinCorrect(String pin) {
-        return Objects.equals(this.pin, pin);
-    }
-
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
+    }
+
+    public boolean isPinCorrect(String pin) {
+        return Objects.equals(this.pin, pin);
     }
 }
