@@ -40,6 +40,10 @@ public class Client {
         return lastName;
     }
 
+    public String getName() {
+        return firstName + " " + lastName;
+    }
+
     public LocalDate getBirthdate() {
         return birthdate;
     }
