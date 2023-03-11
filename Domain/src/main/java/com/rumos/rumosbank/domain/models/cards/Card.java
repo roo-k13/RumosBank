@@ -12,12 +12,17 @@ public abstract class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String number;
+
     private String pin;
+
     @Column(name = "expiration_date")
     private LocalDate expirationDate;
+
     @Column(name = "default_pin_changed")
     private boolean hasPinBeenChanged;
+
     @ManyToOne
     @JoinColumn(name = "account_id")
     private BankAccount bankAccount;
@@ -26,11 +31,15 @@ public abstract class Card {
         return number;
     }
 
+    public String getPin() {
+        return pin;
+    }
+
     public LocalDate getExpirationDate() {
         return expirationDate;
     }
 
-    public boolean getHasPinBeenChanged() {
+    public boolean hasPinBeenChanged() {
         return hasPinBeenChanged;
     }
 
@@ -39,11 +48,17 @@ public abstract class Card {
     }
 
     public void setNumber(String number) {
+        if (number.length() != 9) {
+            throw new IllegalArgumentException("Number must be exactly 9 characters long");
+        }
         this.number = number;
+        hasPinBeenChanged = true;
     }
 
     public void setPin(String pin) {
-        if (pin.length() != 4) throw new IllegalArgumentException("The pin must be exactly 4 digits long");
+        if (pin.length() != 4) {
+            throw new IllegalArgumentException("Pin must be exactly 4 characters long");
+        }
         this.pin = pin;
         hasPinBeenChanged = true;
     }
@@ -52,7 +67,7 @@ public abstract class Card {
         this.expirationDate = expirationDate;
     }
 
-    public void setHasPinBeenChanged(boolean hasPinBeenChanged) {
+    public void setPinBeenChanged(boolean hasPinBeenChanged) {
         this.hasPinBeenChanged = hasPinBeenChanged;
     }
 
