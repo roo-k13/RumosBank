@@ -11,8 +11,8 @@ import com.rumos.rumosbank.domain.repositories.DebitCardRepository;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 
 public class ChangePinController {
 
@@ -23,7 +23,7 @@ public class ChangePinController {
     private PasswordField confirm_pin_text_field;
 
     @FXML
-    private TextField feedback_text_field;
+    private Label feedback_message_label;
 
     private boolean areFieldsEmpty() {
         return insert_pin_text_field.getText().isEmpty() || confirm_pin_text_field.getText().isEmpty();
@@ -34,7 +34,7 @@ public class ChangePinController {
     }
 
     private void showFeedback(String message) {
-        feedback_text_field.setText(message);
+        feedback_message_label.setText(message);
     }
 
     @FXML
