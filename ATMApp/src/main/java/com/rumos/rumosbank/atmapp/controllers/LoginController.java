@@ -1,7 +1,7 @@
 package com.rumos.rumosbank.atmapp.controllers;
 
 import com.rumos.rumosbank.atmapp.App;
-import com.rumos.rumosbank.domain.services.ATM;
+import com.rumos.rumosbank.domain.ATM;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
