@@ -9,6 +9,6 @@ class DebitCardRepositoryTest {
     @Test
     void get() {
         String cardNumber = "547896547";
-        DebitCard debitCard = new DebitCardRepository().get(cardNumber);
+        DebitCard debitCard = new DebitCardRepository().getByNumber(cardNumber);
     }
 }

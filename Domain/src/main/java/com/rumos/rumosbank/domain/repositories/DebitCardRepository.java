@@ -1,11 +1,15 @@
 package com.rumos.rumosbank.domain.repositories;
 
 import com.rumos.rumosbank.domain.models.cards.DebitCard;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 
 public class DebitCardRepository {
+
     private final EntityManager entityManager;
     private final EntityManagerFactory entityManagerFactory;
 
@@ -14,22 +18,36 @@ public class DebitCardRepository {
         entityManager = entityManagerFactory.createEntityManager();
     }
 
-    public DebitCard get(String number) {
+    public DebitCard getByNumber(String number) {
         String query = "SELECT d FROM DebitCard d WHERE d.number = :number";
-        return entityManager.createQuery(query, DebitCard.class).setParameter("number", number).getSingleResult();
+        TypedQuery<DebitCard> typedQuery = entityManager.createQuery(query, DebitCard.class);
+        typedQuery.setParameter("number", number);
+        try {
+            return typedQuery.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     public void insert(DebitCard debitCard) {
-        entityManager.getTransaction().begin();
-        this.entityManager.persist(debitCard);
-        entityManager.getTransaction().commit();
+        try (EntityManager em = entityManagerFactory.createEntityManager()) {
+            em.getTransaction().begin();
+            em.persist(debitCard);
+            em.getTransaction().commit();
+        }
+    }
+
+    public void update(DebitCard debitCard) {
+        try (EntityManager em = entityManagerFactory.createEntityManager()) {
+            em.getTransaction().begin();
+            em.merge(debitCard);
+            em.getTransaction().commit();
+        }
+    }
+
+    public void close() {
         entityManager.close();
         entityManagerFactory.close();
     }
 
-    public void update(DebitCard debitCard) {
-        entityManager.getTransaction().begin();
-        entityManager.merge(debitCard);
-        entityManager.getTransaction().commit();
-    }
 }
