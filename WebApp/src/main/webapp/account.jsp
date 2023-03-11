@@ -13,7 +13,6 @@
         <link href="assets/images/apple-touch-icon.png" rel="apple-touch-icon">
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
         <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
@@ -22,6 +21,7 @@
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/header.css" rel="stylesheet">
         <link href="assets/css/card.css" rel="stylesheet">
+        <link href="assets/css/breadcrumb.css" rel="stylesheet">
     </head>
     <body>
         <header id="header" class="header fixed-top d-flex align-items-center">
@@ -92,7 +92,6 @@
                     <div class="card">
                         <div class="card-title">
                             <h5>Debit Card</h5>
-
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -118,7 +117,6 @@
                     <div class="card">
                         <div class="card-title">
                             <h5>Debit Card</h5>
-
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -171,7 +169,6 @@
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/chart.js/chart.umd.js"></script>
         <script src="assets/vendor/echarts/echarts.min.js"></script>
-        <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
         <script src="assets/vendor/tinymce/tinymce.min.js"></script>
         <script src="assets/vendor/php-email-form/validate.js"></script>
         <script src="assets/js/main.js"></script>
