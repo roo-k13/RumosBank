@@ -16,7 +16,7 @@
         xmlns:fx="http://javafx.com/fxml/1"
         fx:controller="com.rumos.rumosbank.atmapp.controllers.LoginController">
    <VBox styleClass="vbox">
-      <Label text="Rumos Bank">
+      <Label text="Rumos ATM">
          <stylesheets>
             <URL value="@../css/styles.css" />
             <URL value="@../css/login.css" />
