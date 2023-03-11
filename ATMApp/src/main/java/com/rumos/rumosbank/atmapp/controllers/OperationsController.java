@@ -40,7 +40,6 @@ public class OperationsController extends NavigationBarController {
 
     @FXML
     private void initialize() {
-        selectedOperation = "Deposit";
         setAccountBalance();
         if (Objects.equals(selectedOperation, "Withdraw")) { populateButtonsWithWithdrawAmounts(); }
         else if (Objects.equals(selectedOperation, "Deposit")) { populateButtonsWithDepositAmounts(); }
