@@ -11,8 +11,6 @@
         <link href="assets/images/apple-touch-icon.png" rel="apple-touch-icon">
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
         <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
         <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
         <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
@@ -28,12 +26,10 @@
                     <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-                            <div class="d-flex justify-content-center py-4">
-                                <a href="index.jsp" class="logo d-flex align-items-center w-auto">
+                                <a href="index.jsp" class="login-title">
                                     <img src="assets/images/logo.png" alt="">
-                                    <span class="d-none d-lg-block">Rumos Bank</span>
+                                    <span>Rumos Bank</span>
                                 </a>
-                            </div>
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="pt-4 pb-2">
