@@ -38,7 +38,7 @@ public class ChangePinController {
     }
 
     @FXML
-    private void onSavePinButtonClick(ActionEvent event) {
+    private void onSavePinButtonClick(ActionEvent actionEvent) {
         if (areFieldsEmpty()) {
             showFeedback("Please fill both fields!");
             return;
@@ -49,15 +49,15 @@ public class ChangePinController {
             return;
         }
 
-        updatePin(event);
+        updatePin(actionEvent);
     }
 
-    private void updatePin(ActionEvent event) {
+    private void updatePin(ActionEvent actionEvent) {
         try {
             Card authenticatedCard = App.getAuthenticatedCard();
             authenticatedCard.setPin(insert_pin_text_field.getText());
             updateCardInRepository(authenticatedCard);
-            navigateToMenu(event);
+            navigateToMenu(actionEvent);
         } catch (IllegalArgumentException exception) {
             showFeedback(exception.getMessage());
         }
@@ -71,9 +71,9 @@ public class ChangePinController {
         }
     }
 
-    private void navigateToMenu(ActionEvent event) {
+    private void navigateToMenu(ActionEvent actionEvent) {
         try {
-            App.changeScene(event, "/fxml/menu.fxml");
+            App.changeScene(actionEvent, "/fxml/menu.fxml");
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
