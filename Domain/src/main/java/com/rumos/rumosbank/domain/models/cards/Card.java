@@ -19,6 +19,10 @@ public abstract class Card {
     @JoinColumn(name = "account_id")
     private BankAccount bankAccount;
 
+    public String getNumber() {
+        return number;
+    }
+
     public boolean getHasPinBeenChanged() {
         return hasPinBeenChanged;
     }
