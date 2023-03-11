@@ -1,4 +1,5 @@
 <jsp:useBean id="account" scope="session" type="com.rumos.rumosbank.domain.models.BankAccount"/>
+<jsp:useBean id="cards" scope="session" type="java.util.List<com.rumos.rumosbank.domain.models.cards.Card>"/>
 <jsp:useBean id="client" scope="session" type="com.rumos.rumosbank.domain.models.Client"/>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -88,82 +89,35 @@
                 </table>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-title">
-                            <h5>Debit Card</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h6>Card Number</h6>
-                                    <h6 class="card-number">XXXX XXXX XXXX 1234</h6>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h6>Expiration Date</h6>
-                                    <h6 class="expiration-date">01/23</h6>
-                                </div>
+                <c:forEach items="${cards}" var="card">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-title">
+                                <h5>Debit Card</h5>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <h6>Cardholder Name</h6>
-                                    <h6 class="cardholder-name">John Doe</h6>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h6>Card Number</h6>
+                                        <h6 class="card-number">${card.number}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h6>Expiration Date</h6>
+                                        <h6 class="expiration-date">${card.expirationDate}</h6>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-title">
-                            <h5>Debit Card</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h6>Card Number</h6>
-                                    <h6 class="card-number">XXXX XXXX XXXX 1234</h6>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h6>Expiration Date</h6>
-                                    <h6 class="expiration-date">01/23</h6>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <h6>Cardholder Name</h6>
-                                    <h6 class="cardholder-name">John Doe</h6>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h6>Cardholder Name</h6>
+                                        <h6 class="cardholder-name">${client.name}</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-title">
-                            <h5>Debit Card</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h6>Card Number</h6>
-                                    <h6 class="card-number">${account.debitCards[0].number}</h6>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h6>Expiration Date</h6>
-                                    <h6 class="expiration-date">01/23</h6>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <h6>Cardholder Name</h6>
-                                    <h6 class="cardholder-name">${client.name}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
+
         </main>
         <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
