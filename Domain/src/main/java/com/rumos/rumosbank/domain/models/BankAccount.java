@@ -1,5 +1,6 @@
 package com.rumos.rumosbank.domain.models;
 
+import com.rumos.rumosbank.domain.models.cards.Card;
 import com.rumos.rumosbank.domain.models.cards.CreditCard;
 import com.rumos.rumosbank.domain.models.cards.DebitCard;
 import com.rumos.rumosbank.domain.models.movements.Deposit;
@@ -78,6 +79,12 @@ public class BankAccount {
 
     public List<CreditCard> getCreditCards() {
         return creditCards;
+    }
+
+    public List<Card> getCards() {
+        return Stream.of(getDebitCards(), getCreditCards())
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
     }
 
     public void setNumber(String number) {
