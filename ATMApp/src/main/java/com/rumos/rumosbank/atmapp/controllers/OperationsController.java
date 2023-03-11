@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Objects;
 
-public class OperationsController {
+public class OperationsController extends NavigationBarController {
 
     @FXML
     protected static String selectedOperation;
@@ -46,13 +46,6 @@ public class OperationsController {
         else if (Objects.equals(selectedOperation, "Deposit")) { populateButtonsWithDepositAmounts(); }
     }
 
-    /* ------------------------------------------------------------ Navigation Bar ------------------------------------------------------------ */
-
-    @FXML
-    private void onLogoutButtonClick(ActionEvent actionEvent) {
-        NavigationBarController.logout(actionEvent);
-    }
-
     protected void setAccountBalance() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         String balance = formatter.format(App.getAuthenticatedAccount().getBalance());
@@ -70,8 +63,8 @@ public class OperationsController {
         else if (Objects.equals(selectedOperation, "Deposit")) {
             ATM.instance.makeDeposit(App.getAuthenticatedAccount(), BigDecimal.valueOf(amountValue));
         }
-        setAccountBalance();
         Bank.instance.updateMovements(App.getAuthenticatedAccount());
+        setAccountBalance();
     }
 
     /* ------------------------------------------------------------ Populate Buttons ------------------------------------------------------------ */
