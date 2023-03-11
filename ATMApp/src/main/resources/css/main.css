@@ -1,0 +1,7 @@
+#feedback_message_label {
+    -fx-font-size: 12;
+    -fx-alignment: center;
+    -fx-text-fill: red;
+    -fx-pref-width: 300;
+    -fx-font-weight: normal;
+}
