@@ -25,7 +25,7 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("profile.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("profile_test.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -37,7 +37,7 @@ public class ProfileServlet extends HttpServlet {
         client.setProfession(request.getParameter("job"));
         client.setEmailAddress(request.getParameter("email"));
         Bank.instance.updateClient(client);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("profile.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("profile_test.jsp");
         dispatcher.forward(request, response);
     }
 }
