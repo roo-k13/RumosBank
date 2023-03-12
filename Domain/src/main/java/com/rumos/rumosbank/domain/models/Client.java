@@ -123,6 +123,10 @@ public class Client {
         this.password = password;
     }
 
+    public void setBankAccounts(List<BankAccount> bankAccounts) {
+        this.bankAccounts = bankAccounts;
+    }
+
     private boolean isNameInvalid(String name) {
         return !name.matches("^[a-zA-ZÀ-ÿ]+([ '-][a-zA-ZÀ-ÿ]+)*$");
     }
