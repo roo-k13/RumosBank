@@ -14,18 +14,32 @@ public abstract class AbstractRepository<T> {
     }
 
     public void insert(T object) {
-        try (EntityManager em = entityManagerFactory.createEntityManager()) {
-            em.getTransaction().begin();
-            em.persist(object);
-            em.getTransaction().commit();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(object);
+            entityManager.getTransaction().commit();
+        } catch (Exception exception) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw exception;
+        } finally {
+            close();
         }
     }
 
     public void update(T object) {
-        try (EntityManager em = entityManagerFactory.createEntityManager()) {
-            em.getTransaction().begin();
-            em.merge(object);
-            em.getTransaction().commit();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.merge(object);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            close();
         }
     }
 
