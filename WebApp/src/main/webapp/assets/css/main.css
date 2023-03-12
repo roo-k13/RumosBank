@@ -1,0 +1,10 @@
+    h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: left;
+    text-transform: uppercase;
+    color: #333;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 2rem;
+}
