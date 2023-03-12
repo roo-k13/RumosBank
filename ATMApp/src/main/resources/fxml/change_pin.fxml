@@ -13,7 +13,8 @@
     <Text layoutX="170.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please insert your new pin below">
       <font>
          <Font size="18.0" />
-      </font></Text>
+      </font>
+    </Text>
     <VBox layoutX="200.0" layoutY="150.0" prefWidth="300.0" styleClass="vbox" stylesheets="@../css/styles.css">
         <PasswordField fx:id="insert_pin_text_field" promptText="Insert pin code" />
         <PasswordField fx:id="confirm_pin_text_field" promptText="Confirm pin code" />
