@@ -49,7 +49,7 @@ public class Bank {
     }
 
     public Client authenticate(String email, String password) {
-        Client client = new ClientRepository().get(email);
+        Client client = new ClientRepository().getByEmail(email);
         return client != null && client.isPasswordCorrect(password) ? client : null;
     }
 

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@NamedQuery(name = "Client.getByEmail", query = "SELECT c FROM Client c WHERE c.emailAddress = :email")
 @Table(name = "clients")
 public class Client {
     @Id
