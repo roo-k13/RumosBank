@@ -10,14 +10,12 @@
         <link href="assets/images/apple-touch-icon.png" rel="apple-touch-icon">
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
         <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
         <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
         <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/header.css" rel="stylesheet">
+        <link href="assets/css/registration.css" rel="stylesheet">
     </head>
     <body>
         <main>
@@ -27,9 +25,9 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                                 <div class="d-flex justify-content-center py-4">
-                                    <a href="index.jsp" class="logo d-flex align-items-center w-auto">
+                                    <a href="index.jsp" class="login-title">
                                         <img src="assets/images/logo.png" alt="">
-                                        <span class="d-none d-lg-block">RumosBank</span>
+                                        <span>Rumos Bank</span>
                                     </a>
                                 </div>
                                 <div class="card mb-3">
@@ -74,7 +72,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                                                <button class="registration-button" type="submit">Create Account</button>
                                             </div>
                                             <div class="col-12">
                                                 <p class="small mb-0">Already have an account? <a href="index.jsp">Log in</a></p>
@@ -93,7 +91,6 @@
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/chart.js/chart.umd.js"></script>
         <script src="assets/vendor/echarts/echarts.min.js"></script>
-        <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
         <script src="assets/vendor/tinymce/tinymce.min.js"></script>
         <script src="assets/vendor/php-email-form/validate.js"></script>
         <script src="assets/js/main.js"></script>
