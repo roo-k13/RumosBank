@@ -1,7 +1,7 @@
 package com.rumos.rumosbank.webapp;
 
 import com.rumos.rumosbank.domain.models.Client;
-import com.rumos.rumosbank.domain.services.Bank;
+import com.rumos.rumosbank.domain.Bank;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -15,32 +15,30 @@ import java.io.IOException;
 
 @WebServlet(name = "profile", value = "/profile")
 public class ProfileServlet extends HttpServlet {
-    private Client client;
-
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        reloadPage(request, response);
+        reloadPage(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        client = (Client) session.getAttribute("client");
-        getParameters(request);
-        updateClient();
-        reloadPage(request, response);
+        HttpSession session = req.getSession();
+        Client client = (Client) session.getAttribute("client");
+        getParameters(client, req);
+        updateClient(client);
+        reloadPage(req, resp);
     }
 
-    private void getParameters(HttpServletRequest request) {
+    private void getParameters(Client client, HttpServletRequest request) {
         client.setPhone(request.getParameter("phone"));
         client.setMobilePhone(request.getParameter("mobilePhone"));
         client.setProfession(request.getParameter("profession"));
         client.setEmailAddress(request.getParameter("emailAddress"));
     }
 
-    private void updateClient() {
+    private void updateClient(Client client) {
         Bank.instance.updateClient(client);
     }
 

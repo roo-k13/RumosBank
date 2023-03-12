@@ -1,4 +1,4 @@
-package com.rumos.rumosbank.domain.shared;
+package com.rumos.rumosbank.domain;
 
 import java.util.Random;
 

@@ -2,7 +2,7 @@ package com.rumos.rumosbank.bankapp.controllers;
 
 import com.rumos.rumosbank.bankapp.App;
 import com.rumos.rumosbank.domain.models.Client;
-import com.rumos.rumosbank.domain.services.Bank;
+import com.rumos.rumosbank.domain.Bank;
 
 import jakarta.persistence.NoResultException;
 import javafx.event.ActionEvent;

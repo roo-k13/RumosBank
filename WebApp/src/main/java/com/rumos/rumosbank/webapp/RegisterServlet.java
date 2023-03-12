@@ -1,7 +1,7 @@
 package com.rumos.rumosbank.webapp;
 
 import com.rumos.rumosbank.domain.models.Client;
-import com.rumos.rumosbank.domain.services.Bank;
+import com.rumos.rumosbank.domain.Bank;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

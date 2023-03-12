@@ -1,7 +1,7 @@
 package com.rumos.rumosbank.webapp;
 
 import com.rumos.rumosbank.domain.models.Client;
-import com.rumos.rumosbank.domain.services.Bank;
+import com.rumos.rumosbank.domain.Bank;
 import jakarta.persistence.NoResultException;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
