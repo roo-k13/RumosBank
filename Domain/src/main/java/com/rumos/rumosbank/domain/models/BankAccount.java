@@ -11,6 +11,7 @@ import com.rumos.rumosbank.domain.models.movements.Withdraw;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.List;
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -73,8 +74,8 @@ public class BankAccount {
         return balance;
     }
 
-    public List<DebitCard> getDebitCards() {
-        return debitCards;
+    public final List<DebitCard> getDebitCards() {
+        return Collections.unmodifiableList(debitCards);
     }
 
     public List<CreditCard> getCreditCards() {
