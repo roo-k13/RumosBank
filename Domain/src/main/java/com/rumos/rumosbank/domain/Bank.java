@@ -1,4 +1,4 @@
-package com.rumos.rumosbank.domain.services;
+package com.rumos.rumosbank.domain;
 
 import com.rumos.rumosbank.domain.models.BankAccount;
 import com.rumos.rumosbank.domain.models.Client;
@@ -7,7 +7,6 @@ import com.rumos.rumosbank.domain.models.cards.CreditCard;
 import com.rumos.rumosbank.domain.models.cards.DebitCard;
 import com.rumos.rumosbank.domain.models.movements.Transfer;
 import com.rumos.rumosbank.domain.repositories.*;
-import com.rumos.rumosbank.domain.shared.Generators;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
