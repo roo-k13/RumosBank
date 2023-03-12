@@ -7,7 +7,7 @@
 <body>
   <div class="header">
     <a href="index.jsp">Rumos Bank</a>
-    <a href="profile_test.jsp">Profile</a>
+    <a href="profile.jsp">Profile</a>
     <a href="accounts.jsp">Accounts</a>
   </div>
 </body>

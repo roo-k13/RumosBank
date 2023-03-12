@@ -45,7 +45,7 @@ public class ProfileServlet extends HttpServlet {
     }
 
     private void reloadPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("profile_test.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("profile.jsp");
             dispatcher.forward(request, response);
     }
 }
