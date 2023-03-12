@@ -1,126 +1,52 @@
-<jsp:useBean id="account" scope="session" type="com.rumos.rumosbank.domain.models.BankAccount"/>
-<jsp:useBean id="cards" scope="session" type="java.util.List<com.rumos.rumosbank.domain.models.cards.Card>"/>
-<jsp:useBean id="client" scope="session" type="com.rumos.rumosbank.domain.models.Client"/>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <title>Dashboard - NiceAdmin Bootstrap Template</title>
-        <link href="assets/images/favicon.png" rel="icon">
-        <link href="assets/images/apple-touch-icon.png" rel="apple-touch-icon">
-        <link href="https://fonts.gstatic.com" rel="preconnect">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-        <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-        <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-        <link href="assets/css/style.css" rel="stylesheet">
-        <link href="assets/css/header.css" rel="stylesheet">
-        <link href="assets/css/card.css" rel="stylesheet">
-        <link href="assets/css/breadcrumb.css" rel="stylesheet">
-        <link href="assets/css/tables.css">
-        <link href="assets/css/sidebar.css">
-    </head>
-    <body>
-        <header id="header" class="header fixed-top d-flex align-items-center">
-            <div class="d-flex align-items-center justify-content-between">
-                <a href="index.jsp" class="logo d-flex align-items-center">
-                    <img src="assets/images/logo.png" alt="">
-                    <span class="d-none d-lg-block">RumosBank</span>
-                </a>
-            </div>
-        </header>
-        <aside id="sidebar" class="sidebar">
-            <ul class="sidebar-nav" id="sidebar-nav">
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="profile.jsp">
-                        <i class="bi bi-person"></i>
-                        <span>Profile</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="accounts.jsp">
-                        <i class="bi bi-question-circle"></i>
-                        <span>Accounts</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="index.jsp">
-                        <i class="bi bi-file-earmark"></i>
-                        <span>Logout</span>
-                    </a>
-                </li>
-            </ul>
-        </aside>
-        <main id="main" class="main">
-            <div class="pagetitle">
-                <h1>Accounts</h1>
-                <nav>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="accounts.jsp">Home</a></li>
-                        <li class="breadcrumb-item"><a href="accounts.jsp">Home</a></li>
-                        <li class="breadcrumb-item active">${account}</li>
-                    </ol>
-                </nav>
-            </div>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Description</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Timestamp</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="movement" items="${account.movements}" varStatus="status">
-                    <c:if test="${status.index lt 10}">
-                    <tr>
-                        <th scope="row"><a href="account?number=${movement.longDate}">${movement.type}</a></th>
-                        <td>${movement.amount}</td>
-                        <td>${movement.longDate}</td>
-                    <tr>
-                        </c:if>
-                        </c:forEach>
-                    </tbody>
-                </table>
-            <div class="row">
-                <c:forEach items="${cards}" var="card">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-title">
-                                <h5>Debit Card</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h6>Card Number</h6>
-                                        <h6 class="card-number">${card.number}</h6>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h6>Expiration Date</h6>
-                                        <h6 class="expiration-date">${card.expirationDate}</h6>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <h6>Cardholder Name</h6>
-                                        <h6 class="cardholder-name">${client.name}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
+<jsp:useBean id="account" scope="session" type="com.rumos.rumosbank.domain.models.BankAccount" />
 
-        </main>
-        <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/vendor/chart.js/chart.umd.js"></script>
-        <script src="assets/vendor/echarts/echarts.min.js"></script>
-        <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-        <script src="assets/vendor/php-email-form/validate.js"></script>
-        <script src="assets/js/main.js"></script>
-    </body>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<html>
+<head>
+  <title>Title</title>
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/tables_test.css">
+</head>
+<body>
+<%-- Include the header.jsp file --%>
+<%@ include file="header.jsp" %>
+
+<%-- Display the current account --%>
+<h1>${account}</h1>
+
+<%-- Display a table with the account movements --%>
+<div class="table-container">
+  <h2 class="table-title">Bank Account Movements</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Timestamp</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%-- Loop through the movements of the account --%>
+    <c:forEach var="movement" items="${account.movements}" varStatus="status">
+      <%-- Display only the first 10 movements --%>
+      <c:if test="${status.index lt 10}">
+        <tr>
+            <%-- Display a link to the movement details --%>
+          <th scope="row">
+            <a href="account?number=${movement.longDate}">${movement.type}</a>
+          </th>
+            <%-- Display the amount and timestamp of the movement --%>
+          <td>${movement.amount}</td>
+          <td>${movement.longDate}</td>
+        </tr>
+      </c:if>
+    </c:forEach>
+    </tbody>
+  </table>
+</div>
+
+<%@ include file="cards.jsp" %>
+</body>
 </html>
