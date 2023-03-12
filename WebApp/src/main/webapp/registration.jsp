@@ -25,7 +25,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                                 <div class="d-flex justify-content-center py-4">
-                                    <a href="index.jsp" class="login-title">
+                                    <a href="index_original.jsp" class="login-title">
                                         <img src="assets/images/logo.png" alt="">
                                         <span>Rumos Bank</span>
                                     </a>
@@ -75,7 +75,7 @@
                                                 <button class="registration-button" type="submit">Create Account</button>
                                             </div>
                                             <div class="col-12">
-                                                <p class="small mb-0">Already have an account? <a href="index.jsp">Log in</a></p>
+                                                <p class="small mb-0">Already have an account? <a href="index_original.jsp">Log in</a></p>
                                             </div>
                                         </form>
                                     </div>
