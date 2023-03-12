@@ -15,29 +15,37 @@ import java.io.IOException;
 
 @WebServlet(name = "profile", value = "/profile")
 public class ProfileServlet extends HttpServlet {
-    private final Client client;
-
-    private ProfileServlet(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        client = (Client) session.getAttribute("client");
-    }
+    private Client client;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("profile_test.jsp");
-        dispatcher.forward(request, response);
+        reloadPage(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        client = (Client) session.getAttribute("client");
+        getParameters(request);
+        updateClient();
+        reloadPage(request, response);
+    }
+
+    private void getParameters(HttpServletRequest request) {
         client.setPhone(request.getParameter("phone"));
         client.setMobilePhone(request.getParameter("mobilePhone"));
-        client.setProfession(request.getParameter("job"));
-        client.setEmailAddress(request.getParameter("email"));
+        client.setProfession(request.getParameter("profession"));
+        client.setEmailAddress(request.getParameter("emailAddress"));
+    }
+
+    private void updateClient() {
         Bank.instance.updateClient(client);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("profile_test.jsp");
-        dispatcher.forward(request, response);
+    }
+
+    private void reloadPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("profile_test.jsp");
+            dispatcher.forward(request, response);
     }
 }
