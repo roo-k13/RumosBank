@@ -54,7 +54,7 @@ class CardTest {
 
     @Test
     void testGetExpirationDate() {
-        assertEquals(LocalDate.now().plusYears(3), card.getExpirationDate());
+        assertEquals(LocalDate.now().plusYears(5), card.getExpirationDate());
     }
 
 }
