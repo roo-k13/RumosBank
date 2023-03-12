@@ -1,8 +1,14 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<link rel="stylesheet" href="assets/css/header_test.css">
-
-<div class="header">
-    <a href="index.jsp">Home</a>
-    <a href="profile.jsp">About</a>
-    <a href="accounts.jsp">Pictures</a>
-</div>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<html>
+<head>
+  <title>Header</title>
+  <link href="assets/css/header.css" rel="stylesheet">
+</head>
+<body>
+  <div class="header">
+    <a href="index.jsp">Rumos Bank</a>
+    <a href="profile_test.jsp">Profile</a>
+    <a href="accounts.jsp">Accounts</a>
+  </div>
+</body>
+</html>
