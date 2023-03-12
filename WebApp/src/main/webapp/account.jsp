@@ -8,14 +8,10 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>Dashboard - NiceAdmin Bootstrap Template</title>
-        <meta content="" name="description">
-        <meta content="" name="keywords">
         <link href="assets/images/favicon.png" rel="icon">
         <link href="assets/images/apple-touch-icon.png" rel="apple-touch-icon">
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
         <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
         <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
         <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
@@ -23,6 +19,8 @@
         <link href="assets/css/header.css" rel="stylesheet">
         <link href="assets/css/card.css" rel="stylesheet">
         <link href="assets/css/breadcrumb.css" rel="stylesheet">
+        <link href="assets/css/tables.css">
+        <link href="assets/css/sidebar.css">
     </head>
     <body>
         <header id="header" class="header fixed-top d-flex align-items-center">
@@ -66,8 +64,7 @@
                     </ol>
                 </nav>
             </div>
-            <div class="card-body pb-0">
-                <table class="table table-borderless">
+                <table class="table">
                     <thead>
                     <tr>
                         <th scope="col">Description</th>
@@ -87,7 +84,6 @@
                         </c:forEach>
                     </tbody>
                 </table>
-            </div>
             <div class="row">
                 <c:forEach items="${cards}" var="card">
                     <div class="col-md-4">
