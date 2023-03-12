@@ -17,10 +17,19 @@ class ClientTest {
 
     @BeforeEach
     public void setUp() {
+        BankAccount bankAccount1 = new BankAccount();
+        bankAccount1.setNumber("000000001");
+
+        BankAccount bankAccount2 = new BankAccount();
+        bankAccount2.setNumber("000000002");
+
+        BankAccount bankAccount3 = new BankAccount();
+        bankAccount3.setNumber("000000003");
+
         List<BankAccount> bankAccounts = new ArrayList<>();
-        bankAccounts.add(new BankAccount());
-        bankAccounts.add(new BankAccount());
-        bankAccounts.add(new BankAccount());
+        bankAccounts.add(bankAccount1);
+        bankAccounts.add(bankAccount2);
+        bankAccounts.add(bankAccount3);
 
         client = new Client();
         client.setFirstName("John");
@@ -42,10 +51,9 @@ class ClientTest {
 
     @Test
     public void testGetBankAccount() {
-        BankAccount account = client.getBankAccount("001");
+        BankAccount account = client.getBankAccount("000000002");
         assertNotNull(account);
-        assertEquals("002", account.getNumber());
-        assertEquals(2000, account.getBalance());
+        assertEquals("000000002", account.getNumber());
     }
 
 
