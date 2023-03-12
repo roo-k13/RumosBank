@@ -5,7 +5,7 @@
     -fx-pref-width: 125;
 }
 
-.button {
+.vbox .button {
     -fx-background-color: #ffffff;
     -fx-pref-width: 100;
 }
