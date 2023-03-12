@@ -6,13 +6,17 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class App extends Application {
-    private static Client authenticatedClient;
+    private static final double STAGE_WIDTH = 1280.0;
+    private static final double STAGE_HEIGHT = 1280.0;
+    private static Client authenticatedClient = null;
 
     public static Client getAuthenticatedClient() {
         return authenticatedClient;
@@ -23,9 +27,11 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/fxml/login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+    public final void start(Stage stage) throws IOException {
+        URL url = App.class.getResource(Paths.LOGIN_PATH);
+        FXMLLoader fxmlLoader = new FXMLLoader(url);
+        Parent parent = fxmlLoader.load();
+        Scene scene = new Scene(parent);
         stage.setTitle("Rumos Bank");
         stage.setScene(scene);
         stage.show();
@@ -36,9 +42,11 @@ public class App extends Application {
     }
 
     public static void changeScene(ActionEvent event, String path) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(path));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        URL url = App.class.getResource(Paths.LOGIN_PATH);
+        FXMLLoader fxmlLoader = new FXMLLoader(url);
+        Parent parent = fxmlLoader.load();
+        Scene scene = new Scene(parent, STAGE_WIDTH, STAGE_HEIGHT);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
