@@ -5,7 +5,7 @@ import com.rumos.rumosbank.domain.models.cards.DebitCard;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 
-public class DebitCardRepository extends AbstractRepository<DebitCard> {
+public final class DebitCardRepository extends AbstractRepository<DebitCard> {
 
     public DebitCard getByNumber(String number) {
         String query = "SELECT d FROM DebitCard d WHERE d.number = :number";
