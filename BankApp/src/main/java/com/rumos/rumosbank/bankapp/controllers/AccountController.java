@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.rumos.rumosbank.bankapp.App;
 import com.rumos.rumosbank.domain.models.BankAccount;
+import com.rumos.rumosbank.domain.models.Client;
 import com.rumos.rumosbank.domain.models.movements.Movement;
 import com.rumos.rumosbank.domain.Bank;
 
@@ -19,7 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class AccountController extends NavigationBarController {
+public final class AccountController extends NavigationBarController {
 
     // Fields
     private BankAccount selectedAccount;
@@ -45,15 +46,17 @@ public class AccountController extends NavigationBarController {
     // Initialization methods
     @FXML
     private void initialize() {
-        initializeAccountsChoiceBox();
+        Client authenticatedClient = App.getAuthenticatedClient();
+        List<BankAccount> bankAccounts = authenticatedClient.getBankAccounts();
+        initializeAccountsChoiceBox(bankAccounts);
         initializeMovementsTable();
         feedback_message_label.setVisible(false);
     }
 
-    private void initializeAccountsChoiceBox() {
+    private void initializeAccountsChoiceBox(List<BankAccount> bankAccounts) {
         bank_accounts_choice_box.setOnAction(this::onSelectingBankAccount);
-        List<BankAccount> bankAccounts = App.getAuthenticatedClient().getBankAccounts();
-        bank_accounts_choice_box.setItems(FXCollections.observableList(bankAccounts));
+        ObservableList<BankAccount> observableList = FXCollections.observableList(bankAccounts);
+        bank_accounts_choice_box.setItems(observableList);
     }
 
     private void initializeMovementsTable() {
