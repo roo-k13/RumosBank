@@ -2,6 +2,7 @@ package com.rumos.rumosbank.domain.repositories;
 
 import com.rumos.rumosbank.domain.models.BankAccount;
 import com.rumos.rumosbank.domain.shared.Generators;
+
 import org.junit.jupiter.api.Test;
 
 class BankAccountRepositoryTest {
