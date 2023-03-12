@@ -12,13 +12,13 @@ class ClientRepositoryTest {
 
     @Test
     public void getByEmail() {
-        if (new ClientRepository().get("quimbarreiros@hotmail.com") == null) {
+        if (new ClientRepository().getByEmail("quimbarreiros@hotmail.com") == null) {
             fail("Unable to get client"); }
     }
 
     @Test
     void get() {
-        if (new ClientRepository().get(1L) == null) {
+        if (new ClientRepository().getByEmail(1L) == null) {
             fail("Unable to get client"); }
     }
 
@@ -36,7 +36,7 @@ class ClientRepositoryTest {
 
     @Test
     void update() {
-        Client client = new ClientRepository().get(1L);
+        Client client = new ClientRepository().getByEmail(1L);
         client.setFirstName("Joaquim");
         client.setLastName("Barreiros");
         client.setBirthdate(LocalDate.of(1990, 2, 2));
