@@ -21,7 +21,7 @@ public class AccountServlet extends HttpServlet {
         BankAccount bankAccount = client.getBankAccount(number);
         request.getSession().setAttribute("account", bankAccount);
         request.getSession().setAttribute("cards", bankAccount.getCards());
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("account.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("account_test.jsp");
         requestDispatcher.forward(request, response);
     }
 }
