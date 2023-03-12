@@ -6,7 +6,7 @@ import java.util.List;
 import com.rumos.rumosbank.bankapp.App;
 import com.rumos.rumosbank.domain.models.BankAccount;
 import com.rumos.rumosbank.domain.models.movements.Movement;
-import com.rumos.rumosbank.domain.services.Bank;
+import com.rumos.rumosbank.domain.Bank;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
