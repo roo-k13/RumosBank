@@ -6,7 +6,7 @@ public class BankAccountRepository extends AbstractRepository<BankAccount> {
 
     public BankAccount get(String number) {
         String query = "SELECT b FROM BankAccount b WHERE b.number = :number";
-        return entityManager.createQuery(query, BankAccount.class)
+        return getEntityManager().createQuery(query, BankAccount.class)
                 .setParameter("number", number)
                 .getSingleResult();
     }
