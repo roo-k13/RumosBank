@@ -18,20 +18,22 @@ public class ATM {
     public static final ATM instance;
 
     static {
-        instance = new ATM(); }
+        instance = new ATM();}
 
-    public int[] getWithdrawAmounts() {
-        return new int[] {10, 20, 40, 80, 100, 200, 400, 600, 800};
+    public static int[] getWithdrawAmounts() {
+        return new int[]{10, 20, 40, 80, 100, 200, 400, 600, 800};
     }
 
-    public int[] getDepositAmounts() {
+    public static int[] getDepositAmounts() {
         return new int[] {25, 50, 100, 250, 500, 1000, 2500, 5000, 10000};
     }
 
-    public Card authenticate(String cardNumber, String cardPin) {
+    public static Card authenticate(String cardNumber, String cardPin) {
+        DebitCardRepository debitCardRepository = new DebitCardRepository();
+        CreditCardRepository creditCardRepository = new CreditCardRepository();
         Optional<Card> card = Stream.of(
-                        new DebitCardRepository().getByNumber(cardNumber),
-                        new CreditCardRepository().getByNumber(cardNumber)
+                        debitCardRepository.getByNumber(cardNumber),
+                        creditCardRepository.getByNumber(cardNumber)
                 )
                 .filter(Objects::nonNull)
                 .filter(c -> c.isPinCorrect(cardPin))
