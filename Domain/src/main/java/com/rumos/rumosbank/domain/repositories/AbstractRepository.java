@@ -5,8 +5,12 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public abstract class AbstractRepository<T> {
-    protected final EntityManager entityManager;
-    protected final EntityManagerFactory entityManagerFactory;
+    private final EntityManager entityManager;
+    private final EntityManagerFactory entityManagerFactory;
+
+    protected final EntityManager getEntityManager() {
+        return entityManager;
+    }
 
     protected AbstractRepository() {
         entityManagerFactory = Persistence.createEntityManagerFactory("default");
@@ -28,7 +32,7 @@ public abstract class AbstractRepository<T> {
         }
     }
 
-    public void update(T object) {
+    public final void update(T object) {
         try {
             entityManager.getTransaction().begin();
             entityManager.merge(object);
@@ -43,7 +47,7 @@ public abstract class AbstractRepository<T> {
         }
     }
 
-    public void close() {
+    public final void close() {
         entityManager.close();
         entityManagerFactory.close();
     }
