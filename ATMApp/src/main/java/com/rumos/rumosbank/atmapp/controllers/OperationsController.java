@@ -69,7 +69,7 @@ public class OperationsController extends NavigationBarController {
     /* ------------------------------------------------------------ Populate Buttons ------------------------------------------------------------ */
 
     private void populateButtonsWithWithdrawAmounts() {
-        int[] amounts = ATM.instance.getWithdrawAmounts();
+        int[] amounts = ATM.getWithdrawAmounts();
         Button[] buttons = new Button[] {
                 first_button, second_button, third_button, fourth_button, fifth_button,
                 sixth_button, seventh_button, eight_button, ninth_button };

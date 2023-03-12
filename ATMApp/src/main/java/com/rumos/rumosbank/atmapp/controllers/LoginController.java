@@ -21,7 +21,7 @@ public class LoginController {
     private void onLoginButtonClick(ActionEvent actionEvent) {
         String cardNumber = card_number_text_field.getText();
         String cardPin = card_pin_password_field.getText();
-        App.setAuthenticatedCard(ATM.instance.authenticate(cardNumber, cardPin));
+        App.setAuthenticatedCard(ATM.authenticate(cardNumber, cardPin));
 
         //TODO: FIX BUG WHERE I CANT LOGIN WITH CREDIT CARD
 
