@@ -47,30 +47,37 @@ public class BankAccount {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    public long getId() {
+    public final long getId() {
         return id;
     }
 
-    public String getNumber() {
+    public final String getNumber() {
         return number;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public List<Movement> getMovements() {
+    public final List<Movement> getMovements() {
         return Stream.of(deposits, withdraws, receivedTransfers, sentTransfers)
                 .flatMap(Collection::stream).collect(Collectors.toList());
-
     }
 
-    public BigDecimal getBalance() {
+    public final BigDecimal getBalance() {
         BigDecimal balance = BigDecimal.valueOf(0);
-        for (Deposit deposit : deposits) { balance = balance.add(deposit.getAmount()); }
-        for (Withdraw withdraw: withdraws) { balance = balance.subtract(withdraw.getAmount());}
-        for (Transfer transfer : receivedTransfers) { balance = balance.add(transfer.getAmount()); }
-        for (Transfer transfer : sentTransfers) { balance = balance.subtract(transfer.getAmount()); }
+        for (Deposit deposit : deposits) {
+            balance = balance.add(deposit.getAmount());
+        }
+        for (Withdraw withdraw : withdraws) {
+            balance = balance.subtract(withdraw.getAmount());
+        }
+        for (Transfer transfer : receivedTransfers) {
+            balance = balance.add(transfer.getAmount());
+        }
+        for (Transfer transfer : sentTransfers) {
+            balance = balance.subtract(transfer.getAmount());
+        }
         return balance;
     }
 
@@ -89,8 +96,10 @@ public class BankAccount {
     }
 
     public void setNumber(String number) {
-        if (!number.matches("[0-9]+")) throw new IllegalArgumentException("The account number must only contain digits");
-        if (number.length() != 9) throw new IllegalArgumentException("The account number must be exactly 9 digits long");
+        if (!number.matches("[0-9]+"))
+            throw new IllegalArgumentException("The account number must only contain digits");
+        if (number.length() != 9)
+            throw new IllegalArgumentException("The account number must be exactly 9 digits long");
         this.number = number;
     }
 
@@ -98,18 +107,20 @@ public class BankAccount {
         this.name = name;
     }
 
-    public void setMovements(List<Withdraw> withdraws, List<Deposit> deposits, List<Transfer> receivedTransfers, List<Transfer> sentTransfers) {
-        this.withdraws = withdraws;this.deposits = deposits;
+    public final void setMovements(List<Withdraw> withdraws, List<Deposit> deposits,
+                                   List<Transfer> receivedTransfers, List<Transfer> sentTransfers) {
+        this.withdraws = withdraws;
+        this.deposits = deposits;
         this.receivedTransfers = receivedTransfers;
         this.sentTransfers = sentTransfers;
     }
 
-    public void setClient(Client client) {
+    public final void setClient(Client client) {
         this.client = client;
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return name + " Nº: " + number;
     }
 }
