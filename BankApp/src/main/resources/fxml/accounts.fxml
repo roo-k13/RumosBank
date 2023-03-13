@@ -11,35 +11,39 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane styleClass="border-pane" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.AccountController">
-   <left>
-       <VBox styleClass="vbox" stylesheets="@../css/navbar.css">
-           <Button mnemonicParsing="false" onAction="#onAccountsButtonClick" styleClass="vbox_side_bar_button" text="Accounts" />
-           <Button mnemonicParsing="false" onAction="#onCardsButtonClick" styleClass="vbox_side_bar_button" text="Cards" />
-           <Button mnemonicParsing="false" onAction="#onEditProfileButtonClick" styleClass="vbox_side_bar_button" text="Profile" />
-           <Button mnemonicParsing="false" onAction="#onChangePasswordButtonClick" styleClass="vbox_side_bar_button" text="Password" />
-           <Button mnemonicParsing="false" onAction="#onLogoutButtonClick" styleClass="vbox_side_bar_button" text="Logout" />
-       </VBox>
-   </left>
-   <center>
-       <AnchorPane stylesheets="@../css/accounts.css">
-           <ChoiceBox fx:id="bank_accounts_choice_box" layoutX="88.0" layoutY="26.0" AnchorPane.topAnchor="25.0" />
-            <TableView fx:id="movements_table_view" editable="true" layoutX="50.0" layoutY="56.0" stylesheets="@../css/tables.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+<BorderPane styleClass="border-pane" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.rumos.rumosbank.bankapp.controllers.AccountController">
+    <left>
+        <VBox styleClass="vbox" stylesheets="@../css/navbar.css">
+            <Button mnemonicParsing="false" onAction="#onAccountsButtonClick" text="Accounts"/>
+            <Button mnemonicParsing="false" onAction="#onCardsButtonClick" text="Cards"/>
+            <Button mnemonicParsing="false" onAction="#onEditProfileButtonClick" text="Profile"/>
+            <Button mnemonicParsing="false" onAction="#onChangePasswordButtonClick" text="Password"/>
+            <Button mnemonicParsing="false" onAction="#onLogoutButtonClick" text="Logout"/>
+        </VBox>
+    </left>
+    <center>
+        <AnchorPane stylesheets="@../css/accounts.css">
+            <ChoiceBox fx:id="bank_accounts_choice_box" layoutX="88.0" layoutY="26.0" AnchorPane.topAnchor="25.0"/>
+            <TableView fx:id="movements_table_view" editable="true" layoutX="50.0" layoutY="56.0"
+                       stylesheets="@../css/tables.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
                 <columns>
-                    <TableColumn fx:id="movement_type" text="Type" />
-                    <TableColumn fx:id="movement_amount" text="Amount" />
-                    <TableColumn fx:id="movement_date" text="Date" />
+                    <TableColumn fx:id="movement_type" text="Type"/>
+                    <TableColumn fx:id="movement_amount" text="Amount"/>
+                    <TableColumn fx:id="movement_date" text="Date"/>
                 </columns>
             </TableView>
-           <VBox layoutX="44.0" layoutY="303.0" styleClass="transfer-vbox" AnchorPane.bottomAnchor="25.0">
-               <Label prefHeight="0.0" text="Make Transfer" />
-               <HBox prefHeight="30.0" prefWidth="388.0">
-                   <TextField fx:id="transfer_account_number_text_field" prefWidth="160.0" promptText="Account Number" />
-                   <TextField fx:id="transfer_amount_text_field" prefWidth="140.0" promptText="Amount" />
-                   <Button mnemonicParsing="false" onAction="#onMakeTransferButtonClick" prefWidth="85.0" text="Send" />
-               </HBox>
-            <Label fx:id="feedback_message_label" prefWidth="400.0" text="This is the feedback message label" />
-           </VBox>
-       </AnchorPane>
-   </center>
+            <VBox layoutX="44.0" layoutY="303.0" styleClass="transfer-vbox" AnchorPane.bottomAnchor="25.0">
+                <Label prefHeight="0.0" text="Make Transfer"/>
+                <HBox prefHeight="30.0" prefWidth="388.0">
+                    <TextField fx:id="transfer_account_number_text_field" prefWidth="160.0"
+                               promptText="Account Number"/>
+                    <TextField fx:id="transfer_amount_text_field" prefWidth="140.0" promptText="Amount"/>
+                    <Button mnemonicParsing="false" onAction="#onMakeTransferButtonClick" prefWidth="85.0" text="Send"/>
+                </HBox>
+                <Label fx:id="feedback_message_label" prefWidth="400.0" text="This is the feedback message label"/>
+            </VBox>
+        </AnchorPane>
+    </center>
 </BorderPane>
