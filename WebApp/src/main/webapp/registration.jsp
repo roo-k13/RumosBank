@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
 </head>
 <body>
 <form action="registration" method="get">
