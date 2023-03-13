@@ -3,9 +3,7 @@ package com.rumos.rumosbank.bankapp.controllers;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.rumos.rumosbank.bankapp.App;
 import com.rumos.rumosbank.domain.models.BankAccount;
-import com.rumos.rumosbank.domain.models.Client;
 import com.rumos.rumosbank.domain.models.movements.Movement;
 import com.rumos.rumosbank.domain.Bank;
 
@@ -46,8 +44,7 @@ public final class AccountController extends AbstractController {
     // Initialization methods
     @FXML
     private void initialize() {
-        List<BankAccount> bankAccounts = getClient().getBankAccounts();
-        initializeAccountsChoiceBox(bankAccounts);
+        initializeAccountsChoiceBox(getBankAccounts());
         initializeMovementsTable();
         feedback_message_label.setVisible(false);
     }
@@ -74,25 +71,25 @@ public final class AccountController extends AbstractController {
     @FXML
     private void onMakeTransferButtonClick() {
         BigDecimal amount = getTransferAmount();
-        if (amount == null) {
+        if (null == amount) {
             feedback_message_label.setVisible(true);
             feedback_message_label.setText("Invalid transfer amount.");
             return;
         }
 
-        String receiverAccountNumber = getReceiverAccountNumber();
-        if (receiverAccountNumber == null) {
+        String destinationAccount = getReceiverAccountNumber();
+        if (null == destinationAccount) {
             feedback_message_label.setVisible(true);
             feedback_message_label.setText("Receiver account number is required.");
             return;
         }
 
         try {
-            Bank.makeTransfer(selectedAccount, receiverAccountNumber, amount);
+            Bank.makeTransfer(selectedAccount, destinationAccount, amount);
             Bank.updateMovements(selectedAccount);
             updateMovements();
             transferSuccessful();
-        } catch (Exception exception) {
+        } catch (RuntimeException exception) {
             feedback_message_label.setText(exception.getMessage());
         }
     }
@@ -111,11 +108,11 @@ public final class AccountController extends AbstractController {
     }
 
     private String getReceiverAccountNumber() {
-        String receiverAccountNumber = transfer_account_number_text_field.getText().trim();
-        if (receiverAccountNumber.isEmpty()) {
+        String destinationAccount = transfer_account_number_text_field.getText().trim();
+        if (destinationAccount.isEmpty()) {
             return null;
         }
-        return receiverAccountNumber;
+        return destinationAccount;
     }
 
     private void transferSuccessful() {
