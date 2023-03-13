@@ -2,6 +2,7 @@ package com.rumos.rumosbank.bankapp.controllers;
 
 import com.rumos.rumosbank.bankapp.App;
 import com.rumos.rumosbank.domain.models.BankAccount;
+import com.rumos.rumosbank.domain.models.Client;
 import com.rumos.rumosbank.domain.models.cards.CreditCard;
 import com.rumos.rumosbank.domain.models.cards.DebitCard;
 import com.rumos.rumosbank.domain.Bank;
@@ -33,7 +34,8 @@ public class CardsController extends NavigationBarController {
     @FXML
     private void initializeAccountsChoiceBox() {
         bank_accounts_choice_box.setOnAction(this::onSelectingBankAccount);
-        List<BankAccount> bankAccounts = App.getAuthenticatedClient().getBankAccounts();
+        Client authenticatedClient = App.getAuthenticatedClient();
+        List<BankAccount> bankAccounts = authenticatedClient.getBankAccounts();
         bank_accounts_choice_box.setItems(FXCollections.observableList(bankAccounts));
     }
 
@@ -64,7 +66,6 @@ public class CardsController extends NavigationBarController {
 
     @FXML
     private void onCreateNewCreditCardButtonClick() {
-        BankAccount bankAccount = new BankAccount();
         Bank.instance.registerCreditCard(selectedAccount);
     }
 }
