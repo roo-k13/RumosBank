@@ -6,7 +6,14 @@ import com.rumos.rumosbank.domain.models.cards.Card;
 import com.rumos.rumosbank.domain.models.cards.CreditCard;
 import com.rumos.rumosbank.domain.models.cards.DebitCard;
 import com.rumos.rumosbank.domain.models.movements.Transfer;
-import com.rumos.rumosbank.domain.repositories.*;
+
+import com.rumos.rumosbank.domain.repositories.BankAccountRepository;
+import com.rumos.rumosbank.domain.repositories.ClientRepository;
+import com.rumos.rumosbank.domain.repositories.CreditCardRepository;
+import com.rumos.rumosbank.domain.repositories.DebitCardRepository;
+import com.rumos.rumosbank.domain.repositories.DepositRepository;
+import com.rumos.rumosbank.domain.repositories.TransferRepository;
+import com.rumos.rumosbank.domain.repositories.WithdrawRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,7 +25,7 @@ public class Bank {
         instance = new Bank();
     }
 
-    private void registerBankAccount(Client client) {
+    private static void registerBankAccount(Client client) {
         BankAccount bankAccount = new BankAccount();
         bankAccount.setNumber(new Generators().generateRandomNumber(9));
         bankAccount.setName("Conta Corrente");
@@ -52,7 +59,7 @@ public class Bank {
         return null != client && client.isPasswordCorrect(password) ? client : null;
     }
 
-    public final void registerClient(Client client) {
+    public static void registerClient(Client client) {
         new ClientRepository().insert(client);
         registerBankAccount(client);
     }
@@ -69,7 +76,7 @@ public class Bank {
                 new TransferRepository().getReceived(bankAccountId));
     }
 
-    public void makeTransfer(BankAccount sender, String receiver, BigDecimal amount) {
+    public static void makeTransfer(BankAccount sender, String receiver, BigDecimal amount) {
         Transfer transfer = new Transfer();
         transfer.setAmount(amount);
         transfer.setSender(sender);

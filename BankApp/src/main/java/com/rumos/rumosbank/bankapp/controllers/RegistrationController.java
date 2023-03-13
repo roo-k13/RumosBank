@@ -96,7 +96,7 @@ public class RegistrationController extends NavigationBarController {
         trimTextFields();
 
         try {
-            new Bank().registerClient(buildClient());
+            Bank.registerClient(buildClient());
         } catch (Exception exception) {
             feedback_message_label.setVisible(true);
             feedback_message_label.setText(exception.getMessage());

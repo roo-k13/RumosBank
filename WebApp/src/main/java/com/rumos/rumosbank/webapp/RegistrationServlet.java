@@ -19,7 +19,7 @@ public class RegistrationServlet extends AbstractController {
     protected final void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         Client client = buildClient(req);
-        Bank.instance.registerClient(client);
+        Bank.registerClient(client);
         changeToIndex(req, resp);
     }
 
