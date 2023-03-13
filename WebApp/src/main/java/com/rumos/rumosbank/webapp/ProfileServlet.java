@@ -26,7 +26,7 @@ public final class ProfileServlet extends AbstractController {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         HttpSession session = req.getSession();
-        Client client = (Client) session.getAttribute(CLIENT);
+        Client client = (Client) session.getAttribute(CLIENT_ATTRIBUTE);
         getParameters(client, req);
         updateClient(client);
         reloadPage(req, resp);

@@ -24,7 +24,7 @@ public class LoginServlet extends AbstractController {
         try {
             Client authenticatedClient = Bank.instance.authenticate(email, password);
             HttpSession session = req.getSession();
-            session.setAttribute(CLIENT, authenticatedClient);
+            session.setAttribute(CLIENT_ATTRIBUTE, authenticatedClient);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("accounts.jsp");
             requestDispatcher.forward(req, resp);
         } catch (NoResultException exception) {
