@@ -22,6 +22,11 @@ public class ChangePinController extends AbstractController {
     private Label feedback_message_label;
 
     @FXML
+    private void initialize() {
+        feedback_message_label.setVisible(false);
+    }
+
+    @FXML
     private void onSavePinButtonClick(ActionEvent actionEvent) {
         if (areFieldsValid()) {
             updatePin(actionEvent);
