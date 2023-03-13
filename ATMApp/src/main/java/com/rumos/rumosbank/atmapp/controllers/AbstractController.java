@@ -14,8 +14,8 @@ import java.io.IOException;
 
 public class AbstractController {
     private String selectedOperation;
-    private Card card;
-    private BankAccount bankAccount;
+    private static Card card;
+    private static BankAccount bankAccount;
 
     public final String getSelectedOperation() {
         return selectedOperation;
@@ -33,12 +33,12 @@ public class AbstractController {
         this.selectedOperation = selectedOperation;
     }
 
-    public final void setBankAccount(BankAccount bankAccount) {
-        this.bankAccount = bankAccount;
+    public static void setBankAccount(BankAccount bankAccount) {
+        AbstractController.bankAccount = bankAccount;
     }
 
-    public final void setCard(Card card) {
-        this.card = card;
+    public static void setCard(Card card) {
+        AbstractController.card = card;
     }
 
     protected static void changeScene(ActionEvent event, String path) throws IOException {
