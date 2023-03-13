@@ -3,18 +3,15 @@ package com.rumos.rumosbank.atmapp.controllers;
 import java.io.IOException;
 
 import com.rumos.rumosbank.atmapp.App;
+import com.rumos.rumosbank.domain.ATM;
 import com.rumos.rumosbank.domain.models.cards.Card;
-import com.rumos.rumosbank.domain.models.cards.CreditCard;
-import com.rumos.rumosbank.domain.models.cards.DebitCard;
-import com.rumos.rumosbank.domain.repositories.CreditCardRepository;
-import com.rumos.rumosbank.domain.repositories.DebitCardRepository;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 
-public class ChangePinController {
+public class ChangePinController extends AbstractController {
 
     @FXML
     private PasswordField insert_pin_text_field;
@@ -49,11 +46,11 @@ public class ChangePinController {
         return true;
     }
 
-    private boolean isAnyFieldEmpty(String insertPin, String confirmPin) {
+    private static boolean isAnyFieldEmpty(CharSequence insertPin, CharSequence confirmPin) {
         return insertPin.isEmpty() || confirmPin.isEmpty();
     }
 
-    private boolean areFieldsMatching(String insertPin, String confirmPin) {
+    private static boolean areFieldsMatching(String insertPin, String confirmPin) {
         return insertPin.equals(confirmPin);
     }
 
@@ -72,17 +69,13 @@ public class ChangePinController {
         }
     }
 
-    private void updateCardInRepository(Card card) {
-        if (card instanceof DebitCard) {
-            new DebitCardRepository().update((DebitCard) card);
-        } else if (card instanceof CreditCard) {
-            new CreditCardRepository().update((CreditCard) card);
-        }
+    private static void updateCardInRepository(Card card) {
+        ATM.instance.updateCard(card);
     }
 
     private void navigateToMenu(ActionEvent actionEvent) {
         try {
-            App.changeScene(actionEvent, "/fxml/index.fxml");
+            changeScene(actionEvent, "/fxml/index.fxml");
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
