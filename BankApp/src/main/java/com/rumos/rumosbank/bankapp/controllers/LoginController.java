@@ -1,6 +1,7 @@
 package com.rumos.rumosbank.bankapp.controllers;
 
 import com.rumos.rumosbank.bankapp.App;
+import com.rumos.rumosbank.bankapp.Paths;
 import com.rumos.rumosbank.domain.models.Client;
 import com.rumos.rumosbank.domain.Bank;
 
@@ -26,13 +27,19 @@ public class LoginController {
     private Label feedback_message_label;
 
     @FXML
-    private void initialize() { feedback_message_label.setVisible(false); }
+    private void initialize() {
+        feedback_message_label.setVisible(false);
+    }
 
     private void getDetails() {
-            if (email_text_field.getText().isEmpty()) { throw new IllegalArgumentException("Please fill in the email field"); }
-            if (email_text_field.getText().isEmpty()) { throw new IllegalArgumentException("Please fill in the password field"); }
-            email = email_text_field.getText();
-            password = password_text_field.getText();
+        if (email_text_field.getText().isEmpty()) {
+            throw new IllegalArgumentException("Please fill in the email field");
+        }
+        if (email_text_field.getText().isEmpty()) {
+            throw new IllegalArgumentException("Please fill in the password field");
+        }
+        email = email_text_field.getText();
+        password = password_text_field.getText();
     }
 
     @FXML
@@ -48,8 +55,11 @@ public class LoginController {
     }
 
     @FXML
-    public void onRegisterButtonClick(ActionEvent event) {
-        try { App.changeScene(event, "/fxml/registration.fxml"); }
-        catch (IOException exception) { throw new RuntimeException(exception); }
+    public final void onRegisterButtonClick(ActionEvent event) {
+        try {
+            App.changeScene(event, Paths.REGISTRATION_PATH);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
     }
 }
