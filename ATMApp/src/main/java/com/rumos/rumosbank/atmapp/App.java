@@ -30,15 +30,6 @@ public class App extends Application {
         stage.centerOnScreen();
     }
 
-    public static void changeScene(ActionEvent event, String path) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(path));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-        stage.centerOnScreen();
-    }
-
     /* ------------------------------------------------------------ Authenticated Account ------------------------------------------------------------ */
 
     public static BankAccount getAuthenticatedAccount() {
