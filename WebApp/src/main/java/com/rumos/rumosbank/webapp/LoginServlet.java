@@ -13,23 +13,22 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "login", value = "/login")
-public class LoginServlet extends MainController {
+public class LoginServlet extends AbstractController {
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
         try {
             Client authenticatedClient = Bank.instance.authenticate(email, password);
-            HttpSession session = request.getSession();
+            HttpSession session = req.getSession();
             session.setAttribute(CLIENT, authenticatedClient);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("accounts.jsp");
-            requestDispatcher.forward(request, response);
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("accounts.jsp");
+            requestDispatcher.forward(req, resp);
         } catch (NoResultException exception) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
-            requestDispatcher.forward(request, response);
+            changeToIndex(req, resp);
         }
     }
 }
