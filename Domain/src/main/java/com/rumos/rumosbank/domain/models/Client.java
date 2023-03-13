@@ -35,6 +35,10 @@ public class Client {
     @JoinColumn(name = "client_id")
     private List<BankAccount> bankAccounts;
 
+    public final Long getId() {
+        return id;
+    }
+
     public final String getFirstName() {
         return firstName;
     }
