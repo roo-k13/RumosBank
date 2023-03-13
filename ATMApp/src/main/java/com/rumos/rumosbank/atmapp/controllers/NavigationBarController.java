@@ -43,8 +43,8 @@ public class NavigationBarController extends AbstractController {
 
     @FXML
     protected final void onLogoutButtonClick(ActionEvent actionEvent) {
-        App.setAuthenticatedAccount(null);
-        App.setAuthenticatedCard(null);
+        setBankAccount(null);
+        setCard(null);
         try {
             changeScene(actionEvent, LOGIN_PATH);
         } catch (IOException exception) {

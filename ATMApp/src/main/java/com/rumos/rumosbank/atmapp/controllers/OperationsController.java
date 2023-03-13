@@ -50,7 +50,7 @@ public class OperationsController extends NavigationBarController {
 
     protected final void setAccountBalance() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        BankAccount authenticatedAccount = App.getAuthenticatedAccount();
+        BankAccount authenticatedAccount = getBankAccount();
         String balance = formatter.format(authenticatedAccount.getBalance());
         account_balance_label.setText("Balance: " + balance);
     }
@@ -61,12 +61,12 @@ public class OperationsController extends NavigationBarController {
         String amountString = buttonPressed.getText().replace("€", "");
         int amountValue = Integer.parseInt(amountString);
         if (Objects.equals(getSelectedOperation(), "Withdraw")) {
-            ATM.instance.makeWithdraw(App.getAuthenticatedAccount(), BigDecimal.valueOf(amountValue));
+            ATM.instance.makeWithdraw(getBankAccount(), BigDecimal.valueOf(amountValue));
         }
         else if (Objects.equals(getSelectedOperation(), "Deposit")) {
-            ATM.instance.makeDeposit(App.getAuthenticatedAccount(), BigDecimal.valueOf(amountValue));
+            ATM.instance.makeDeposit(getBankAccount(), BigDecimal.valueOf(amountValue));
         }
-        Bank.instance.updateMovements(App.getAuthenticatedAccount());
+        Bank.instance.updateMovements(getBankAccount());
         setAccountBalance();
     }
 
