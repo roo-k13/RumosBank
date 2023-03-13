@@ -1,38 +1,54 @@
 package com.rumos.rumosbank.atmapp.controllers;
 
 import com.rumos.rumosbank.atmapp.App;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class NavigationBarController {
+public class NavigationBarController extends AbstractController {
+    private static final String LOGIN_PATH = "/fxml/login.fxml";
+    private static final String OPERATIONS_PATH = "/fxml/operations.fxml";
+    private static final String CHANGE_PIN_PATH = "/fxml/change_pin.fxml";
 
     @FXML
     private void onWithdrawButtonClick(ActionEvent actionEvent) {
-        OperationsController.selectedOperation = "Withdraw";
-        try { App.changeScene(actionEvent, "/fxml/operations.fxml"); }
-        catch (IOException exception) { throw new RuntimeException(exception); }
+        setSelectedOperation("Withdraw");
+        try {
+            changeScene(actionEvent, OPERATIONS_PATH);
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 
     @FXML
     private void onDepositButtonClick(ActionEvent actionEvent) {
-        OperationsController.selectedOperation = "Deposit";
-        try { App.changeScene(actionEvent, "/fxml/operations.fxml"); }
-        catch (IOException exception) { throw new RuntimeException(exception); }
+        setSelectedOperation("Deposit");
+        try {
+            changeScene(actionEvent, OPERATIONS_PATH);
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 
     @FXML
     private void onChangePinButtonClick(ActionEvent actionEvent) {
-        try { App.changeScene(actionEvent, "/fxml/change_pin.fxml"); }
-        catch (IOException exception) { throw new RuntimeException(exception); }
+        try {
+            changeScene(actionEvent, CHANGE_PIN_PATH);
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 
     @FXML
-    protected void onLogoutButtonClick(ActionEvent actionEvent) {
+    protected final void onLogoutButtonClick(ActionEvent actionEvent) {
         App.setAuthenticatedAccount(null);
         App.setAuthenticatedCard(null);
-        try { App.changeScene(actionEvent, "/fxml/login.fxml"); }
-        catch (IOException exception) { throw new RuntimeException(exception); }
+        try {
+            changeScene(actionEvent, LOGIN_PATH);
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 }
