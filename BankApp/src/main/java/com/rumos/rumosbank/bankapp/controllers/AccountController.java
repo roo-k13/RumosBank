@@ -117,6 +117,7 @@ public final class AccountController extends AbstractController {
 
     private void transferSuccessful() {
         feedback_message_label.setVisible(true);
+        feedback_message_label.setStyle("-fx-text-fill: green");
         feedback_message_label.setText("Transfer successful.");
         transfer_amount_text_field.clear();
         transfer_account_number_text_field.clear();
