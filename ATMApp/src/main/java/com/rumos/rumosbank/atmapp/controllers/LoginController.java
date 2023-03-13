@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class LoginController {
+public class LoginController extends AbstractController {
 
     @FXML
     private TextField card_number_text_field;
@@ -31,7 +31,7 @@ public class LoginController {
                 String path;
                 if (!App.getAuthenticatedCard().hasPinBeenChanged()) { path = "/fxml/change_pin.fxml"; }
                 else { path = "/fxml/index.fxml"; }
-                App.changeScene(actionEvent, path);
+                changeScene(actionEvent, path);
             } catch (IOException exception) { throw new RuntimeException(exception); }
         }
     }
