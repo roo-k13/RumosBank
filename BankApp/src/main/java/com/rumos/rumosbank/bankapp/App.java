@@ -14,17 +14,8 @@ import java.io.IOException;
 import java.net.URL;
 
 public class App extends Application {
-    private static final double STAGE_WIDTH = 1280.0;
-    private static final double STAGE_HEIGHT = 1280.0;
-    private static Client authenticatedClient = null;
-
-    public static Client getAuthenticatedClient() {
-        return authenticatedClient;
-    }
-
-    public static void setAuthenticatedClient(Client authenticatedClient) {
-        App.authenticatedClient = authenticatedClient;
-    }
+    private static final double STAGE_WIDTH = 600.0;
+    private static final double STAGE_HEIGHT = 400.0;
 
     @Override
     public final void start(Stage stage) throws IOException {
@@ -42,7 +33,7 @@ public class App extends Application {
     }
 
     public static void changeScene(ActionEvent event, String path) throws IOException {
-        URL url = App.class.getResource(Paths.LOGIN_PATH);
+        URL url = App.class.getResource(path);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         Parent parent = fxmlLoader.load();
         Scene scene = new Scene(parent, STAGE_WIDTH, STAGE_HEIGHT);
