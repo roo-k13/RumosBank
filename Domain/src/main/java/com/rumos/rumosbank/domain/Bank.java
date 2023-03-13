@@ -27,7 +27,7 @@ public class Bank {
         registerDebitCard(bankAccount);
     }
 
-    private void setCardProperties(Card card, BankAccount bankAccount) {
+    private static void setCardProperties(Card card, BankAccount bankAccount) {
         card.setNumber(new Generators().generateRandomNumber(9));
         card.setPin(new Generators().generateRandomNumber(4));
         card.setExpirationDate(LocalDate.now().plusYears(5));
@@ -35,45 +35,45 @@ public class Bank {
         card.setBankAccount(bankAccount);
     }
 
-    public void registerDebitCard(BankAccount bankAccount) {
+    public static void registerDebitCard(BankAccount bankAccount) {
         DebitCard debitCard = new DebitCard();
         setCardProperties(debitCard, bankAccount);
         new DebitCardRepository().insert(debitCard);
     }
 
-    public void registerCreditCard(BankAccount bankAccount) {
+    public static void registerCreditCard(BankAccount bankAccount) {
         CreditCard creditCard = new CreditCard();
         setCardProperties(creditCard, bankAccount);
         new CreditCardRepository().insert(creditCard);
     }
 
-    public Client authenticate(String email, String password) {
+    public static Client authenticate(String email, String password) {
         Client client = new ClientRepository().getByEmail(email);
-        return client != null && client.isPasswordCorrect(password) ? client : null;
+        return null != client && client.isPasswordCorrect(password) ? client : null;
     }
 
-    public void registerClient(Client client) {
+    public final void registerClient(Client client) {
         new ClientRepository().insert(client);
         registerBankAccount(client);
     }
 
-    public void updateClient(Client client) {
+    public static void updateClient(Client client) {
         new ClientRepository().update(client);
     }
 
-    public void updateMovements(BankAccount bankAccount) {
+    public static void updateMovements(BankAccount bankAccount) {
         long bankAccountId = bankAccount.getId();
         bankAccount.setMovements(new WithdrawRepository().get(bankAccountId),
-                                 new DepositRepository().get(bankAccountId),
-                                 new TransferRepository().getSent(bankAccountId),
-                                 new TransferRepository().getReceived(bankAccountId));
+                new DepositRepository().get(bankAccountId),
+                new TransferRepository().getSent(bankAccountId),
+                new TransferRepository().getReceived(bankAccountId));
     }
 
-    public void makeTransfer(BankAccount sender, String receiverBankAccountNumber, BigDecimal amount) {
+    public void makeTransfer(BankAccount sender, String receiver, BigDecimal amount) {
         Transfer transfer = new Transfer();
         transfer.setAmount(amount);
         transfer.setSender(sender);
-        transfer.setReceiver(new BankAccountRepository().get(receiverBankAccountNumber));
+        transfer.setReceiver(new BankAccountRepository().get(receiver));
         new TransferRepository().insert(transfer);
     }
 }

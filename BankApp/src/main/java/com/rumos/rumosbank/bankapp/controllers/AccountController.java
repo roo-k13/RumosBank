@@ -90,7 +90,7 @@ public final class AccountController extends NavigationBarController {
 
         try {
             Bank.instance.makeTransfer(selectedAccount, receiverAccountNumber, amount);
-            Bank.instance.updateMovements(selectedAccount);
+            Bank.updateMovements(selectedAccount);
             updateMovements();
             transferSuccessful();
         } catch (Exception exception) {

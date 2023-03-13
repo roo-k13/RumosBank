@@ -61,11 +61,11 @@ public class CardsController extends NavigationBarController {
 
     @FXML
     private void onCreateNewDebitCardButtonClick() {
-        Bank.instance.registerDebitCard(selectedAccount);
+        Bank.registerDebitCard(selectedAccount);
     }
 
     @FXML
     private void onCreateNewCreditCardButtonClick() {
-        Bank.instance.registerCreditCard(selectedAccount);
+        Bank.registerCreditCard(selectedAccount);
     }
 }

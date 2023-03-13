@@ -44,7 +44,7 @@ public final class ProfileServlet extends AbstractController {
     }
 
     private static void updateClient(Client client) {
-        Bank.instance.updateClient(client);
+        Bank.updateClient(client);
     }
 
     private static void reloadPage(ServletRequest request, ServletResponse response)

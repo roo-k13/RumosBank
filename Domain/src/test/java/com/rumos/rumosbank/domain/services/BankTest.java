@@ -7,6 +7,6 @@ class BankTest {
 
     @Test
     void autenticateTest() {
-        Bank.instance.authenticate("josepereira@hotmail.com", "teste");
+        Bank.authenticate("josepereira@hotmail.com", "teste");
     }
 }

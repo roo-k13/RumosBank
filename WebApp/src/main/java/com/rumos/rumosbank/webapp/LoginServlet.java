@@ -22,7 +22,7 @@ public class LoginServlet extends AbstractController {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         try {
-            Client authenticatedClient = Bank.instance.authenticate(email, password);
+            Client authenticatedClient = Bank.authenticate(email, password);
             HttpSession session = req.getSession();
             session.setAttribute(CLIENT_ATTRIBUTE, authenticatedClient);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("accounts.jsp");

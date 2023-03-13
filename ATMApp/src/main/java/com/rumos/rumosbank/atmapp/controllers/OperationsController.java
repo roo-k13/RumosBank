@@ -65,7 +65,7 @@ public class OperationsController extends NavigationBarController {
         else if (Objects.equals(getSelectedOperation(), "Deposit")) {
             ATM.makeDeposit(getBankAccount(), BigDecimal.valueOf(amountValue));
         }
-        Bank.instance.updateMovements(getBankAccount());
+        Bank.updateMovements(getBankAccount());
         setAccountBalance();
     }
 

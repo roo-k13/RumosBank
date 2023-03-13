@@ -2,6 +2,7 @@ package com.rumos.rumosbank.bankapp.controllers;
 
 import com.rumos.rumosbank.bankapp.App;
 
+import com.rumos.rumosbank.domain.Bank;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -61,7 +62,7 @@ public class UpdateInfoController extends AbstractController {
         getClient().setMobilePhone(mobilePhoneTextField.getText());
         getClient().setProfession(professionTextField.getText());
         getClient().setEmailAddress(emailTextField.getText());
-        getBank().updateClient(getClient());
+        Bank.updateClient(getClient());
     }
 
     private void showSuccessFeedback() {

@@ -46,7 +46,7 @@ public class LoginController extends AbstractController {
     private void onLoginButtonClick(ActionEvent event) {
         try {
             getDetails();
-            Client client = Bank.instance.authenticate(email, password);
+            Client client = Bank.authenticate(email, password);
             App.setAuthenticatedClient(client);
             App.changeScene(event, "/fxml/index.fxml");
         } catch (NoResultException exception) { feedback_message_label.setText("The details you entered are not valid");
