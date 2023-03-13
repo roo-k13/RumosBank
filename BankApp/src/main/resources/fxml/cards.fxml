@@ -8,27 +8,30 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane styleClass="border-pane" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.CardsController">
-   <left>
-       <VBox styleClass="vbox" stylesheets="@../css/navbar.css" BorderPane.alignment="CENTER">
-           <Button mnemonicParsing="false" onAction="#onAccountsButtonClick" styleClass="vbox_side_bar_button" text="Accounts" />
-           <Button mnemonicParsing="false" onAction="#onCardsButtonClick" styleClass="vbox_side_bar_button" text="Cards" />
-           <Button mnemonicParsing="false" onAction="#onEditProfileButtonClick" styleClass="vbox_side_bar_button" text="Profile" />
-           <Button mnemonicParsing="false" onAction="#onChangePasswordButtonClick" styleClass="vbox_side_bar_button" text="Password" />
-           <Button mnemonicParsing="false" onAction="#onLogoutButtonClick" styleClass="vbox_side_bar_button" text="Logout" />
-       </VBox>
-   </left>
-   <center>
-       <AnchorPane stylesheets="@../css/cards.css" BorderPane.alignment="CENTER">
-           <VBox layoutX="38.0" layoutY="27.0" styleClass="vbox">
-               <ChoiceBox fx:id="bank_accounts_choice_box" prefHeight="20.0" prefWidth="263.0" />
-               <Label prefHeight="21.0" text="Debit Cards" />
-               <ListView fx:id="debit_cards_list_view" prefHeight="50.0" prefWidth="400.0" />
-               <Button mnemonicParsing="false" onAction="#onCreateNewDebitCardButtonClick" prefHeight="30.0" prefWidth="400.0" text="Add new" />
-               <Label prefHeight="21.0" text="Credit Cards" />
-               <ListView fx:id="credit_cards_list_view" prefHeight="50.0" prefWidth="400.0" />
-               <Button mnemonicParsing="false" onAction="#onCreateNewCreditCardButtonClick" prefHeight="30.0" prefWidth="400.0" text="Add new" />
-           </VBox>
-       </AnchorPane>
-   </center>
+<BorderPane styleClass="border-pane" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rumos.rumosbank.bankapp.controllers.CardsController">
+    <left>
+        <VBox styleClass="vbox" stylesheets="@../css/navbar.css" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#onAccountsButtonClick" text="Accounts"/>
+            <Button mnemonicParsing="false" onAction="#onCardsButtonClick" text="Cards"/>
+            <Button mnemonicParsing="false" onAction="#onEditProfileButtonClick" text="Profile"/>
+            <Button mnemonicParsing="false" onAction="#onChangePasswordButtonClick" text="Password"/>
+            <Button mnemonicParsing="false" onAction="#onLogoutButtonClick" text="Logout"/>
+        </VBox>
+    </left>
+    <center>
+        <AnchorPane stylesheets="@../css/cards.css" BorderPane.alignment="CENTER">
+            <VBox layoutX="38.0" layoutY="27.0" styleClass="vbox">
+                <ChoiceBox fx:id="bank_accounts_choice_box" prefHeight="20.0" prefWidth="263.0"/>
+                <Label prefHeight="21.0" text="Debit Cards"/>
+                <ListView fx:id="debit_cards_list_view" prefHeight="50.0" prefWidth="400.0"/>
+                <Button mnemonicParsing="false" onAction="#onCreateNewDebitCardButtonClick" prefHeight="30.0"
+                        prefWidth="400.0" text="Add new"/>
+                <Label prefHeight="21.0" text="Credit Cards"/>
+                <ListView fx:id="credit_cards_list_view" prefHeight="50.0" prefWidth="400.0"/>
+                <Button mnemonicParsing="false" onAction="#onCreateNewCreditCardButtonClick" prefHeight="30.0"
+                        prefWidth="400.0" text="Add new"/>
+            </VBox>
+        </AnchorPane>
+    </center>
 </BorderPane>
