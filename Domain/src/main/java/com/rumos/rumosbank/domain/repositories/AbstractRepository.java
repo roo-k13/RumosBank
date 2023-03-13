@@ -4,7 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-public abstract class AbstractRepository<T> {
+public class AbstractRepository<T> {
     private final EntityManager entityManager;
     private final EntityManagerFactory entityManagerFactory;
 
@@ -17,16 +17,15 @@ public abstract class AbstractRepository<T> {
         entityManager = entityManagerFactory.createEntityManager();
     }
 
-    public void insert(T object) {
+    public final void insert(T object) {
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(object);
             entityManager.getTransaction().commit();
-        } catch (Exception exception) {
+        } catch (RuntimeException exception) {
             if (entityManager.getTransaction().isActive()) {
                 entityManager.getTransaction().rollback();
             }
-            throw exception;
         } finally {
             close();
         }
@@ -37,11 +36,10 @@ public abstract class AbstractRepository<T> {
             entityManager.getTransaction().begin();
             entityManager.merge(object);
             entityManager.getTransaction().commit();
-        } catch (Exception e) {
+        } catch (RuntimeException exception) {
             if (entityManager.getTransaction().isActive()) {
                 entityManager.getTransaction().rollback();
             }
-            throw e;
         } finally {
             close();
         }
