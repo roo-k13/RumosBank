@@ -1,4 +1,4 @@
-create table bankaccounts
+create table accounts
 (
     id        bigint auto_increment
         primary key,
@@ -30,6 +30,7 @@ create table creditcards
         primary key,
     number              char(9)    not null,
     pin                 char(4)    not null,
+    expiration_date     date       null,
     default_pin_changed tinyint(1) not null,
     account_id          mediumtext not null
 );
@@ -40,6 +41,7 @@ create table debitcards
         primary key,
     number              char(9)    not null,
     pin                 char(4)    not null,
+    expiration_date     date       null,
     default_pin_changed tinyint(1) not null,
     account_id          mediumtext not null
 );
@@ -71,5 +73,3 @@ create table withdraws
     timestamp  datetime       not null,
     account_id bigint         not null
 );
-
-
