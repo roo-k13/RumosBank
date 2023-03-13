@@ -2,7 +2,6 @@ package com.rumos.rumosbank.atmapp.controllers;
 
 import java.io.IOException;
 
-import com.rumos.rumosbank.atmapp.App;
 import com.rumos.rumosbank.domain.ATM;
 import com.rumos.rumosbank.domain.models.cards.Card;
 
@@ -60,7 +59,7 @@ public class ChangePinController extends AbstractController {
 
     private void updatePin(ActionEvent actionEvent) {
         try {
-            Card authenticatedCard = App.getAuthenticatedCard();
+            Card authenticatedCard = getCard();
             authenticatedCard.setPin(insert_pin_text_field.getText());
             updateCardInRepository(authenticatedCard);
             navigateToMenu(actionEvent);
@@ -70,7 +69,7 @@ public class ChangePinController extends AbstractController {
     }
 
     private static void updateCardInRepository(Card card) {
-        ATM.instance.updateCard(card);
+        ATM.updateCard(card);
     }
 
     private void navigateToMenu(ActionEvent actionEvent) {
