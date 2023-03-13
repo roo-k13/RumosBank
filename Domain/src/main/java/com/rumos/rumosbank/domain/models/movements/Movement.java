@@ -1,7 +1,6 @@
 package com.rumos.rumosbank.domain.models.movements;
 
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,38 +18,31 @@ public abstract class Movement {
         timestamp = LocalDateTime.now();
     }
 
-    /* ------------------------------------------------------------ Type ------------------------------------------------------------ */
-
-    @SuppressWarnings("unused")
     public String getType() {
         return this.getClass().getSimpleName();
     }
-
-    /* ------------------------------------------------------------ Amounts ------------------------------------------------------------ */
-
-    public void setAmount(BigDecimal amount) {
-        if (amount.compareTo(BigDecimal.ZERO) <= 0)
-            throw new IllegalArgumentException("The amount of the movement can't be lower or equal to zero");
-        this.amount = amount;
-    }
-
-    public void setAmount(int amount) {
-        if (amount <= 0)
-            throw new IllegalArgumentException("The amount of the movement can't be lower or equal to zero");
-        this.amount = new BigDecimal(amount);
-    }
-
 
     public BigDecimal getAmount() {
         return amount;
     }
 
-    /* ------------------------------------------------------------ Date ------------------------------------------------------------ */
+    public void setAmount(Number amount) {
+        if (null == amount || 0 >= amount.doubleValue())
+            throw new IllegalArgumentException("The amount of the movement can't be lower or equal to zero");
+        if (amount instanceof BigDecimal)
+            this.amount = (BigDecimal) amount;
+        else
+            this.amount = BigDecimal.valueOf(amount.doubleValue());
+    }
 
-    public String getLongDate() { return timestamp.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)); }
-
-    /* ------------------------------------------------------------ ToString ------------------------------------------------------------ */
+    public final String getLongDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);
+        return timestamp.format(formatter);
+    }
 
     @Override
-    public String toString() { return getClass().getSimpleName() + ": " + amount + "€ - " + getLongDate(); }
+    public final String toString() {
+        Class<? extends Movement> aClass = getClass();
+        return aClass.getSimpleName() + ": " + amount + "€ - " + getLongDate();
+    }
 }
