@@ -9,7 +9,7 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/main.css"
             xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.rumos.rumosbank.bankapp.controllers.IndexController">
+            fx:controller="com.rumos.rumosbank.bankapp.controllers.AbstractController">
     <left>
         <VBox styleClass="vbox" stylesheets="@../css/navbar.css" BorderPane.alignment="CENTER">
             <Button mnemonicParsing="false" onAction="#onAccountsButtonClick" text="Accounts"/>
