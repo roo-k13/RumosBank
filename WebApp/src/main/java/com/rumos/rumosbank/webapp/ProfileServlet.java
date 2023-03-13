@@ -5,8 +5,9 @@ import com.rumos.rumosbank.domain.Bank;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -14,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "profile", value = "/profile")
-public class ProfileServlet extends HttpServlet {
+public final class ProfileServlet extends MainController {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -25,25 +26,30 @@ public class ProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         HttpSession session = req.getSession();
-        Client client = (Client) session.getAttribute("client");
+        Client client = (Client) session.getAttribute(CLIENT);
         getParameters(client, req);
         updateClient(client);
         reloadPage(req, resp);
     }
 
-    private void getParameters(Client client, HttpServletRequest request) {
-        client.setPhone(request.getParameter("phone"));
-        client.setMobilePhone(request.getParameter("mobilePhone"));
-        client.setProfession(request.getParameter("profession"));
-        client.setEmailAddress(request.getParameter("emailAddress"));
+    private static void getParameters(Client client, ServletRequest request) {
+        String phone = request.getParameter("phone");
+        client.setPhone(phone);
+        String mobilePhone = request.getParameter("mobilePhone");
+        client.setMobilePhone(mobilePhone);
+        String profession = request.getParameter("profession");
+        client.setProfession(profession);
+        String emailAddress = request.getParameter("emailAddress");
+        client.setEmailAddress(emailAddress);
     }
 
-    private void updateClient(Client client) {
+    private static void updateClient(Client client) {
         Bank.instance.updateClient(client);
     }
 
-    private void reloadPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("profile.jsp");
-            dispatcher.forward(request, response);
+    private static void reloadPage(ServletRequest request, ServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("profile.jsp");
+        dispatcher.forward(request, response);
     }
 }
