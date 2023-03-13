@@ -1,18 +1,12 @@
 .footer {
-    padding: 20px 0;
-    font-size: 14px;
-    transition: all 0.3s;
-    border-top: 1px solid #cddfff;
+    background-color: #333333;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
 }
 
-.footer .copyright {
-    text-align: center;
-    color: #012970;
-}
-
-.footer .credits {
-    padding-top: 5px;
-    text-align: center;
-    font-size: 13px;
-    color: #012970;
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
 }
