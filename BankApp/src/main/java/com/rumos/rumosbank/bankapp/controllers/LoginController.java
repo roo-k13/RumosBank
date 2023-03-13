@@ -14,6 +14,8 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+import static com.rumos.rumosbank.bankapp.App.changeScene;
+
 public class LoginController extends AbstractController {
 
     private String email;
@@ -47,17 +49,19 @@ public class LoginController extends AbstractController {
         try {
             getDetails();
             Client client = Bank.authenticate(email, password);
-            App.setAuthenticatedClient(client);
-            App.changeScene(event, "/fxml/index.fxml");
-        } catch (NoResultException exception) { feedback_message_label.setText("The details you entered are not valid");
-        } catch (IOException exception) { exception.printStackTrace();
+            setClient(client);
+            changeScene(event, "/fxml/index.fxml");
+        } catch (NoResultException exception) {
+            feedback_message_label.setText("The details you entered are not valid");
+        } catch (IOException exception) {
+            exception.printStackTrace();
         } catch (IllegalArgumentException exception) {feedback_message_label.setText(exception.getMessage()); }
     }
 
     @FXML
     public final void onRegisterButtonClick(ActionEvent event) {
         try {
-            App.changeScene(event, Paths.REGISTRATION_PATH);
+            changeScene(event, Paths.REGISTRATION_PATH);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

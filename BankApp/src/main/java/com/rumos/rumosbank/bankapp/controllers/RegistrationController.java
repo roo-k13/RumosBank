@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class RegistrationController extends NavigationBarController {
+public class RegistrationController {
     private TextField[] textFields;
     private PasswordField[] passwordFields;
 

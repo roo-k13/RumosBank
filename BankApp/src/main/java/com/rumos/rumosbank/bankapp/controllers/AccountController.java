@@ -20,7 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public final class AccountController extends NavigationBarController {
+public final class AccountController extends AbstractController {
 
     // Fields
     private BankAccount selectedAccount;
@@ -46,8 +46,7 @@ public final class AccountController extends NavigationBarController {
     // Initialization methods
     @FXML
     private void initialize() {
-        Client authenticatedClient = App.getAuthenticatedClient();
-        List<BankAccount> bankAccounts = authenticatedClient.getBankAccounts();
+        List<BankAccount> bankAccounts = getClient().getBankAccounts();
         initializeAccountsChoiceBox(bankAccounts);
         initializeMovementsTable();
         feedback_message_label.setVisible(false);

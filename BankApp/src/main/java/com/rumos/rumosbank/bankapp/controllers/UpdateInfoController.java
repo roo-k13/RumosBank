@@ -1,7 +1,5 @@
 package com.rumos.rumosbank.bankapp.controllers;
 
-import com.rumos.rumosbank.bankapp.App;
-
 import com.rumos.rumosbank.domain.Bank;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -27,10 +25,6 @@ public class UpdateInfoController extends AbstractController {
     private TextField emailTextField;
     @FXML
     private Label feedbackMessageLabel;
-
-    public UpdateInfoController() {
-        setClient(App.getAuthenticatedClient());
-    }
 
     @FXML
     private void initialize() {

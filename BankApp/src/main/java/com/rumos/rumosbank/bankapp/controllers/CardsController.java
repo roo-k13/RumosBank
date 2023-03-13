@@ -16,7 +16,7 @@ import javafx.scene.control.ListView;
 
 import java.util.List;
 
-public class CardsController extends NavigationBarController {
+public class CardsController extends AbstractController{
     private BankAccount selectedAccount;
 
     @FXML
@@ -34,8 +34,7 @@ public class CardsController extends NavigationBarController {
     @FXML
     private void initializeAccountsChoiceBox() {
         bank_accounts_choice_box.setOnAction(this::onSelectingBankAccount);
-        Client authenticatedClient = App.getAuthenticatedClient();
-        List<BankAccount> bankAccounts = authenticatedClient.getBankAccounts();
+        List<BankAccount> bankAccounts = getClient().getBankAccounts();
         bank_accounts_choice_box.setItems(FXCollections.observableList(bankAccounts));
     }
 
