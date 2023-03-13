@@ -44,7 +44,7 @@ public class ATM {
         return card.orElse(null);
     }
 
-    public void updateCard(Card card) {
+    public static void updateCard(Card card) {
         if (card instanceof DebitCard) {
             new DebitCardRepository().update((DebitCard) card);
         } else if (card instanceof CreditCard) {
