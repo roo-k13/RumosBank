@@ -78,4 +78,9 @@ class ClientTest {
             throw new RuntimeException(ioException);
         }
     }
+
+    @Test
+    void testToString() {
+        System.out.println(client);
+    }
 }
