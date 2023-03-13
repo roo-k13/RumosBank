@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Rumos Bank - Login</title>
+    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="assets/css/login.css">
 </head>
 
