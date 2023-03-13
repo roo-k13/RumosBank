@@ -9,28 +9,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 public class AbstractController {
     private static final Bank bank = Bank.instance;
-    private Client client;
-    private List<BankAccount> bankAccounts;
+    private static Client client;
 
     public final Client getClient() {
         return client;
     }
 
-    public final List<BankAccount> getBankAccounts() {
-        return Collections.unmodifiableList(bankAccounts);
+    public static List<BankAccount> getBankAccounts() {
+        return client.getBankAccounts();
     }
 
     public final void setClient(Client client) {
-        this.client = client;
-    }
-
-    public final void setBankAccounts() {
-        bankAccounts = client.getBankAccounts();
+        AbstractController.client = client;
     }
 
     public static Bank getBank() {
