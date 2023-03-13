@@ -15,34 +15,35 @@
         xmlns="http://javafx.com/javafx/19"
         xmlns:fx="http://javafx.com/fxml/1"
         fx:controller="com.rumos.rumosbank.bankapp.controllers.LoginController">
-   <VBox styleClass="vbox">
-      <Label text="Rumos Bank">
-         <stylesheets>
-            <URL value="@../css/main.css" />
-            <URL value="@../css/login.css" />
-         </stylesheets>
-         <styleClass>
-            <String fx:value="title_label" />
-            <String fx:value="label" />
-         </styleClass></Label>
-      <TextField
-              fx:id="email_text_field"
-              promptText="Email"
-              stylesheets="@../css/main.css" />
-      <PasswordField
-              fx:id="password_text_field"
-              promptText="Password"
-              stylesheets="@../css/main.css" />
-      <Button
-              mnemonicParsing="false"
-              onAction="#onLoginButtonClick"
-              text="Login" />
-      <Button
-              mnemonicParsing="false"
-              onAction="#onRegisterButtonClick"
-              text="Register" />
-      <Label
-              fx:id="feedback_message_label"
-              text="This is the feedback message label" />
-   </VBox>
+    <VBox styleClass="vbox">
+        <Label text="Rumos Bank">
+            <stylesheets>
+                <URL value="@../css/main.css"/>
+                <URL value="@../css/login.css"/>
+            </stylesheets>
+            <styleClass>
+                <String fx:value="title_label"/>
+                <String fx:value="label"/>
+            </styleClass>
+        </Label>
+        <TextField
+                fx:id="email_text_field"
+                promptText="Email"
+                stylesheets="@../css/main.css"/>
+        <PasswordField
+                fx:id="password_text_field"
+                promptText="Password"
+                stylesheets="@../css/main.css"/>
+        <Button
+                mnemonicParsing="false"
+                onAction="#onLoginButtonClick"
+                text="Login"/>
+        <Button
+                mnemonicParsing="false"
+                onAction="#onRegisterButtonClick"
+                text="Register"/>
+        <Label
+                fx:id="feedback_message_label"
+                text="This is the feedback message label"/>
+    </VBox>
 </StackPane>
