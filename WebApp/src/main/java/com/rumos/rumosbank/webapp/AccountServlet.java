@@ -5,19 +5,18 @@ import com.rumos.rumosbank.domain.models.Client;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
 @WebServlet(name = "account", value = "/account")
-public class AccountServlet extends HttpServlet {
+public class AccountServlet extends MainController {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String number = request.getParameter("number");
-        Client client = (Client) request.getSession().getAttribute("client");
+        Client client = (Client) request.getSession().getAttribute(CLIENT);
         BankAccount bankAccount = client.getBankAccount(number);
         request.getSession().setAttribute("account", bankAccount);
         request.getSession().setAttribute("cards", bankAccount.getCards());
