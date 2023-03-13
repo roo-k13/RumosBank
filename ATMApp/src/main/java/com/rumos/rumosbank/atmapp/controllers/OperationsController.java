@@ -4,6 +4,7 @@ import com.rumos.rumosbank.atmapp.App;
 import com.rumos.rumosbank.domain.ATM;
 import com.rumos.rumosbank.domain.Bank;
 
+import com.rumos.rumosbank.domain.models.BankAccount;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,8 +16,6 @@ import java.util.Objects;
 
 public class OperationsController extends NavigationBarController {
 
-    @FXML
-    protected static String selectedOperation;
     @FXML
     private Label account_balance_label;
     @FXML
@@ -41,13 +40,18 @@ public class OperationsController extends NavigationBarController {
     @FXML
     private void initialize() {
         setAccountBalance();
-        if (Objects.equals(selectedOperation, "Withdraw")) { populateButtonsWithWithdrawAmounts(); }
-        else if (Objects.equals(selectedOperation, "Deposit")) { populateButtonsWithDepositAmounts(); }
+        if (Objects.equals(getSelectedOperation(), "Withdraw")) {
+            populateButtonsWithWithdrawAmounts();
+        }
+        else if (Objects.equals(getSelectedOperation(), "Deposit")) {
+            populateButtonsWithDepositAmounts();
+        }
     }
 
-    protected void setAccountBalance() {
+    protected final void setAccountBalance() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        String balance = formatter.format(App.getAuthenticatedAccount().getBalance());
+        BankAccount authenticatedAccount = App.getAuthenticatedAccount();
+        String balance = formatter.format(authenticatedAccount.getBalance());
         account_balance_label.setText("Balance: " + balance);
     }
 
@@ -56,10 +60,10 @@ public class OperationsController extends NavigationBarController {
         Button buttonPressed = (Button)actionEvent.getSource();
         String amountString = buttonPressed.getText().replace("€", "");
         int amountValue = Integer.parseInt(amountString);
-        if (Objects.equals(selectedOperation, "Withdraw")) {
+        if (Objects.equals(getSelectedOperation(), "Withdraw")) {
             ATM.instance.makeWithdraw(App.getAuthenticatedAccount(), BigDecimal.valueOf(amountValue));
         }
-        else if (Objects.equals(selectedOperation, "Deposit")) {
+        else if (Objects.equals(getSelectedOperation(), "Deposit")) {
             ATM.instance.makeDeposit(App.getAuthenticatedAccount(), BigDecimal.valueOf(amountValue));
         }
         Bank.instance.updateMovements(App.getAuthenticatedAccount());
@@ -77,8 +81,8 @@ public class OperationsController extends NavigationBarController {
     }
 
     private void populateButtonsWithDepositAmounts() {
-        int[] amounts = ATM.instance.getDepositAmounts();
-        Button[] buttons = new Button[] {
+        int[] amounts = ATM.getDepositAmounts();
+        Button[] buttons = {
                 first_button, second_button, third_button, fourth_button, fifth_button,
                 sixth_button, seventh_button, eight_button, ninth_button };
         for (int i = 0; i < buttons.length; i++) { buttons[i].setText(amounts[i] + "€"); }
