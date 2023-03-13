@@ -36,7 +36,7 @@
             <button class="login-button" type="submit">Login</button>
 
             <!-- Register Link -->
-            <p>Don't have an account? <a href="registration_test.jsp">Create an account</a></p>
+            <p>Don't have an account? <a href="registration.jsp">Create an account</a></p>
         </form>
     </div>
 </main>
