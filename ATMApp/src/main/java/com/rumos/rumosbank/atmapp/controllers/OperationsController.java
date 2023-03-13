@@ -1,6 +1,5 @@
 package com.rumos.rumosbank.atmapp.controllers;
 
-import com.rumos.rumosbank.atmapp.App;
 import com.rumos.rumosbank.domain.ATM;
 import com.rumos.rumosbank.domain.Bank;
 
@@ -61,10 +60,10 @@ public class OperationsController extends NavigationBarController {
         String amountString = buttonPressed.getText().replace("€", "");
         int amountValue = Integer.parseInt(amountString);
         if (Objects.equals(getSelectedOperation(), "Withdraw")) {
-            ATM.instance.makeWithdraw(getBankAccount(), BigDecimal.valueOf(amountValue));
+            ATM.makeWithdraw(getBankAccount(), BigDecimal.valueOf(amountValue));
         }
         else if (Objects.equals(getSelectedOperation(), "Deposit")) {
-            ATM.instance.makeDeposit(getBankAccount(), BigDecimal.valueOf(amountValue));
+            ATM.makeDeposit(getBankAccount(), BigDecimal.valueOf(amountValue));
         }
         Bank.instance.updateMovements(getBankAccount());
         setAccountBalance();

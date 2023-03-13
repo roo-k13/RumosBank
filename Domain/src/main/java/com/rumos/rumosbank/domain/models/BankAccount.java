@@ -85,17 +85,17 @@ public class BankAccount {
         return Collections.unmodifiableList(debitCards);
     }
 
-    public List<CreditCard> getCreditCards() {
-        return creditCards;
+    public final List<CreditCard> getCreditCards() {
+        return Collections.unmodifiableList(creditCards);
     }
 
-    public List<Card> getCards() {
+    public final List<Card> getCards() {
         return Stream.of(getDebitCards(), getCreditCards())
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
     }
 
-    public void setNumber(String number) {
+    public final void setNumber(String number) {
         if (!number.matches("[0-9]+"))
             throw new IllegalArgumentException("The account number must only contain digits");
         if (number.length() != 9)
@@ -103,7 +103,7 @@ public class BankAccount {
         this.number = number;
     }
 
-    public void setName(String name) {
+    public final void setName(String name) {
         this.name = name;
     }
 

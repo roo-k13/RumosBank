@@ -20,14 +20,15 @@ public class ATM {
     public static final ATM instance;
 
     static {
-        instance = new ATM();}
+        instance = new ATM();
+    }
 
     public static int[] getWithdrawAmounts() {
         return new int[]{10, 20, 40, 80, 100, 200, 400, 600, 800};
     }
 
     public static int[] getDepositAmounts() {
-        return new int[] {25, 50, 100, 250, 500, 1000, 2500, 5000, 10000};
+        return new int[]{25, 50, 100, 250, 500, 1000, 2500, 5000, 10000};
     }
 
     public static Card authenticate(String cardNumber, String cardPin) {
@@ -52,8 +53,8 @@ public class ATM {
         }
     }
 
-    public void makeWithdraw(BankAccount bankAccount, BigDecimal amount) throws IllegalArgumentException {
-        if (amount.compareTo(bankAccount.getBalance()) > 0) {
+    public static void makeWithdraw(BankAccount bankAccount, BigDecimal amount) throws IllegalArgumentException {
+        if (0 < amount.compareTo(bankAccount.getBalance())) {
             throw new IllegalArgumentException("The withdraw amount can't be bigger than the account balance");
         }
 
@@ -63,7 +64,7 @@ public class ATM {
         new WithdrawRepository().insert(withdraw);
     }
 
-    public void makeDeposit(BankAccount bankAccount, BigDecimal amount) {
+    public static void makeDeposit(BankAccount bankAccount, BigDecimal amount) {
         Deposit deposit = new Deposit();
         deposit.setBankAccount(bankAccount);
         deposit.setAmount(amount);
