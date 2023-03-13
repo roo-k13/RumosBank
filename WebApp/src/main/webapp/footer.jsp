@@ -1,6 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<link rel="stylesheet" href="assets/css/header.css">
-
-<div class="header">
-    <a>Rumos Bank</a>
+<html>
+<head>
+    <title>Footer</title>
+    <link href="assets/css/footer.css" rel="stylesheet">
+</head>
+<body>
+<div class="footer">
+    <a href="home.jsp">2023 - Rumos Bank</a>
 </div>
+</body>
+</html>
