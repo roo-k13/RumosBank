@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -49,28 +50,28 @@ public class Client {
         return birthdate;
     }
 
-    public String getNif() {
+    public final String getNif() {
         return nif;
     }
 
-    public String getPhone() {
+    public final String getPhone() {
         return phone;
     }
 
-    public String getMobilePhone() {
+    public final String getMobilePhone() {
         return mobilePhone;
     }
 
-    public String getProfession() {
+    public final String getProfession() {
         return profession;
     }
 
-    public String getEmailAddress() {
+    public final String getEmailAddress() {
         return emailAddress;
     }
 
-    public List<BankAccount> getBankAccounts() {
-        return bankAccounts;
+    public final List<BankAccount> getBankAccounts() {
+        return Collections.unmodifiableList(bankAccounts);
     }
 
     public BankAccount getBankAccount(String number) {
@@ -93,14 +94,14 @@ public class Client {
     }
 
     public void setBirthdate(LocalDate birthdate) {
-        if (ChronoUnit.YEARS.between(birthdate, LocalDate.now()) < 18) {
+        if (18 > ChronoUnit.YEARS.between(birthdate, LocalDate.now())) {
             throw new IllegalArgumentException("Birthdate is invalid. Client needs to be latest 18 years old to be registered.");
         }
         this.birthdate = birthdate;
     }
 
-    public void setNif(String nif) {
-        if (nif.length() != 9) throw new IllegalArgumentException("NIF value must be exactly 9 digits");
+    public final void setNif(String nif) {
+        if (9 != nif.length()) throw new IllegalArgumentException("NIF value must be exactly 9 digits");
         this.nif = nif;
     }
 
@@ -138,7 +139,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return  "Name: "      + getFirstName() + " " + getLastName() + "\n" +
+        return "Name: "      + getFirstName() + " " + getLastName() + "\n" +
                 "Birthdate: " + getBirthdate() + "\n" +
                 "Email: "     + getEmailAddress();
     }
