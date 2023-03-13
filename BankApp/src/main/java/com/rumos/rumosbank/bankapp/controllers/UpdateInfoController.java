@@ -1,16 +1,12 @@
 package com.rumos.rumosbank.bankapp.controllers;
 
 import com.rumos.rumosbank.bankapp.App;
-import com.rumos.rumosbank.domain.models.Client;
-import com.rumos.rumosbank.domain.Bank;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class UpdateInfoController extends NavigationBarController {
-    private final Bank bank;
-    private final Client client;
+public class UpdateInfoController extends AbstractController {
 
     @FXML
     private TextField firstNameTextField;
@@ -32,8 +28,7 @@ public class UpdateInfoController extends NavigationBarController {
     private Label feedbackMessageLabel;
 
     public UpdateInfoController() {
-        this.bank = Bank.instance;
-        this.client = App.getAuthenticatedClient();
+        setClient(App.getAuthenticatedClient());
     }
 
     @FXML
@@ -43,14 +38,14 @@ public class UpdateInfoController extends NavigationBarController {
     }
 
     private void initializeFields() {
-        firstNameTextField.setText(client.getFirstName());
-        lastNameTextField.setText(client.getLastName());
-        birthdateTextField.setText(client.getBirthdate().toString());
-        nifTextField.setText(client.getNif());
-        phoneTextField.setText(client.getPhone());
-        mobilePhoneTextField.setText(client.getMobilePhone());
-        professionTextField.setText(client.getProfession());
-        emailTextField.setText(client.getEmailAddress());
+        firstNameTextField.setText(getClient().getFirstName());
+        lastNameTextField.setText(getClient().getFirstName());
+        birthdateTextField.setText(getClient().getBirthdate().toString());
+        nifTextField.setText(getClient().getNif());
+        phoneTextField.setText(getClient().getPhone());
+        mobilePhoneTextField.setText(getClient().getMobilePhone());
+        professionTextField.setText(getClient().getProfession());
+        emailTextField.setText(getClient().getEmailAddress());
     }
 
     @FXML
@@ -60,13 +55,13 @@ public class UpdateInfoController extends NavigationBarController {
     }
 
     private void updateClient() {
-        client.setFirstName(firstNameTextField.getText());
-        client.setLastName(lastNameTextField.getText());
-        client.setPhone(phoneTextField.getText());
-        client.setMobilePhone(mobilePhoneTextField.getText());
-        client.setProfession(professionTextField.getText());
-        client.setEmailAddress(emailTextField.getText());
-        bank.updateClient(client);
+        getClient().setFirstName(firstNameTextField.getText());
+        getClient().setLastName(lastNameTextField.getText());
+        getClient().setPhone(phoneTextField.getText());
+        getClient().setMobilePhone(mobilePhoneTextField.getText());
+        getClient().setProfession(professionTextField.getText());
+        getClient().setEmailAddress(emailTextField.getText());
+        getBank().updateClient(getClient());
     }
 
     private void showSuccessFeedback() {

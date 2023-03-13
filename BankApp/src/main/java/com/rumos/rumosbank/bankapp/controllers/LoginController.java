@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class LoginController {
+public class LoginController extends AbstractController {
 
     private String email;
     private String password;
