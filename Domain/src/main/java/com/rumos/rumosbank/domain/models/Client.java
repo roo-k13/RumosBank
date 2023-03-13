@@ -9,6 +9,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 @Entity
 @NamedQuery(name = "Client.getByEmail", query = "SELECT c FROM Client c WHERE c.emailAddress = :email")
@@ -34,19 +35,19 @@ public class Client {
     @JoinColumn(name = "client_id")
     private List<BankAccount> bankAccounts;
 
-    public String getFirstName() {
+    public final String getFirstName() {
         return firstName;
     }
 
-    public String getLastName() {
+    public final String getLastName() {
         return lastName;
     }
 
-    public String getName() {
+    public final String getName() {
         return firstName + " " + lastName;
     }
 
-    public LocalDate getBirthdate() {
+    public final LocalDate getBirthdate() {
         return birthdate;
     }
 
@@ -81,7 +82,7 @@ public class Client {
                 .orElseThrow(() -> new IllegalArgumentException("Account not found: " + number));
     }
 
-    public void setFirstName(String name) throws IllegalArgumentException {
+    public final void setFirstName(String name) throws IllegalArgumentException {
         if (isNameInvalid(name))
             throw new IllegalArgumentException("The following first name is not valid: " + name);
         this.firstName = StringUtils.capitalize(name);
@@ -93,7 +94,7 @@ public class Client {
         this.lastName = StringUtils.capitalize(name);
     }
 
-    public void setBirthdate(LocalDate birthdate) {
+    public final void setBirthdate(LocalDate birthdate) {
         if (18 > ChronoUnit.YEARS.between(birthdate, LocalDate.now())) {
             throw new IllegalArgumentException("Birthdate is invalid. Client needs to be latest 18 years old to be registered.");
         }
@@ -105,42 +106,54 @@ public class Client {
         this.nif = nif;
     }
 
-    public void setPhone(String phone) {
+    public final void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public void setMobilePhone(String mobilePhone) {
+    public final void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
     }
 
-    public void setProfession(String profession) {
+    public final void setProfession(String profession) {
         this.profession = profession;
     }
 
-    public void setEmailAddress(String emailAddress) {
+    public final void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
-    public void setPassword(String password) {
+    public final void setPassword(String password) {
         this.password = password;
     }
 
-    public void setBankAccounts(List<BankAccount> bankAccounts) {
+    public final void setBankAccounts(List<BankAccount> bankAccounts) {
         this.bankAccounts = bankAccounts;
     }
 
-    private boolean isNameInvalid(String name) {
-        return !name.matches("^[a-zA-ZÀ-ÿ]+([ '-][a-zA-ZÀ-ÿ]+)*$");
+    private static boolean isNameInvalid(CharSequence name) {
+        Pattern compile = Pattern.compile("^[a-zA-ZÀ-ÿ]+([ '-][a-zA-ZÀ-ÿ]+)*$");
+        return !compile.matcher(name).matches();
     }
 
-    public boolean isPasswordCorrect(String password) {
+    public final boolean isPasswordCorrect(String password) {
         return Objects.equals(this.password, password);
     }
 
     @Override
-    public String toString() {
-        return "Name: "      + getFirstName() + " " + getLastName() + "\n" +
-                "Birthdate: " + getBirthdate() + "\n" +
-                "Email: "     + getEmailAddress();
+    public final String toString() {
+        StringBuilder stringBuilder = new StringBuilder(200);
+        String pattern = "%-20s%s%n"; // pattern for left-justifying the first string
+        stringBuilder.append(String.format(pattern, "ID: ", id))
+                .append(String.format(pattern, "First Name:", firstName))
+                .append(String.format(pattern, "Last Name:", lastName))
+                .append(String.format(pattern, "Birthdate:", birthdate))
+                .append(String.format(pattern, "NIF:", nif))
+                .append(String.format(pattern, "Phone:", phone))
+                .append(String.format(pattern, "Mobile Phone:", mobilePhone))
+                .append(String.format(pattern, "Profession:", profession))
+                .append(String.format(pattern, "Email Address:", emailAddress))
+                .append(String.format(pattern, "Password:", password))
+                .append(String.format(pattern, "Bank Accounts:", bankAccounts));
+        return stringBuilder.toString();
     }
 }
