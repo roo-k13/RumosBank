@@ -2,6 +2,8 @@ package com.rumos.rumosbank.domain;
 
 import com.rumos.rumosbank.domain.models.BankAccount;
 import com.rumos.rumosbank.domain.models.cards.Card;
+import com.rumos.rumosbank.domain.models.cards.CreditCard;
+import com.rumos.rumosbank.domain.models.cards.DebitCard;
 import com.rumos.rumosbank.domain.models.movements.Deposit;
 import com.rumos.rumosbank.domain.models.movements.Withdraw;
 import com.rumos.rumosbank.domain.repositories.CreditCardRepository;
@@ -40,6 +42,14 @@ public class ATM {
                 .findFirst();
 
         return card.orElse(null);
+    }
+
+    public void updateCard(Card card) {
+        if (card instanceof DebitCard) {
+            new DebitCardRepository().update((DebitCard) card);
+        } else if (card instanceof CreditCard) {
+            new CreditCardRepository().update((CreditCard) card);
+        }
     }
 
     public void makeWithdraw(BankAccount bankAccount, BigDecimal amount) throws IllegalArgumentException {
