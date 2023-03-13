@@ -2,46 +2,68 @@ package com.rumos.rumosbank.domain.repositories;
 
 import com.rumos.rumosbank.domain.models.Client;
 
-import java.time.LocalDate;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.fail;
 
 class ClientRepositoryTest {
 
-    @Test
-    public void getByEmail() {
-        if (new ClientRepository().getByEmail("quimbarreiros@hotmail.com") == null) {
-            fail("Unable to get client"); }
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
+    private ClientRepository repository;
+
+    @BeforeEach
+    final void setUp() {
+        entityManagerFactory = Persistence.createEntityManagerFactory("test");
+        entityManager = entityManagerFactory.createEntityManager();
+        repository = new ClientRepository();
+    }
+
+    @AfterEach
+    final void tearDown() {
+        if (null != entityManager && entityManager.isOpen()) {
+            entityManager.close();
+        }
+        if (null != entityManagerFactory && entityManagerFactory.isOpen()) {
+            entityManagerFactory.close();
+        }
     }
 
     @Test
-    void get() {
-        if (new ClientRepository().getByEmail(1L) == null) {
-            fail("Unable to get client"); }
+    final void getById() {
+        // given
+        Client client = new Client();
+        client.setFirstName("John");
+        client.setLastName("Doe");
+        entityManager.persist(client);
+
+        // when
+        Client result = repository.getById(client.getId());
+
+        // then
+        Assertions.assertNotNull(result, "");
+        Assertions.assertEquals(client, result, "");
     }
 
     @Test
-    void insert() {
-        Client ronaldo = new Client();
-        ronaldo.setFirstName("Cristiano");
-        ronaldo.setLastName("Ronaldo");
-        ronaldo.setBirthdate(LocalDate.of(1985, 2, 5));
-        ronaldo.setNif("265478987");
-        ronaldo.setEmailAddress("cristianoronaldo@hotmail.pt");
-        ronaldo.setPassword("12345");
-        new ClientRepository().insert(ronaldo);
-    }
+    final void getByEmail() {
+        // given
+        Client client = new Client();
+        client.setFirstName("John");
+        client.setLastName("Doe");
+        client.setEmailAddress("john.doe@example.com");
+        entityManager.persist(client);
 
-    @Test
-    void update() {
-        Client client = new ClientRepository().getByEmail(1L);
-        client.setFirstName("Joaquim");
-        client.setLastName("Barreiros");
-        client.setBirthdate(LocalDate.of(1990, 2, 2));
-        client.setEmailAddress("quimbarreiros@hotmail.com");
-        client.setPassword("pimba");
-        new ClientRepository().update(client);
+        // when
+        Client result = repository.getByEmail("john.doe@example.com");
+
+        // then
+        Assertions.assertNotNull(result, "");
+        Assertions.assertEquals(client, result, "");
     }
 }
