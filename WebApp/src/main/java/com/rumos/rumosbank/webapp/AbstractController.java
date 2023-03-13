@@ -8,10 +8,10 @@ import jakarta.servlet.http.HttpServlet;
 
 import java.io.IOException;
 
-abstract class AbstractController extends HttpServlet {
+public abstract class AbstractController extends HttpServlet {
     private static final String INDEX_PATH = "index.jsp";
     private static final String ACCOUNT_PATH = "account.jsp";
-    static final String CLIENT = "client";
+    static final String CLIENT_ATTRIBUTE = "client";
 
     static void changeToIndex(ServletRequest request, ServletResponse response)
             throws ServletException, IOException {
