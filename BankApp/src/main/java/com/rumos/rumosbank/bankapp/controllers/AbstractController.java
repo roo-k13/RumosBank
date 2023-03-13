@@ -2,23 +2,35 @@ package com.rumos.rumosbank.bankapp.controllers;
 
 import com.rumos.rumosbank.bankapp.App;
 import com.rumos.rumosbank.domain.Bank;
+import com.rumos.rumosbank.domain.models.BankAccount;
 import com.rumos.rumosbank.domain.models.Client;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 public class AbstractController {
     private static final Bank bank = Bank.instance;
     private Client client;
+    private List<BankAccount> bankAccounts;
 
     public final Client getClient() {
         return client;
     }
 
+    public final List<BankAccount> getBankAccounts() {
+        return Collections.unmodifiableList(bankAccounts);
+    }
+
     public final void setClient(Client client) {
         this.client = client;
+    }
+
+    public final void setBankAccounts() {
+        bankAccounts = client.getBankAccounts();
     }
 
     public static Bank getBank() {
